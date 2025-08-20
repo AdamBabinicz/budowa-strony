@@ -37,10 +37,21 @@ export default function Home() {
 
       <ControlHub />
       
+      {/* Mobile Menu Button */}
+      <button 
+        className="lg:hidden fixed top-4 left-4 z-50 w-12 h-12 bg-background border border-border rounded-lg flex items-center justify-center shadow-lg"
+        onClick={() => {
+          const element = document.getElementById('phase-0');
+          if (element) element.scrollIntoView({ behavior: 'smooth' });
+        }}
+      >
+        <span className="text-xl">📱</span>
+      </button>
+      
       {/* Main Content */}
-      <main className="ml-16 transition-all duration-300">
+      <main className="lg:ml-16 transition-all duration-300">
         {/* Hero Section */}
-        <section className="min-h-screen bg-gradient-to-br from-background via-secondary/5 to-accent/5 flex items-center justify-center relative overflow-hidden">
+        <section className="min-h-screen bg-gradient-to-br from-background via-secondary/5 to-accent/5 flex items-center justify-center relative overflow-hidden px-4 lg:px-8">
           {/* Animated background elements */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute top-10 left-10 w-20 h-20 bg-accent/10 rounded-full animate-bounce-subtle"></div>
@@ -48,16 +59,16 @@ export default function Home() {
             <div className="absolute bottom-20 left-1/3 w-12 h-12 bg-accent/15 rounded-full animate-bounce-subtle delay-2000"></div>
           </div>
           
-          <div className="text-center z-10 px-8 animate-fade-in">
-            <h1 className="font-playfair text-5xl md:text-7xl font-bold mb-6">
+          <div className="text-center z-10 animate-fade-in w-full max-w-4xl mx-auto">
+            <h1 className="font-playfair text-3xl sm:text-5xl lg:text-7xl font-bold mb-6">
               <span className="gradient-gold bg-clip-text text-transparent">
                 {t('hero.title')}
               </span>
             </h1>
-            <h2 className="font-playfair text-2xl md:text-3xl mb-8 text-foreground/80">
+            <h2 className="font-playfair text-lg sm:text-2xl lg:text-3xl mb-8 text-foreground/80">
               {t('hero.subtitle')}
             </h2>
-            <p className="text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed text-foreground/70">
+            <p className="text-base sm:text-lg lg:text-xl mb-12 max-w-2xl mx-auto leading-relaxed text-foreground/70 px-4">
               {t('hero.description')}
             </p>
             
@@ -144,7 +155,7 @@ export default function Home() {
         </section>
         
         {/* Phase 1: Fundamenty */}
-        <section id="phase-1" className="min-h-screen py-20 px-8 bg-secondary/5">
+        <section id="phase-1" className="min-h-screen py-12 sm:py-20 px-4 sm:px-8 bg-secondary/5">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16 animate-fade-in">
               <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">🏗️</div>
@@ -156,11 +167,11 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-12">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
               <div className="animate-slide-in">
-                <h3 className="font-playfair text-2xl font-semibold mb-6">{t('phases.phase1.projectStructure')}</h3>
+                <h3 className="font-playfair text-xl sm:text-2xl font-semibold mb-6">{t('phases.phase1.projectStructure')}</h3>
                 
-                <div className="code-block rounded-lg p-6 text-white font-mono text-sm">
+                <div className="code-block rounded-lg p-4 sm:p-6 text-white font-mono text-xs sm:text-sm overflow-x-auto">
                   <div className="text-accent mb-4">ai-genesis-project/</div>
                   <div className="ml-4 space-y-1">
                     <div>├── <span className="text-yellow-400">functions/</span></div>
@@ -183,33 +194,33 @@ export default function Home() {
               </div>
               
               <div className="animate-fade-in">
-                <h3 className="font-playfair text-2xl font-semibold mb-6">{t('phases.phase1.techStack')}</h3>
+                <h3 className="font-playfair text-xl sm:text-2xl font-semibold mb-6">{t('phases.phase1.techStack')}</h3>
                 
-                <div className="space-y-6">
-                  <div className="bg-card rounded-lg p-6 border border-border">
-                    <div className="flex items-center mb-4">
+                <div className="space-y-4 sm:space-y-6">
+                  <div className="bg-card rounded-lg p-4 sm:p-6 border border-border">
+                    <div className="flex items-center mb-3 sm:mb-4">
                       <div className="w-8 h-8 bg-blue-500 rounded flex items-center justify-center text-white text-sm font-bold mr-3">TS</div>
-                      <h4 className="font-semibold">TypeScript + React + Vite</h4>
+                      <h4 className="font-semibold text-sm sm:text-base">TypeScript + React + Vite</h4>
                     </div>
                     <p className="text-sm text-foreground/70">
                       {t('phases.phase1.typeScriptDesc')}
                     </p>
                   </div>
                   
-                  <div className="bg-card rounded-lg p-6 border border-border">
-                    <div className="flex items-center mb-4">
+                  <div className="bg-card rounded-lg p-4 sm:p-6 border border-border">
+                    <div className="flex items-center mb-3 sm:mb-4">
                       <div className="w-8 h-8 bg-cyan-500 rounded flex items-center justify-center text-white text-sm font-bold mr-3">TW</div>
-                      <h4 className="font-semibold">TailwindCSS + Framer Motion</h4>
+                      <h4 className="font-semibold text-sm sm:text-base">TailwindCSS + Framer Motion</h4>
                     </div>
                     <p className="text-sm text-foreground/70">
                       {t('phases.phase1.tailwindDesc')}
                     </p>
                   </div>
                   
-                  <div className="bg-card rounded-lg p-6 border border-border">
-                    <div className="flex items-center mb-4">
+                  <div className="bg-card rounded-lg p-4 sm:p-6 border border-border">
+                    <div className="flex items-center mb-3 sm:mb-4">
                       <div className="w-8 h-8 bg-green-500 rounded flex items-center justify-center text-white text-sm font-bold mr-3">⚡</div>
-                      <h4 className="font-semibold">Netlify Functions + Testing</h4>
+                      <h4 className="font-semibold text-sm sm:text-base">Netlify Functions + Testing</h4>
                     </div>
                     <p className="text-sm text-foreground/70">
                       {t('phases.phase1.netlifyDesc')}
@@ -217,7 +228,7 @@ export default function Home() {
                   </div>
                 </div>
                 
-                <div className="mt-8 bg-accent/10 rounded-lg p-6">
+                <div className="mt-6 sm:mt-8 bg-accent/10 rounded-lg p-4 sm:p-6">
                   <h4 className="font-semibold mb-4 flex items-center">
                     <span className="mr-2">🤖</span>
                     {t('phases.phase1.aiJustification')}
@@ -232,7 +243,7 @@ export default function Home() {
         </section>
         
         {/* Phase 2: Innowacja UI */}
-        <section id="phase-2" className="min-h-screen py-20 px-8">
+        <section id="phase-2" className="min-h-screen py-12 sm:py-20 px-4 sm:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16 animate-fade-in">
               <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">🎨</div>
@@ -253,12 +264,12 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-12">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
               <div className="animate-fade-in">
-                <h3 className="font-playfair text-2xl font-semibold mb-6">{t('phases.phase2.hubFeatures')}</h3>
+                <h3 className="font-playfair text-xl sm:text-2xl font-semibold mb-6">{t('phases.phase2.hubFeatures')}</h3>
                 
                 <div className="space-y-4">
-                  <div className="flex items-start space-x-4 p-4 bg-card rounded-lg border border-border">
+                  <div className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-card rounded-lg border border-border">
                     <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm">🧭</div>
                     <div>
                       <h4 className="font-semibold mb-1">{t('phases.phase2.navFeature')}</h4>
@@ -266,7 +277,7 @@ export default function Home() {
                     </div>
                   </div>
                   
-                  <div className="flex items-start space-x-4 p-4 bg-card rounded-lg border border-border">
+                  <div className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-card rounded-lg border border-border">
                     <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">🌐</div>
                     <div>
                       <h4 className="font-semibold mb-1">{t('phases.phase2.langFeature')}</h4>
@@ -274,7 +285,7 @@ export default function Home() {
                     </div>
                   </div>
                   
-                  <div className="flex items-start space-x-4 p-4 bg-card rounded-lg border border-border">
+                  <div className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-card rounded-lg border border-border">
                     <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm">🌙</div>
                     <div>
                       <h4 className="font-semibold mb-1">{t('phases.phase2.themeFeature')}</h4>
@@ -282,7 +293,7 @@ export default function Home() {
                     </div>
                   </div>
                   
-                  <div className="flex items-start space-x-4 p-4 bg-card rounded-lg border border-border">
+                  <div className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-card rounded-lg border border-border">
                     <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-sm">♿</div>
                     <div>
                       <h4 className="font-semibold mb-1">{t('phases.phase2.a11yFeature')}</h4>
@@ -293,7 +304,7 @@ export default function Home() {
               </div>
               
               <div className="animate-slide-in">
-                <h3 className="font-playfair text-2xl font-semibold mb-6">{t('phases.phase2.demoTitle')}</h3>
+                <h3 className="font-playfair text-xl sm:text-2xl font-semibold mb-6">{t('phases.phase2.demoTitle')}</h3>
                 
                 <div className="relative bg-muted rounded-lg p-6 h-96 overflow-hidden">
                   <div className="absolute left-0 top-0 h-full w-12 bg-card border-r border-border hover:w-32 transition-all duration-300 group">

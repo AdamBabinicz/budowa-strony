@@ -37,6 +37,7 @@ export function ControlHub() {
       data-testid="control-hub"
       className={cn(
         "fixed left-0 top-0 h-full bg-background border-r border-border z-50 transition-all duration-300 shadow-lg group",
+        "hidden lg:block",
         isExpanded ? "control-hub-expanded" : "control-hub-collapsed"
       )}
       onMouseEnter={() => setIsExpanded(true)}
@@ -44,7 +45,7 @@ export function ControlHub() {
     >
       <div className="flex flex-col h-full">
         {/* Logo/Brand */}
-        <div className="p-4 border-b border-border">
+        <div className="p-3 lg:p-4 border-b border-border">
           <div className="flex items-center space-x-3">
             <div className="w-8 h-8 gradient-gold rounded-lg flex items-center justify-center text-white font-bold text-sm">
               AI
@@ -61,14 +62,14 @@ export function ControlHub() {
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 py-4">
-          <div className="space-y-2 px-2">
+        <nav className="flex-1 py-3 lg:py-4">
+          <div className="space-y-1 lg:space-y-2 px-1 lg:px-2">
             {phases.map((phase) => (
               <button
                 key={phase.id}
                 data-testid={`nav-${phase.key}`}
                 onClick={() => scrollToPhase(phase.id)}
-                className="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-accent/10 transition-colors duration-200 group/item relative w-full text-left"
+                className="nav-item flex items-center space-x-3 p-2 lg:p-3 rounded-lg hover:bg-accent/10 transition-colors duration-200 group/item relative w-full text-left"
                 title={t(`nav.${phase.key}`)}
               >
                 <div className="w-6 h-6 flex items-center justify-center text-xl">
