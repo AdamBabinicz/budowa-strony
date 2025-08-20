@@ -11,7 +11,8 @@
     "innowacja": "Innowacja UI",
     "development": "Development",
     "zasieg": "Zasięg",
-    "final": "Finał"
+    "deployment": "Deployment",
+    "contact": "Kontakt"
   },
   "phases": {
     "phaseCount": "6 faz rozwoju projektu",

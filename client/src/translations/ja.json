@@ -6,12 +6,13 @@
     "cta": "旅を始める"
   },
   "nav": {
-    "iskra": "火花",
+    "iskra": "スパーク",
     "fundamenty": "基礎",
     "innowacja": "UI革新",
     "development": "開発",
-    "zasieg": "グローバルリーチ",
-    "final": "フィナーレ"
+    "zasieg": "グローバル展開",
+    "deployment": "デプロイメント",
+    "contact": "コンタクト"
   },
   "phases": {
     "phaseCount": "6つの開発フェーズ",

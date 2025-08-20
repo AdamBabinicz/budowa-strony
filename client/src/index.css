@@ -115,47 +115,53 @@
       margin-right: auto !important;
       max-width: calc(100vw - 2rem) !important;
     }
-    
+
     /* Ensure sections don't overflow on mobile */
     section {
       width: 100% !important;
       max-width: 100vw !important;
       overflow-x: hidden !important;
     }
-    
+
     /* Fix grid layouts on mobile */
     .grid {
       grid-template-columns: 1fr !important;
     }
-    
+
     /* Fix code blocks on mobile */
     .code-block {
       overflow-x: auto !important;
       max-width: calc(100vw - 4rem) !important;
     }
-    
+
     /* Mobile navigation visibility */
     .lg\:hidden {
       display: block !important;
     }
-    
+
     /* Ensure mobile menu is above other elements */
     .lg\:hidden .fixed {
       z-index: 60 !important;
     }
-    
+
+    /* Ensure scroll-to-top button is visible on mobile */
+    button[data-testid="scroll-to-top"] {
+      display: flex !important;
+      z-index: 55 !important;
+    }
+
     /* Ensure all text wraps properly */
     * {
       word-wrap: break-word !important;
       overflow-wrap: break-word !important;
     }
-    
+
     /* Fix for pre elements in code blocks */
     pre {
       white-space: pre-wrap !important;
       word-wrap: break-word !important;
     }
-    
+
     /* Fix for long text elements */
     .font-mono, code {
       font-size: 0.75rem !important;
