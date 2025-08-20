@@ -54,9 +54,9 @@ export default function Home() {
       </button>
 
       {/* Main Content */}
-      <main className="lg:ml-16 transition-all duration-300">
+      <main className="lg:ml-16 transition-all duration-300 w-full overflow-x-hidden">
         {/* Hero Section */}
-        <section className="min-h-screen bg-gradient-to-br from-background via-secondary/5 to-accent/5 flex items-center justify-center relative overflow-hidden px-4 lg:px-8">
+        <section className="min-h-screen bg-gradient-to-br from-background via-secondary/5 to-accent/5 flex items-center justify-center relative overflow-hidden px-4 lg:px-8 w-full max-w-full">
           {/* Animated background elements */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute top-10 left-10 w-20 h-20 bg-accent/10 rounded-full animate-bounce-subtle"></div>
@@ -103,7 +103,7 @@ export default function Home() {
         </section>
 
         {/* Phase 0: Iskra */}
-        <section id="phase-0" className="min-h-screen py-20 px-8">
+        <section id="phase-0" className="min-h-screen py-12 sm:py-20 px-4 sm:px-8 w-full max-w-full overflow-x-hidden">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16 animate-fade-in">
               <div className="w-20 h-20 bg-gradient-to-br from-accent to-accent-light rounded-full flex items-center justify-center text-3xl mx-auto mb-6">💡</div>
@@ -160,7 +160,7 @@ export default function Home() {
         </section>
 
         {/* Phase 1: Fundamenty */}
-        <section id="phase-1" className="min-h-screen py-12 sm:py-20 px-4 sm:px-8 bg-secondary/5">
+        <section id="phase-1" className="min-h-screen py-12 sm:py-20 px-4 sm:px-8 bg-secondary/5 w-full max-w-full overflow-x-hidden">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16 animate-fade-in">
               <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">🏗️</div>
@@ -176,7 +176,7 @@ export default function Home() {
               <div className="animate-slide-in">
                 <h3 className="font-playfair text-xl sm:text-2xl font-semibold mb-6">{t('phases.phase1.projectStructure')}</h3>
 
-                <div className="code-block rounded-lg p-4 sm:p-6 text-white font-mono text-xs sm:text-sm overflow-x-auto">
+                <div className="code-block rounded-lg p-4 sm:p-6 text-white font-mono text-xs sm:text-sm overflow-x-auto max-w-full">
                   <div className="text-accent mb-4">ai-genesis-project/</div>
                   <div className="ml-4 space-y-1">
                     <div>├── <span className="text-yellow-400">functions/</span></div>
@@ -248,7 +248,7 @@ export default function Home() {
         </section>
 
         {/* Phase 2: Innowacja UI */}
-        <section id="phase-2" className="min-h-screen py-12 sm:py-20 px-4 sm:px-8">
+        <section id="phase-2" className="min-h-screen py-12 sm:py-20 px-4 sm:px-8 w-full max-w-full overflow-x-hidden">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16 animate-fade-in">
               <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">🎨</div>
@@ -342,7 +342,7 @@ export default function Home() {
         </section>
 
         {/* Phase 3: Development & Debugging */}
-        <section id="phase-3" className="min-h-screen py-20 px-8 bg-secondary/5">
+        <section id="phase-3" className="min-h-screen py-12 sm:py-20 px-4 sm:px-8 bg-secondary/5 w-full max-w-full overflow-x-hidden">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16 animate-fade-in">
               <div className="w-20 h-20 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">⚙️</div>
@@ -419,7 +419,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({ src, alt, onClose }) => 
         </section>
 
         {/* Phase 4: Globalny Zasięg */}
-        <section id="phase-4" className="min-h-screen py-20 px-8">
+        <section id="phase-4" className="min-h-screen py-12 sm:py-20 px-4 sm:px-8 w-full max-w-full overflow-x-hidden">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16 animate-fade-in">
               <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">🌍</div>
@@ -507,7 +507,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({ src, alt, onClose }) => 
         </section>
 
         {/* Phase 5: Testing & Quality */}
-        <section className="py-20 px-8 bg-secondary/5">
+        <section className="py-12 sm:py-20 px-4 sm:px-8 bg-secondary/5 w-full max-w-full overflow-x-hidden">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16 animate-fade-in">
               <div className="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">🧪</div>
@@ -605,7 +605,7 @@ describe('ControlHub', () => {
         </section>
 
         {/* Phase 6: Deployment */}
-        <section id="phase-5" className="min-h-screen py-20 px-8">
+        <section id="phase-5" className="min-h-screen py-12 sm:py-20 px-4 sm:px-8 w-full max-w-full overflow-x-hidden">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16 animate-fade-in">
               <div className="w-20 h-20 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">🚀</div>
@@ -770,7 +770,7 @@ describe('ControlHub', () => {
                 <img 
                   src={devPhotoUrl} 
                   alt={t('creator.name')} 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-white">
@@ -799,7 +799,7 @@ describe('ControlHub', () => {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-20 px-8 bg-primary text-primary-foreground">
+        <section id="contact" className="py-12 sm:py-20 px-4 sm:px-8 bg-primary text-primary-foreground w-full max-w-full overflow-x-hidden">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16 animate-fade-in">
               <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">
