@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
+import i18n from "@/lib/i18n";
 
 export function ControlHub() {
   const { t } = useTranslation();
