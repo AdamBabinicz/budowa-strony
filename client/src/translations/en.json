@@ -1,0 +1,75 @@
+{
+  "hero": {
+    "title": "AI Genesis",
+    "subtitle": "Interactive Meta-Tutorial for Creating a Website in Replit",
+    "description": "Groundbreaking, interactive website showing the symbiotic relationship between human creativity and artificial intelligence in web application development.",
+    "cta": "Start the journey"
+  },
+  "nav": {
+    "iskra": "Spark",
+    "fundamenty": "Foundations",
+    "innowacja": "UI Innovation",
+    "development": "Development",
+    "zasieg": "Global Reach",
+    "final": "Finale"
+  },
+  "phases": {
+    "phase0": {
+      "title": "Phase 0: Spark",
+      "subtitle": "Idea and AI Brief"
+    },
+    "phase1": {
+      "title": "Phase 1: Foundations",
+      "subtitle": "Setup and Architecture"
+    },
+    "phase2": {
+      "title": "Phase 2: UI Innovation",
+      "subtitle": "Birth of Control Hub"
+    },
+    "phase3": {
+      "title": "Phase 3: Development",
+      "subtitle": "Interactive Debugging Workshops"
+    },
+    "phase4": {
+      "title": "Phase 4: Global Reach",
+      "subtitle": "SEO and Multilingual Support"
+    },
+    "phase5": {
+      "title": "Phase 6: Grand Finale",
+      "subtitle": "Deployment and Quality Proof"
+    }
+  },
+  "workshop": {
+    "simulateBug": "Simulate Bug!",
+    "fixBug": "Fix!",
+    "copyCode": "Copy code"
+  },
+  "translation": {
+    "testKey": "Enter translation key:",
+    "languages": {
+      "pl": "Polish",
+      "en": "English",
+      "ja": "Japanese"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Ready for your own AI-assisted development project?",
+    "name": "Full name",
+    "email": "Email",
+    "project": "Project type",
+    "projectTypes": {
+      "website": "Website",
+      "webapp": "Web application",
+      "ecommerce": "E-commerce",
+      "tutorial": "Tutorial/Education",
+      "other": "Other"
+    },
+    "message": "Project description",
+    "submit": "Send inquiry"
+  },
+  "seo": {
+    "title": "AI Genesis: Interactive Meta-Tutorial | Replit Development Masterclass",
+    "description": "Groundbreaking interactive tutorial showing the complete project lifecycle - from idea to deployment using AI and modern technologies."
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "hero": {
+    "title": "AI ジェネシス",
+    "subtitle": "Replit でのウェブサイト作成のインタラクティブメタチュートリアル",
+    "description": "ウェブアプリケーション開発における人間の創造性と人工知能の共生関係を示す画期的でインタラクティブなウェブサイト。",
+    "cta": "旅を始める"
+  },
+  "nav": {
+    "iskra": "火花",
+    "fundamenty": "基礎",
+    "innowacja": "UI革新",
+    "development": "開発",
+    "zasieg": "グローバルリーチ",
+    "final": "フィナーレ"
+  },
+  "phases": {
+    "phase0": {
+      "title": "フェーズ 0: 火花",
+      "subtitle": "アイデアとAIブリーフ"
+    },
+    "phase1": {
+      "title": "フェーズ 1: 基礎",
+      "subtitle": "セットアップとアーキテクチャ"
+    },
+    "phase2": {
+      "title": "フェーズ 2: UI革新",
+      "subtitle": "コントロールハブの誕生"
+    },
+    "phase3": {
+      "title": "フェーズ 3: 開発",
+      "subtitle": "インタラクティブデバッグワークショップ"
+    },
+    "phase4": {
+      "title": "フェーズ 4: グローバルリーチ",
+      "subtitle": "SEOと多言語サポート"
+    },
+    "phase5": {
+      "title": "フェーズ 6: グランドフィナーレ",
+      "subtitle": "デプロイメントと品質証明"
+    }
+  },
+  "workshop": {
+    "simulateBug": "バグをシミュレート！",
+    "fixBug": "修正！",
+    "copyCode": "コードをコピー"
+  },
+  "translation": {
+    "testKey": "翻訳キーを入力：",
+    "languages": {
+      "pl": "ポーランド語",
+      "en": "英語",
+      "ja": "日本語"
+    }
+  },
+  "contact": {
+    "title": "お問い合わせ",
+    "subtitle": "AI支援開発プロジェクトの準備はできていますか？",
+    "name": "氏名",
+    "email": "メール",
+    "project": "プロジェクトタイプ",
+    "projectTypes": {
+      "website": "ウェブサイト",
+      "webapp": "ウェブアプリケーション",
+      "ecommerce": "Eコマース",
+      "tutorial": "チュートリアル/教育",
+      "other": "その他"
+    },
+    "message": "プロジェクト概要",
+    "submit": "お問い合わせを送信"
+  },
+  "seo": {
+    "title": "AI ジェネシス: インタラクティブメタチュートリアル | Replit 開発マスタークラス",
+    "description": "AIと現代技術を使用したアイデアからデプロイメントまでの完全なプロジェクトライフサイクルを示す画期的なインタラクティブチュートリアル。"
+  }
+}

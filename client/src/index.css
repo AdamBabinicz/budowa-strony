@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(0 0% 10.2%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(0 0% 10.2%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(0 0% 10.2%);
+  --primary: hsl(0 0% 10.2%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(0 0% 87.8%);
+  --secondary-foreground: hsl(0 0% 10.2%);
+  --muted: hsl(0 0% 87.8%);
+  --muted-foreground: hsl(0 0% 45.1%);
+  --accent: hsl(38 48% 56%);
+  --accent-light: hsl(38 55% 65%);
+  --accent-foreground: hsl(0 0% 100%);
+  --destructive: hsl(0 84.2% 60.2%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(0 0% 87.8%);
+  --input: hsl(0 0% 87.8%);
+  --ring: hsl(38 48% 56%);
+  --radius: 0.5rem;
+  
+  /* Custom colors from design */
+  --color-primary: hsl(0 0% 10.2%);
+  --color-secondary: hsl(0 0% 87.8%);
+  --color-accent: hsl(38 48% 56%);
+  --color-accent-light: hsl(38 55% 65%);
+  
+  /* Typography */
+  --font-playfair: 'Playfair Display', serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+.dark {
+  --background: hsl(0 0% 10.2%);
+  --foreground: hsl(0 0% 100%);
+  --card: hsl(0 0% 10.2%);
+  --card-foreground: hsl(0 0% 100%);
+  --popover: hsl(0 0% 10.2%);
+  --popover-foreground: hsl(0 0% 100%);
+  --primary: hsl(0 0% 10.2%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(0 0% 16.5%);
+  --secondary-foreground: hsl(0 0% 100%);
+  --muted: hsl(0 0% 16.5%);
+  --muted-foreground: hsl(0 0% 65.9%);
+  --accent: hsl(38 48% 56%);
+  --accent-light: hsl(38 55% 65%);
+  --accent-foreground: hsl(0 0% 100%);
+  --destructive: hsl(0 62.8% 30.6%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(0 0% 16.5%);
+  --input: hsl(0 0% 16.5%);
+  --ring: hsl(38 48% 56%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .gradient-gold {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+  }
+  
+  .code-block {
+    background: linear-gradient(135deg, hsl(0 0% 10.2%) 0%, hsl(0 0% 16.5%) 100%);
+  }
+  
+  .control-hub-collapsed {
+    width: 4rem;
+  }
+  
+  .control-hub-expanded {
+    width: 17.5rem;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  .animate-slide-in {
+    animation: slideIn 0.8s ease-out;
+  }
+  
+  .animate-bounce-subtle {
+    animation: bounceSubtle 2s infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0; 
+    transform: translateX(-30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+@keyframes bounceSubtle {
+  0%, 100% { 
+    transform: translateY(0); 
+  }
+  50% { 
+    transform: translateY(-5px); 
+  }
+}
+
+@keyframes glow {
+  from { 
+    box-shadow: 0 0 20px rgba(196, 161, 90, 0.3); 
+  }
+  to { 
+    box-shadow: 0 0 30px rgba(196, 161, 90, 0.6); 
+  }
+}
