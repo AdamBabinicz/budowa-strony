@@ -306,9 +306,10 @@ export function ControlHub() {
         <button
           data-testid="scroll-to-top"
           onClick={scrollToTop}
-          className="fixed bottom-4 right-4 z-50 p-3 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300"
+          className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-accent hover:bg-accent-light text-accent-foreground shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center font-bold text-lg"
+          aria-label="Przewiń na górę"
         >
-          ⬆️
+          ↑
         </button>
       )}
     </>

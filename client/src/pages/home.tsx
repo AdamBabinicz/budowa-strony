@@ -59,17 +59,7 @@ export default function Home() {
 
       <ControlHub />
 
-      {/* Scroll to Top Button */}
-      {showScrollTop && (
-        <button 
-          onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-accent hover:bg-accent-light text-accent-foreground rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110"
-          data-testid="scroll-to-top"
-          aria-label="Przewiń na górę"
-        >
-          <span className="text-xl">↑</span>
-        </button>
-      )}
+      
 
       {/* Main Content */}
       <main className="lg:ml-16 transition-all duration-300 w-full overflow-x-hidden">
