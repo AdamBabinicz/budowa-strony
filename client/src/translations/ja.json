@@ -14,29 +14,100 @@
     "final": "フィナーレ"
   },
   "phases": {
+    "phaseCount": "6つの開発フェーズ",
     "phase0": {
       "title": "フェーズ 0: 火花",
-      "subtitle": "アイデアとAIブリーフ"
+      "subtitle": "アイデアとAIブリーフ",
+      "rawIdeaTitle": "ユーザーの生のアイデア",
+      "noteComment": "// ナプキンメモ",
+      "userNote": "AIがウェブサイト作成をどう支援するかを示すサイトが欲しい...メタ！インタラクティブにして、コード例も、アニメーションも？プロセス全体を見せて - アイデアからデプロイメントまで。",
+      "aiInterpretation": "AI解釈",
+      "aiDescription": "この簡単な説明から、AIは包括的な技術仕様を生成しました：インタラクティブな物語、革新的なコントロールハブ、デバッグワークショップ、翻訳モジュール、テスト付き完全実装。",
+      "terminalTitle": "AI処理ターミナル",
+      "analyzing": "ユーザーリクエストを分析中...",
+      "generating": "技術仕様を生成中...",
+      "planning": "コンポーネントアーキテクチャを計画中...",
+      "designing": "インタラクションパターンを設計中...",
+      "complete": "✓ 仕様完成！"
     },
     "phase1": {
       "title": "フェーズ 1: 基礎",
-      "subtitle": "セットアップとアーキテクチャ"
+      "subtitle": "セットアップとアーキテクチャ",
+      "projectStructure": "プロジェクト構造",
+      "techStack": "技術スタック",
+      "typeScriptDesc": "タイプセーフティ、高速開発、最適バンドリングを保証するモダンスタック。",
+      "tailwindDesc": "モダンUXのためのスムーズアニメーション付きユーティリティファーストCSS。",
+      "netlifyDesc": "品質保証のためのVitestとReact Testing Libraryを使用したサーバーレスバックエンド。",
+      "aiJustification": "AI正当化",
+      "stackReasoning": "TypeScriptが動的環境でタイプセーフティを保証し、Viteが最速のホットリロードを提供し、TailwindCSSがデザインの妥協なしに迅速なプロトタイピングを可能にするため、このスタックを選択しました。"
     },
     "phase2": {
       "title": "フェーズ 2: UI革新",
-      "subtitle": "コントロールハブの誕生"
+      "subtitle": "コントロールハブの誕生",
+      "designDecision": "デザイン決定",
+      "designReasoning": "従来のナビゲーションバーは物語ページには非効率的です。サイドの'コントロールハブ'は、コンテンツを隠すことなく、コンテキストとツールを常に手の届くところに置きます。IDEと開発者ツールインターフェースからインスピレーションを得ています。",
+      "hubFeatures": "コントロールハブ機能",
+      "navFeature": "スムーススクロール付きナビゲーション",
+      "navDesc": "アイコンホバー時のツールチップ付きスムーススクロール。",
+      "langFeature": "言語切替（PL/EN/JP）",
+      "langDesc": "react-i18nextによる動的言語切替。",
+      "themeFeature": "ダーク/ライトモード",
+      "themeDesc": "localStorageによるテーマ間のスムーズ遷移。",
+      "a11yFeature": "アクセシビリティオプション",
+      "a11yDesc": "高コントラスト、フォーカス管理、ARIAラベル。",
+      "demoTitle": "インタラクティブデモンストレーション",
+      "mainContent": "メインページコンテンツ",
+      "hubDescription": "コントロールハブは常にアクセス可能でありながらコンテンツを隠しません..."
     },
     "phase3": {
       "title": "フェーズ 3: 開発",
-      "subtitle": "インタラクティブデバッグワークショップ"
+      "subtitle": "インタラクティブデバッグワークショップ",
+      "workshopTitle": "🔧 ライブデバッグワークショップ",
+      "galleryDemo": "画像ギャラリー - デモンストレーション",
+      "componentCode": "コンポーネントコード",
+      "aiDialogue": "🤖 AI対話例",
+      "userRequest": "ImageModal.tsxコンポーネントを生成してください。srcとaltをpropsとして受け取る必要があります。背景クリックとEscapeキーでの閉じる機能を実装してください。React Portalsを使用してbodyにレンダリングしてください。",
+      "aiResponse": "完了しました。React Portalsを使用してコンポーネントを実装しました。アクセシビリティ向上のためイベント処理とフォーカストラップを追加しました。コードは",
+      "generatedComment": "// ImageModal.tsx - AIによって生成"
     },
     "phase4": {
       "title": "フェーズ 4: グローバルリーチ",
-      "subtitle": "SEOと多言語サポート"
+      "subtitle": "SEOと多言語サポート",
+      "translationModule": "🔄 ライブ翻訳モジュール",
+      "testTranslations": "翻訳キーをテスト",
+      "seoImplementation": "🔍 SEO実装",
+      "metaTags": "動的メタタグ",
+      "jsonLD": "JSON-LDスキーマ",
+      "metaComment": "// react-helmet-async実装",
+      "jsonComment": "// 検索エンジン用の構造化データ"
     },
     "phase5": {
       "title": "フェーズ 6: グランドフィナーレ",
-      "subtitle": "デプロイメントと品質証明"
+      "subtitle": "デプロイメントと品質証明",
+      "qualityAssurance": "🧪 品質保証",
+      "testingDesc": "プロジェクトは最高のコード品質を保証するためVitestとReact Testing Libraryを使用しています。すべてのコンポーネントが機能性とアクセシビリティについてテストされています。",
+      "lighthouse": "📊 Lighthouse結果",
+      "lighthouseDesc": "サイトはすべてのLighthouseカテゴリで優秀な結果を達成し、高い技術品質を確認しています。",
+      "deploymentTitle": "🚀 Netlifyデプロイメント",
+      "deploymentDesc": "GitHubからの自動デプロイメント、リソース最適化、CDNとSSL。完全なCI/CD統合。",
+      "finalThoughts": "💭 まとめ",
+      "conclusion": "AI Genesisはウェブサイト以上のもの - 人間と人工知能の協力の力の生きた証拠です。すべてのコード行、すべてのデザイン要素は、モダンウェブ開発の完全な可能性を示すために思慮深く作成されました。",
+      "deploymentProcess": "デプロイメントプロセス",
+      "gitPush": "リポジトリにコードをプッシュ",
+      "netlifyBuild": "Viteビルド + 最適化",
+      "functionsDeploy": "サーバーレスバックエンド",
+      "cdnDistribution": "グローバル配信",
+      "liveAt": "ライブ: ai-genesis-tutorial.netlify.app",
+      "lighthouseReport": "Lighthouseレポート",
+      "auditResults": "品質監査結果",
+      "auditSubtitle": "技術的卒業の究極の証明",
+      "perfectScore": "🏆 パーフェクトスコア！",
+      "perfectDesc": "アプリケーションはすべてのカテゴリで最高の品質基準を満たしています",
+      "keyMetrics": "🚀 キーメトリックス",
+      "missionComplete": "🎯 ミッションコンプリート",
+      "finalDescription": "AI Genesisプロジェクトは、モダンウェブアプリケーションの作成における人間とAIの協力の完全な可能性を実証しています。初期アイデアから本番デプロイメントまで - これが開発の未来です。",
+      "contactCta": "💬 お問い合わせ",
+      "restartCta": "🔄 最初から"
     }
   },
   "workshop": {

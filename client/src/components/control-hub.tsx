@@ -102,7 +102,7 @@ export function ControlHub() {
               value={i18n.language}
               onChange={(e) => changeLanguage(e.target.value)}
               className={cn(
-                "bg-transparent border border-border rounded px-2 py-1 text-sm transition-opacity duration-300",
+                "bg-background border border-border rounded px-2 py-1 text-sm transition-opacity duration-300 text-foreground",
                 isExpanded ? "opacity-100" : "opacity-0"
               )}
             >

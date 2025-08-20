@@ -72,7 +72,7 @@ export default function Home() {
                   ></div>
                 ))}
               </div>
-              <p className="text-sm text-foreground/60">6 faz rozwoju projektu</p>
+              <p className="text-sm text-foreground/60">{t('phases.phaseCount')}</p>
             </div>
             
             <a 
@@ -101,27 +101,23 @@ export default function Home() {
             
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="animate-slide-in">
-                <h3 className="font-playfair text-2xl font-semibold mb-6">Surowy Pomysł Użytkownika</h3>
+                <h3 className="font-playfair text-2xl font-semibold mb-6">{t('phases.phase0.rawIdeaTitle')}</h3>
                 <div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 p-6 mb-8 transform rotate-1">
                   <div className="font-mono text-sm mb-4 text-yellow-700 dark:text-yellow-300">
-                    // Notatka na serwetce
+                    {t('phases.phase0.noteComment')}
                   </div>
                   <p className="text-foreground leading-relaxed">
-                    "Chcę stronę, która pokazuje jak AI pomaga tworzyć strony... meta! 
-                    Niech będzie interaktywna, z przykładami kodu, może jakieś animacje?
-                    I żeby było widać cały proces - od pomysłu do deployment."
+                    "{t('phases.phase0.userNote')}"
                   </p>
                 </div>
                 
                 <div className="bg-accent/10 rounded-lg p-6">
                   <h4 className="font-semibold mb-4 flex items-center">
                     <span className="mr-2">🤖</span>
-                    Interpretacja AI
+                    {t('phases.phase0.aiInterpretation')}
                   </h4>
                   <p className="text-sm leading-relaxed">
-                    Z tego prostego opisu AI wygenerowało kompletną specyfikację techniczną obejmującą:
-                    interaktywną narrację, innowacyjny Control Hub, warsztat debugowania, 
-                    moduł tłumaczeń i pełną implementację z testami.
+                    {t('phases.phase0.aiDescription')}
                   </p>
                 </div>
               </div>
@@ -132,14 +128,14 @@ export default function Home() {
                     <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
                     <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
                     <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
-                    <span className="text-sm ml-4">AI Processing Terminal</span>
+                    <span className="text-sm ml-4">{t('phases.phase0.terminalTitle')}</span>
                   </div>
                   <div className="font-mono text-green-400 text-sm space-y-2">
-                    <div className="animate-pulse">&gt; Analyzing user request...</div>
-                    <div className="animate-pulse" style={{animationDelay: '0.5s'}}>&gt; Generating technical specification...</div>
-                    <div className="animate-pulse" style={{animationDelay: '1s'}}>&gt; Planning component architecture...</div>
-                    <div className="animate-pulse" style={{animationDelay: '1.5s'}}>&gt; Designing interaction patterns...</div>
-                    <div className="animate-pulse" style={{animationDelay: '2s'}}>&gt; ✓ Specification complete!</div>
+                    <div className="animate-pulse">&gt; {t('phases.phase0.analyzing')}</div>
+                    <div className="animate-pulse" style={{animationDelay: '0.5s'}}>&gt; {t('phases.phase0.generating')}</div>
+                    <div className="animate-pulse" style={{animationDelay: '1s'}}>&gt; {t('phases.phase0.planning')}</div>
+                    <div className="animate-pulse" style={{animationDelay: '1.5s'}}>&gt; {t('phases.phase0.designing')}</div>
+                    <div className="animate-pulse" style={{animationDelay: '2s'}}>&gt; {t('phases.phase0.complete')}</div>
                   </div>
                 </div>
               </div>
@@ -162,7 +158,7 @@ export default function Home() {
             
             <div className="grid md:grid-cols-2 gap-12">
               <div className="animate-slide-in">
-                <h3 className="font-playfair text-2xl font-semibold mb-6">Struktura Projektu</h3>
+                <h3 className="font-playfair text-2xl font-semibold mb-6">{t('phases.phase1.projectStructure')}</h3>
                 
                 <div className="code-block rounded-lg p-6 text-white font-mono text-sm">
                   <div className="text-accent mb-4">ai-genesis-project/</div>
@@ -187,7 +183,7 @@ export default function Home() {
               </div>
               
               <div className="animate-fade-in">
-                <h3 className="font-playfair text-2xl font-semibold mb-6">Stack Technologiczny</h3>
+                <h3 className="font-playfair text-2xl font-semibold mb-6">{t('phases.phase1.techStack')}</h3>
                 
                 <div className="space-y-6">
                   <div className="bg-card rounded-lg p-6 border border-border">
@@ -196,7 +192,7 @@ export default function Home() {
                       <h4 className="font-semibold">TypeScript + React + Vite</h4>
                     </div>
                     <p className="text-sm text-foreground/70">
-                      Nowoczesny stack zapewniający type safety, szybki development i optymalne bundling.
+                      {t('phases.phase1.typeScriptDesc')}
                     </p>
                   </div>
                   
@@ -206,7 +202,7 @@ export default function Home() {
                       <h4 className="font-semibold">TailwindCSS + Framer Motion</h4>
                     </div>
                     <p className="text-sm text-foreground/70">
-                      Utility-first CSS z płynnymi animacjami dla nowoczesnego UX.
+                      {t('phases.phase1.tailwindDesc')}
                     </p>
                   </div>
                   
@@ -216,7 +212,7 @@ export default function Home() {
                       <h4 className="font-semibold">Netlify Functions + Testing</h4>
                     </div>
                     <p className="text-sm text-foreground/70">
-                      Serverless backend z Vitest i React Testing Library dla QA.
+                      {t('phases.phase1.netlifyDesc')}
                     </p>
                   </div>
                 </div>
@@ -224,11 +220,10 @@ export default function Home() {
                 <div className="mt-8 bg-accent/10 rounded-lg p-6">
                   <h4 className="font-semibold mb-4 flex items-center">
                     <span className="mr-2">🤖</span>
-                    Uzasadnienie AI
+                    {t('phases.phase1.aiJustification')}
                   </h4>
                   <p className="text-sm leading-relaxed">
-                    "Wybrałem ten stack, ponieważ TypeScript zapewnia bezpieczeństwo typów w dynamicznym środowisku, 
-                    Vite oferuje najszybszy hot reload, a TailwindCSS pozwala na rapid prototyping bez kompromisów w designie."
+                    "{t('phases.phase1.stackReasoning')}"
                   </p>
                 </div>
               </div>
@@ -251,56 +246,54 @@ export default function Home() {
             
             <div className="mb-12 animate-slide-in">
               <div className="bg-accent/10 border-l-4 border-accent p-6 rounded-r-lg">
-                <h3 className="font-playfair text-xl font-semibold mb-4">Decyzja Projektowa</h3>
+                <h3 className="font-playfair text-xl font-semibold mb-4">{t('phases.phase2.designDecision')}</h3>
                 <p className="leading-relaxed">
-                  <strong>Tradycyjny navbar jest nieefektywny dla narracyjnych stron.</strong> 
-                  Boczny 'Control Hub' utrzymuje kontekst i narzędzia zawsze pod ręką, nie zasłaniając treści. 
-                  Inspirowany interfejsami IDE i narzędzi deweloperskich.
+                  {t('phases.phase2.designReasoning')}
                 </p>
               </div>
             </div>
             
             <div className="grid md:grid-cols-2 gap-12">
               <div className="animate-fade-in">
-                <h3 className="font-playfair text-2xl font-semibold mb-6">Funkcjonalności Control Hub</h3>
+                <h3 className="font-playfair text-2xl font-semibold mb-6">{t('phases.phase2.hubFeatures')}</h3>
                 
                 <div className="space-y-4">
                   <div className="flex items-start space-x-4 p-4 bg-card rounded-lg border border-border">
                     <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm">🧭</div>
                     <div>
-                      <h4 className="font-semibold mb-1">Nawigacja z Smooth Scroll</h4>
-                      <p className="text-sm text-foreground/70">Płynne przewijanie z tooltipami po najechaniu na ikony.</p>
+                      <h4 className="font-semibold mb-1">{t('phases.phase2.navFeature')}</h4>
+                      <p className="text-sm text-foreground/70">{t('phases.phase2.navDesc')}</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start space-x-4 p-4 bg-card rounded-lg border border-border">
                     <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">🌐</div>
                     <div>
-                      <h4 className="font-semibold mb-1">Przełącznik Języka (PL/EN/JP)</h4>
-                      <p className="text-sm text-foreground/70">Dynamiczna zmiana języka z react-i18next.</p>
+                      <h4 className="font-semibold mb-1">{t('phases.phase2.langFeature')}</h4>
+                      <p className="text-sm text-foreground/70">{t('phases.phase2.langDesc')}</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start space-x-4 p-4 bg-card rounded-lg border border-border">
                     <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm">🌙</div>
                     <div>
-                      <h4 className="font-semibold mb-1">Dark/Light Mode</h4>
-                      <p className="text-sm text-foreground/70">Płynne przejścia między motywami z localStorage.</p>
+                      <h4 className="font-semibold mb-1">{t('phases.phase2.themeFeature')}</h4>
+                      <p className="text-sm text-foreground/70">{t('phases.phase2.themeDesc')}</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start space-x-4 p-4 bg-card rounded-lg border border-border">
                     <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-sm">♿</div>
                     <div>
-                      <h4 className="font-semibold mb-1">Opcje Dostępności</h4>
-                      <p className="text-sm text-foreground/70">Wysoki kontrast, focus management, ARIA labels.</p>
+                      <h4 className="font-semibold mb-1">{t('phases.phase2.a11yFeature')}</h4>
+                      <p className="text-sm text-foreground/70">{t('phases.phase2.a11yDesc')}</p>
                     </div>
                   </div>
                 </div>
               </div>
               
               <div className="animate-slide-in">
-                <h3 className="font-playfair text-2xl font-semibold mb-6">Interaktywna Demonstracja</h3>
+                <h3 className="font-playfair text-2xl font-semibold mb-6">{t('phases.phase2.demoTitle')}</h3>
                 
                 <div className="relative bg-muted rounded-lg p-6 h-96 overflow-hidden">
                   <div className="absolute left-0 top-0 h-full w-12 bg-card border-r border-border hover:w-32 transition-all duration-300 group">
@@ -316,9 +309,9 @@ export default function Home() {
                   </div>
                   
                   <div className="ml-16 p-4">
-                    <h4 className="font-semibold mb-2">Główna zawartość strony</h4>
+                    <h4 className="font-semibold mb-2">{t('phases.phase2.mainContent')}</h4>
                     <p className="text-sm text-foreground/70 mb-4">
-                      Control Hub nie zasłania treści, pozostając zawsze dostępny...
+                      {t('phases.phase2.hubDescription')}
                     </p>
                     <div className="space-y-2">
                       <div className="h-2 bg-secondary rounded"></div>
@@ -349,7 +342,7 @@ export default function Home() {
             
             {/* AI Dialogue Example */}
             <div className="animate-fade-in">
-              <h3 className="font-playfair text-2xl font-semibold mb-8 text-center">🤖 Przykład Dialogu z AI</h3>
+              <h3 className="font-playfair text-2xl font-semibold mb-8 text-center">{t('phases.phase3.aiDialogue')}</h3>
               
               <div className="bg-card rounded-lg p-6 border border-border space-y-6">
                 <div className="flex space-x-4">
@@ -357,9 +350,7 @@ export default function Home() {
                   <div className="flex-1">
                     <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-4">
                       <p className="font-mono text-sm">
-                        "Wygeneruj komponent ImageModal.tsx. Musi przyjmować src i alt jako propsy. 
-                        Zaimplementuj zamykanie po kliknięciu na tło oraz klawisz Escape. 
-                        Użyj React Portals do renderowania go w body."
+                        "{t('phases.phase3.userRequest')}"
                       </p>
                     </div>
                   </div>
@@ -370,13 +361,11 @@ export default function Home() {
                   <div className="flex-1">
                     <div className="bg-accent/10 rounded-lg p-4">
                       <p className="text-sm">
-                        <strong>Gotowe.</strong> Komponent zaimplementowany z użyciem React Portals. 
-                        Dodałem obsługę zdarzeń i pułapkę fokusu (focus trap) dla poprawy dostępności. 
-                        Kod jest w <code className="bg-muted px-2 py-1 rounded">components/ImageModal.tsx</code>.
+                        <strong>{t('phases.phase3.aiResponse')}</strong> <code className="bg-muted px-2 py-1 rounded">components/ImageModal.tsx</code>.
                       </p>
                       
                       <div className="mt-4 code-block rounded p-4 text-white font-mono text-xs">
-                        <pre><code>{`// ImageModal.tsx - Generated by AI
+                        <pre><code>{`${t('phases.phase3.generatedComment')}
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
 
@@ -430,16 +419,16 @@ export const ImageModal: React.FC<ImageModalProps> = ({ src, alt, onClose }) => 
               <TranslationDemo />
               
               <div className="animate-fade-in">
-                <h3 className="font-playfair text-2xl font-semibold mb-6">🔍 Implementacja SEO</h3>
+                <h3 className="font-playfair text-2xl font-semibold mb-6">{t('phases.phase4.seoImplementation')}</h3>
                 
                 <div className="space-y-6">
                   <div className="bg-card rounded-lg p-6 border border-border">
                     <h4 className="font-semibold mb-4 flex items-center">
                       <span className="mr-2">📋</span>
-                      Dynamiczne Meta Tagi
+                      {t('phases.phase4.metaTags')}
                     </h4>
                     <div className="code-block rounded p-4 text-white font-mono text-xs">
-                      <pre><code>{`// react-helmet-async implementation
+                      <pre><code>{`${t('phases.phase4.metaComment')}
 <Helmet>
   <title>{t('seo.title')}</title>
   <meta name="description" content={t('seo.description')} />
@@ -454,7 +443,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({ src, alt, onClose }) => 
                   <div className="bg-card rounded-lg p-6 border border-border">
                     <h4 className="font-semibold mb-4 flex items-center">
                       <span className="mr-2">🏷️</span>
-                      JSON-LD Schema
+                      {t('phases.phase4.jsonLD')}
                     </h4>
                     <div className="code-block rounded p-4 text-white font-mono text-xs">
                       <pre><code>{`{
@@ -614,7 +603,7 @@ describe('ControlHub', () => {
             
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="animate-slide-in">
-                <h3 className="font-playfair text-2xl font-semibold mb-6">🌐 Proces Deploymentu</h3>
+                <h3 className="font-playfair text-2xl font-semibold mb-6">🌐 {t('phases.phase5.deploymentProcess')}</h3>
                 
                 <div className="bg-card rounded-lg p-6 border border-border">
                   <div className="space-y-4">
@@ -622,7 +611,7 @@ describe('ControlHub', () => {
                       <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm">1</div>
                       <div className="flex-1">
                         <div className="font-semibold">Git Push</div>
-                        <div className="text-sm text-foreground/70">Kod wypchany do repozytorium</div>
+                        <div className="text-sm text-foreground/70">{t('phases.phase5.gitPush')}</div>
                       </div>
                       <div className="text-green-500">✓</div>
                     </div>
@@ -631,7 +620,7 @@ describe('ControlHub', () => {
                       <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">2</div>
                       <div className="flex-1">
                         <div className="font-semibold">Netlify Build</div>
-                        <div className="text-sm text-foreground/70">Vite build + optimizacja</div>
+                        <div className="text-sm text-foreground/70">{t('phases.phase5.netlifyBuild')}</div>
                       </div>
                       <div className="text-green-500">✓</div>
                     </div>
@@ -640,7 +629,7 @@ describe('ControlHub', () => {
                       <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm">3</div>
                       <div className="flex-1">
                         <div className="font-semibold">Functions Deploy</div>
-                        <div className="text-sm text-foreground/70">Serverless backend</div>
+                        <div className="text-sm text-foreground/70">{t('phases.phase5.functionsDeploy')}</div>
                       </div>
                       <div className="text-green-500">✓</div>
                     </div>
@@ -649,7 +638,7 @@ describe('ControlHub', () => {
                       <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-sm">4</div>
                       <div className="flex-1">
                         <div className="font-semibold">CDN Distribution</div>
-                        <div className="text-sm text-foreground/70">Globalne udostępnienie</div>
+                        <div className="text-sm text-foreground/70">{t('phases.phase5.cdnDistribution')}</div>
                       </div>
                       <div className="text-green-500">✓</div>
                     </div>
@@ -658,19 +647,19 @@ describe('ControlHub', () => {
                   <div className="mt-6 bg-accent/10 rounded-lg p-4">
                     <div className="flex items-center space-x-2">
                       <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="font-semibold text-green-700 dark:text-green-400">Live at: ai-genesis-tutorial.netlify.app</span>
+                      <span className="font-semibold text-green-700 dark:text-green-400">{t('phases.phase5.liveAt')}</span>
                     </div>
                   </div>
                 </div>
               </div>
               
               <div className="animate-fade-in">
-                <h3 className="font-playfair text-2xl font-semibold mb-6">📊 Lighthouse Report</h3>
+                <h3 className="font-playfair text-2xl font-semibold mb-6">📊 {t('phases.phase5.lighthouseReport')}</h3>
                 
                 <div className="bg-card rounded-lg p-6 border border-border">
                   <div className="text-center mb-6">
-                    <h4 className="font-semibold text-lg mb-2">Wyniki Audytu Jakości</h4>
-                    <p className="text-sm text-foreground/70">Ostateczny dowód mistrzostwa technicznego</p>
+                    <h4 className="font-semibold text-lg mb-2">{t('phases.phase5.auditResults')}</h4>
+                    <p className="text-sm text-foreground/70">{t('phases.phase5.auditSubtitle')}</p>
                   </div>
                   
                   <div className="grid grid-cols-2 gap-6">
@@ -693,15 +682,15 @@ describe('ControlHub', () => {
                   </div>
                   
                   <div className="mt-6 text-center">
-                    <div className="text-2xl font-bold text-green-600 mb-2">🏆 Perfect Score!</div>
+                    <div className="text-2xl font-bold text-green-600 mb-2">{t('phases.phase5.perfectScore')}</div>
                     <p className="text-sm text-foreground/70">
-                      Aplikacja spełnia najwyższe standardy jakości w każdej kategorii
+                      {t('phases.phase5.perfectDesc')}
                     </p>
                   </div>
                 </div>
                 
                 <div className="mt-6 bg-accent/10 rounded-lg p-6">
-                  <h4 className="font-semibold mb-4">🚀 Kluczowe Metryki</h4>
+                  <h4 className="font-semibold mb-4">{t('phases.phase5.keyMetrics')}</h4>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
                       <div className="font-medium">First Contentful Paint</div>
@@ -726,11 +715,9 @@ describe('ControlHub', () => {
             
             {/* Final CTA */}
             <div className="text-center mt-20 animate-fade-in">
-              <h3 className="font-playfair text-3xl font-bold mb-6">🎯 Misja Zakończona</h3>
+              <h3 className="font-playfair text-3xl font-bold mb-6">{t('phases.phase5.missionComplete')}</h3>
               <p className="text-lg mb-8 max-w-2xl mx-auto leading-relaxed text-foreground/70">
-                Projekt AI Genesis demonstruje pełen potencjał współpracy człowiek-AI w tworzeniu 
-                nowoczesnych aplikacji webowych. Od pierwszego pomysłu po produkcyjny deployment - 
-                to jest przyszłość developmentu.
+                {t('phases.phase5.finalDescription')}
               </p>
               
               <div className="flex flex-wrap justify-center gap-4">
@@ -739,14 +726,14 @@ describe('ControlHub', () => {
                   className="bg-accent hover:bg-accent-light text-accent-foreground px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
                   data-testid="contact-cta"
                 >
-                  💬 Skontaktuj się
+                  {t('phases.phase5.contactCta')}
                 </a>
                 <a 
                   href="#phase-0" 
                   className="bg-background border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground px-8 py-4 rounded-lg font-semibold transition-all duration-200"
                   data-testid="restart-cta"
                 >
-                  🔄 Rozpocznij ponownie
+                  {t('phases.phase5.restartCta')}
                 </a>
               </div>
             </div>
