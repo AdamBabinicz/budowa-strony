@@ -753,7 +753,7 @@ describe('ControlHub', () => {
                 <img 
                   src={devPhotoUrl} 
                   alt={t('creator.name')} 
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-contain object-center"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-white">
