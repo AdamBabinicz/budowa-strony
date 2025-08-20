@@ -139,6 +139,11 @@
       display: block !important;
     }
     
+    /* Ensure mobile menu is above other elements */
+    .lg\:hidden .fixed {
+      z-index: 60 !important;
+    }
+    
     /* Ensure all text wraps properly */
     * {
       word-wrap: break-word !important;

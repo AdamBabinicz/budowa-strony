@@ -12,6 +12,23 @@ import devPhotoUrl from "@assets/generation-e708a120-0c3a-4d4c-b78c-c58991e69165
 export default function Home() {
   const { t } = useTranslation();
   const [isStoryModalOpen, setIsStoryModalOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <>
@@ -42,16 +59,17 @@ export default function Home() {
 
       <ControlHub />
 
-      {/* Mobile Menu Button */}
-      <button 
-        className="lg:hidden fixed top-4 left-4 z-50 w-12 h-12 bg-background border border-border rounded-lg flex items-center justify-center shadow-lg"
-        onClick={() => {
-          const element = document.getElementById('phase-0');
-          if (element) element.scrollIntoView({ behavior: 'smooth' });
-        }}
-      >
-        <span className="text-xl">📱</span>
-      </button>
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button 
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-accent hover:bg-accent-light text-accent-foreground rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110"
+          data-testid="scroll-to-top"
+          aria-label="Przewiń na górę"
+        >
+          <span className="text-xl">↑</span>
+        </button>
+      )}
 
       {/* Main Content */}
       <main className="lg:ml-16 transition-all duration-300 w-full overflow-x-hidden">
