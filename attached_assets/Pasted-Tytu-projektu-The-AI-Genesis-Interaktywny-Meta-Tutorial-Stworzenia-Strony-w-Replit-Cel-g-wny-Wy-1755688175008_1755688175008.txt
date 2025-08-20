@@ -1,0 +1,65 @@
+Tytuł projektu: The AI Genesis: Interaktywny Meta-Tutorial Stworzenia Strony w Replit
+Cel główny: Wygeneruj przełomową, interaktywną i w pełni funkcjonalną stronę internetową, która jest nie tylko produktem, ale i żywym studium przypadku swojego własnego powstania. Strona ma być wzorcową, techniczną "masterclass" demonstrującą pełen cykl życia projektu – od surowego pomysłu, przez development, testowanie, aż po wdrożenie. Musi ona w angażujący sposób pokazać symbiotyczną relację między ludzką kreatywnością a sztuczną inteligencją, dokumentując napotkane błędy, decyzje projektowe i fragmenty technicznych dialogów między pomysłodawcą a AI.
+1. Koncepcja i Treść (Interaktywna Meta-Narracja)
+Strona ma opowiadać historię swojego powstania w formie angażującego, przewijanego poradnika. Każda sekcja to kolejny rozdział tej historii.
+Faza 0: Iskra – Pomysł i Brief dla AI. Rozpocznij od graficznej reprezentacji "serwetkowej" notatki lub prostego bloku tekstowego, pokazującego pierwotny, surowy pomysł użytkownika. Pokaż, jak z tego zalążka AI wygenerowało kompletną specyfikację techniczną, którą właśnie realizujesz.
+Faza 1: Fundamenty – Setup i Architektura. Opisz proces inicjalizacji projektu w Replit z użyciem TypeScript, React i Vite. Pokaż (w formie wygenerowanej grafiki) początkową strukturę plików i kluczowe zależności. Dodaj akapit, w którym AI "tłumaczy", dlaczego wybrało właśnie taki stack.
+Faza 2: Innowacja w UI – Narodziny "Control Hub". Zamiast tworzyć typowy navbar, zaimplementuj i szczegółowo opisz proces projektowania "Control Hub" (patrz punkt 2). Wyjaśnij w tekście decyzję projektową: "Tradycyjny navbar jest nieefektywny dla narracyjnych stron. Boczny 'Control Hub' utrzymuje kontekst i narzędzia zawsze pod ręką, nie zasłaniając treści."
+Faza 3: Development i Debugging – Interaktywne Warsztaty. To serce projektu. Stwórz interaktywny moduł do nauki:
+Pokaż w pełni działający komponent (np. galerię zdjęć).
+Umieść obok przycisk "Symuluj Błąd!". Po kliknięciu, celowo wprowadź błąd do komponentu (np. zepsuj style, rozłącz logikę stanu), aby użytkownik zobaczył problem na żywo.
+Przycisk zmienia się na "Napraw!". Jego kliknięcie przywraca poprawny stan.
+Poniżej umieść interaktywny CodeBlock z kodem "przed" i "po", z funkcją kopiowania kodu jednym kliknięciem.
+Faza 4: Globalny Zasięg – SEO i Wielojęzyczność. Opisz integrację react-helmet-async i react-i18next. Dodaj mały, interaktywny moduł, gdzie użytkownik może wpisać klucz tłumaczenia (np. hero.title), a strona na żywo pokaże jego wartość we wszystkich trzech językach (PL, EN, JP).
+Faza 5: Gwarancja Jakości – Testowanie. Pokaż, że projekt jest profesjonalny. Dodaj krótką sekcję o testowaniu. Zaprezentuj przykład prostego testu jednostkowego dla jednego z komponentów, napisanego przy użyciu Vitest i React Testing Library. Pokaż zrzut ekranu z konsoli z pomyślnie przechodzącymi testami.
+Faza 6: Wielki Finał – Deployment i Dowód Jakości. Zakończ historię. Pokaż uproszczoną grafikę ilustrującą proces deploymentu na Netlify. Obok umieść wygenerowany przez siebie zrzut ekranu z raportu Lighthouse z wynikami 100/100/100/100 jako ostateczny dowód mistrzostwa technicznego.
+Interakcje z AI: Dialogi muszą być techniczne i konkretne.
+Użytkownik: "Wygeneruj komponent ImageModal.tsx. Musi przyjmować src i alt jako propsy. Zaimplementuj zamykanie po kliknięciu na tło oraz klawisz Escape. Użyj React Portals do renderowania go w body."
+Asystent: "Gotowe. Komponent zaimplementowany z użyciem React Portals. Dodałem obsługę zdarzeń i pułapkę fokusu (focus trap) dla poprawy dostępności. Kod jest w components/ImageModal.tsx."
+2. Innowacyjna Struktura UI/UX: "Control Hub"
+Zaprojektuj i zaimplementuj stały, boczny panel (domyślnie zwinięty do paska ikon), który płynnie rozwija się po najechaniu lub kliknięciu. Integruje on:
+Nawigację z płynnym przewijaniem i tooltipami po najechaniu na ikony.
+Przełącznik języka (PL / EN / JP).
+Przełącznik motywu (Dark/Light Mode).
+Przycisk Dostępności (np. tryb wysokiego kontrastu).
+Linki Social Media.
+3. Stack Technologiczny (Kompletny i Nowoczesny)
+Język / Framework: TypeScript + React (z Vite)
+Backend (dla formularza): Netlify Functions (napisane w TypeScript)
+Stylowanie: TailwindCSS
+Testowanie: Vitest + React Testing Library
+Routing: React Router DOM
+Wielojęzyczność: react-i18next
+SEO & Meta Tagi: react-helmet-async
+Animacje: framer-motion
+Ikony: react-icons
+4. Wymagania Techniczne i SEO (Poziom Ekspert)
+Formularz Kontaktowy: Pełna implementacja z walidacją po stronie klienta i backendem w postaci funkcji serverless (Netlify Function) do obsługi wysyłki.
+SEO: Pełna optymalizacja: dynamiczne meta tagi, JSON-LD (WebSite, Article), kanoniczne URL, atrybuty lang, a także wygenerowane robots.txt i sitemap.xml.
+Dostępność (WCAG AA): Kontrast, aria-labels, zarządzanie focusem, "Skip Link".
+Wydajność: Lazy loading dla obrazów i komponentów, optymalizacja obrazów (.avif + .webp).
+Grafika: Wszystkie materiały graficzne muszą być wygenerowane przez Ciebie, w spójnym stylu. Zasymuluj proces ich tworzenia prostymi animacjami "powstawania".
+5. Struktura Projektu (Profesjonalna)
+code
+Code
+/functions/
+  └── submit-form.ts (funkcja serverless)
+/src/
+  ├── assets/images/
+  ├── components/
+  │   ├── __tests__/ (testy dla komponentów)
+  │   ├── ControlHub.tsx
+  │   └── ...
+  ├── sections/ (lub pages/)
+  ├── types/
+  │   └── index.ts
+  ├── translations/
+  │   ├── pl.json, en.json, ja.json
+  ├── App.tsx
+  ├── main.tsx
+  └── i18n.ts
+6. Styl Wizualny
+Paleta: Czerń (#1a1a1a), Biel (#ffffff), Szarość (#e0e0e0). Jako akcentu użyj eleganckiego złota (#c4a15a) lub nowoczesnego, żywego gradientu.
+Typografia: Playfair Display (nagłówki), Inter (tekst).
+Efekty: Płynne, napędzane przez framer-motion animacje wejścia dla sekcji i mikro-interakcje na elementach UI.
+Podsumowanie: Twoim zadaniem jest stworzenie projektu, który przekracza granice standardowej strony internetowej. To ma być interaktywna podróż, która edukuje, zachwyca i stanowi ostateczny dowód na potęgę i kreatywność programowania wspomaganego przez AI. Stwórz dzieło, które będzie inspiracją dla innych deweloperów.
