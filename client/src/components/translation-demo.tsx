@@ -39,11 +39,11 @@ export function TranslationDemo() {
   return (
     <div className="animate-slide-in">
       <h3 className="font-playfair text-2xl font-semibold mb-6">
-        🔄 Moduł Tłumaczeń na Żywo
+        🔄 {t('translationDemo.title')}
       </h3>
       
       <div className="bg-card rounded-lg p-6 border border-border">
-        <h4 className="font-semibold mb-4">Testuj klucze tłumaczeń</h4>
+        <h4 className="font-semibold mb-4">{t('translationDemo.testKeys')}</h4>
         
         <div className="mb-4">
           <Label htmlFor="translation-key" className="block text-sm font-medium mb-2">

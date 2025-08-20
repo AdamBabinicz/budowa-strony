@@ -99,13 +99,13 @@ export function InteractiveWorkshop() {
     try {
       await navigator.clipboard.writeText(currentCode);
       toast({
-        title: "Kod skopiowany!",
-        description: "Kod został skopiowany do schowka.",
+        title: t('workshop.codeCopied'),
+        description: t('workshop.codeDescription'),
       });
     } catch (err) {
       toast({
-        title: "Błąd",
-        description: "Nie udało się skopiować kodu.",
+        title: t('workshop.error'),
+        description: t('workshop.copyError'),
         variant: "destructive",
       });
     }
@@ -114,13 +114,13 @@ export function InteractiveWorkshop() {
   return (
     <div className="mb-16 animate-slide-in">
       <h3 className="font-playfair text-2xl font-semibold mb-8 text-center">
-        🔧 Warsztat Debugowania na Żywo
+        🔧 {t('workshop.title')}
       </h3>
       
       <div className="grid md:grid-cols-2 gap-12">
         {/* Live Component Demo */}
         <div>
-          <h4 className="font-semibold mb-4">Galeria Zdjęć - Demonstracja</h4>
+          <h4 className="font-semibold mb-4">{t('workshop.galleryDemo')}</h4>
           <div 
             id="gallery-demo" 
             className="bg-card rounded-lg p-6 border border-border"
@@ -130,13 +130,13 @@ export function InteractiveWorkshop() {
             <div className="grid grid-cols-2 gap-4 mb-4">
               <img 
                 src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
-                alt="Mountain landscape at sunrise" 
+                alt={t('workshop.mountainAlt')} 
                 className="rounded-lg shadow-md hover:scale-105 transition-transform duration-200 cursor-pointer"
                 loading="lazy"
               />
               <img 
                 src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
-                alt="Ocean waves during golden hour" 
+                alt={t('workshop.oceanAlt')} 
                 className="rounded-lg shadow-md hover:scale-105 transition-transform duration-200 cursor-pointer"
                 loading="lazy"
               />
@@ -149,7 +149,7 @@ export function InteractiveWorkshop() {
                 variant={isBugActive ? "default" : "destructive"}
                 className={isBugActive ? "bg-green-500 hover:bg-green-600" : ""}
               >
-                {isBugActive ? "✅ Napraw!" : "🐛 Symuluj Błąd!"}
+                {isBugActive ? t('workshop.fixBug') : t('workshop.simulateBug')}
               </Button>
             </div>
           </div>
@@ -157,7 +157,7 @@ export function InteractiveWorkshop() {
         
         {/* Code Display */}
         <div>
-          <h4 className="font-semibold mb-4">Kod Komponentu</h4>
+          <h4 className="font-semibold mb-4">{t('workshop.componentCode')}</h4>
           <div className="code-block rounded-lg p-6 text-white font-mono text-sm overflow-x-auto">
             <pre data-testid="code-display">
               <code>{currentCode}</code>

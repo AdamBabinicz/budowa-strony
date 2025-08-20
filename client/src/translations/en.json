@@ -111,9 +111,50 @@
     }
   },
   "workshop": {
-    "simulateBug": "Simulate Bug!",
-    "fixBug": "Fix!",
-    "copyCode": "Copy code"
+    "title": "Live Debugging Workshop",
+    "galleryDemo": "Photo Gallery - Demo",
+    "componentCode": "Component Code",
+    "simulateBug": "🐛 Simulate Bug!",
+    "fixBug": "✅ Fix!",
+    "copyCode": "Copy code",
+    "codeCopied": "Code copied!",
+    "codeDescription": "Code was copied to clipboard.",
+    "error": "Error",
+    "copyError": "Failed to copy code.",
+    "mountainAlt": "Mountain landscape at sunrise",
+    "oceanAlt": "Ocean waves during golden hour"
+  },
+  "translationDemo": {
+    "title": "Live Translation Module",
+    "testKeys": "Test translation keys"
+  },
+  "performance": {
+    "title": "Performance Optimizations",
+    "lazyLoading": "Lazy Loading",
+    "lazyLoadingDesc": "Images and components",
+    "imageOptimization": "Image Optimization",
+    "imageOptDesc": ".avif + .webp formats",
+    "codeSplitting": "Code Splitting",
+    "codeSplittingDesc": "React.lazy + Suspense",
+    "bundleAnalysis": "Bundle Analysis",
+    "bundleAnalysisDesc": "Vite bundle analyzer"
+  },
+  "testing": {
+    "phaseTitle": "Phase 5: Quality Assurance",
+    "phaseSubtitle": "Professional Testing",
+    "unitTestExample": "Unit Test Example",
+    "testResults": "Test Results",
+    "testResultsVitest": "Test Results - Vitest",
+    "testingStack": "Testing Stack",
+    "testRunner": "Test Runner:",
+    "testingLibrary": "Testing Library:",
+    "coverage": "Coverage:",
+    "e2eTests": "E2E Tests:",
+    "e2eTestsValue": "Playwright (coming soon)",
+    "firstContentfulPaint": "First Contentful Paint",
+    "largestContentfulPaint": "Largest Contentful Paint",
+    "cumulativeLayoutShift": "Cumulative Layout Shift",
+    "timeToInteractive": "Time to Interactive"
   },
   "translation": {
     "testKey": "Enter translation key:",

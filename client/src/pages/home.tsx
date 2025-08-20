@@ -464,23 +464,23 @@ export const ImageModal: React.FC<ImageModalProps> = ({ src, alt, onClose }) => 
                   </div>
                   
                   <div className="bg-accent/10 rounded-lg p-6">
-                    <h4 className="font-semibold mb-4">📊 Optymalizacje Wydajności</h4>
+                    <h4 className="font-semibold mb-4">📊 {t('performance.title')}</h4>
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
-                        <div className="font-medium">Lazy Loading</div>
-                        <div className="text-foreground/70">Obrazy i komponenty</div>
+                        <div className="font-medium">{t('performance.lazyLoading')}</div>
+                        <div className="text-foreground/70">{t('performance.lazyLoadingDesc')}</div>
                       </div>
                       <div>
-                        <div className="font-medium">Image Optimization</div>
-                        <div className="text-foreground/70">.avif + .webp formaty</div>
+                        <div className="font-medium">{t('performance.imageOptimization')}</div>
+                        <div className="text-foreground/70">{t('performance.imageOptDesc')}</div>
                       </div>
                       <div>
-                        <div className="font-medium">Code Splitting</div>
-                        <div className="text-foreground/70">React.lazy + Suspense</div>
+                        <div className="font-medium">{t('performance.codeSplitting')}</div>
+                        <div className="text-foreground/70">{t('performance.codeSplittingDesc')}</div>
                       </div>
                       <div>
-                        <div className="font-medium">Bundle Analysis</div>
-                        <div className="text-foreground/70">Vite bundle analyzer</div>
+                        <div className="font-medium">{t('performance.bundleAnalysis')}</div>
+                        <div className="text-foreground/70">{t('performance.bundleAnalysisDesc')}</div>
                       </div>
                     </div>
                   </div>
@@ -495,13 +495,13 @@ export const ImageModal: React.FC<ImageModalProps> = ({ src, alt, onClose }) => 
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16 animate-fade-in">
               <div className="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">🧪</div>
-              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">Faza 5: Gwarancja Jakości</h2>
-              <p className="text-xl text-foreground/70 mb-12">Profesjonalne Testowanie</p>
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">{t('testing.phaseTitle')}</h2>
+              <p className="text-xl text-foreground/70 mb-12">{t('testing.phaseSubtitle')}</p>
             </div>
             
             <div className="grid md:grid-cols-2 gap-12">
               <div className="animate-slide-in">
-                <h3 className="font-playfair text-2xl font-semibold mb-6">🔬 Przykład Testu Jednostkowego</h3>
+                <h3 className="font-playfair text-2xl font-semibold mb-6">🔬 {t('testing.unitTestExample')}</h3>
                 
                 <div className="code-block rounded-lg p-6 text-white font-mono text-sm">
                   <pre><code>{`// ControlHub.test.tsx
@@ -535,14 +535,14 @@ describe('ControlHub', () => {
               </div>
               
               <div className="animate-fade-in">
-                <h3 className="font-playfair text-2xl font-semibold mb-6">✅ Wyniki Testów</h3>
+                <h3 className="font-playfair text-2xl font-semibold mb-6">✅ {t('testing.testResults')}</h3>
                 
                 <div className="bg-primary text-primary-foreground rounded-lg p-6 border border-border">
                   <div className="flex items-center mb-4">
                     <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
                     <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
                     <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
-                    <span className="text-sm ml-4">Test Results - Vitest</span>
+                    <span className="text-sm ml-4">{t('testing.testResultsVitest')}</span>
                   </div>
                   <div className="font-mono text-green-400 text-sm space-y-1">
                     <div>✓ ControlHub.test.tsx (2)</div>
@@ -563,23 +563,23 @@ describe('ControlHub', () => {
                 </div>
                 
                 <div className="mt-6 bg-card rounded-lg p-6 border border-border">
-                  <h4 className="font-semibold mb-4">🛠️ Stack Testowy</h4>
+                  <h4 className="font-semibold mb-4">🛠️ {t('testing.testingStack')}</h4>
                   <div className="space-y-3 text-sm">
                     <div className="flex justify-between">
-                      <span>Test Runner:</span>
+                      <span>{t('testing.testRunner')}</span>
                       <span className="font-mono">Vitest</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Testing Library:</span>
+                      <span>{t('testing.testingLibrary')}</span>
                       <span className="font-mono">@testing-library/react</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Coverage:</span>
+                      <span>{t('testing.coverage')}</span>
                       <span className="text-green-600 font-mono">96.8%</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>E2E Tests:</span>
-                      <span className="font-mono">Playwright (coming soon)</span>
+                      <span>{t('testing.e2eTests')}</span>
+                      <span className="font-mono">{t('testing.e2eTestsValue')}</span>
                     </div>
                   </div>
                 </div>
@@ -693,19 +693,19 @@ describe('ControlHub', () => {
                   <h4 className="font-semibold mb-4">{t('phases.phase5.keyMetrics')}</h4>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                      <div className="font-medium">First Contentful Paint</div>
+                      <div className="font-medium">{t('testing.firstContentfulPaint')}</div>
                       <div className="text-green-600 font-mono">1.2s</div>
                     </div>
                     <div>
-                      <div className="font-medium">Largest Contentful Paint</div>
+                      <div className="font-medium">{t('testing.largestContentfulPaint')}</div>
                       <div className="text-green-600 font-mono">2.1s</div>
                     </div>
                     <div>
-                      <div className="font-medium">Cumulative Layout Shift</div>
+                      <div className="font-medium">{t('testing.cumulativeLayoutShift')}</div>
                       <div className="text-green-600 font-mono">0.01</div>
                     </div>
                     <div>
-                      <div className="font-medium">Time to Interactive</div>
+                      <div className="font-medium">{t('testing.timeToInteractive')}</div>
                       <div className="text-green-600 font-mono">2.8s</div>
                     </div>
                   </div>

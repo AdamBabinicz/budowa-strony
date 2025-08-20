@@ -111,9 +111,50 @@
     }
   },
   "workshop": {
-    "simulateBug": "Symuluj Błąd!",
-    "fixBug": "Napraw!",
-    "copyCode": "Skopiuj kod"
+    "title": "Warsztat Debugowania na Żywo",
+    "galleryDemo": "Galeria Zdjęć - Demonstracja",
+    "componentCode": "Kod Komponentu",
+    "simulateBug": "🐛 Symuluj Błąd!",
+    "fixBug": "✅ Napraw!",
+    "copyCode": "Skopiuj kod",
+    "codeCopied": "Kod skopiowany!",
+    "codeDescription": "Kod został skopiowany do schowka.",
+    "error": "Błąd",
+    "copyError": "Nie udało się skopiować kodu.",
+    "mountainAlt": "Górski krajobraz o wschodzie słońca",
+    "oceanAlt": "Fale oceaniczne podczas złotej godziny"
+  },
+  "translationDemo": {
+    "title": "Moduł Tłumaczeń na Żywo",
+    "testKeys": "Testuj klucze tłumaczeń"
+  },
+  "performance": {
+    "title": "Optymalizacje Wydajności",
+    "lazyLoading": "Lazy Loading",
+    "lazyLoadingDesc": "Obrazy i komponenty",
+    "imageOptimization": "Image Optimization",
+    "imageOptDesc": ".avif + .webp formaty",
+    "codeSplitting": "Code Splitting",
+    "codeSplittingDesc": "React.lazy + Suspense",
+    "bundleAnalysis": "Bundle Analysis",
+    "bundleAnalysisDesc": "Vite bundle analyzer"
+  },
+  "testing": {
+    "phaseTitle": "Faza 5: Gwarancja Jakości",
+    "phaseSubtitle": "Profesjonalne Testowanie",
+    "unitTestExample": "Przykład Testu Jednostkowego",
+    "testResults": "Wyniki Testów",
+    "testResultsVitest": "Test Results - Vitest",
+    "testingStack": "Stack Testowy",
+    "testRunner": "Test Runner:",
+    "testingLibrary": "Testing Library:",
+    "coverage": "Coverage:",
+    "e2eTests": "E2E Tests:",
+    "e2eTestsValue": "Playwright (coming soon)",
+    "firstContentfulPaint": "First Contentful Paint",
+    "largestContentfulPaint": "Largest Contentful Paint",
+    "cumulativeLayoutShift": "Cumulative Layout Shift",
+    "timeToInteractive": "Time to Interactive"
   },
   "translation": {
     "testKey": "Wprowadź klucz tłumaczenia:",

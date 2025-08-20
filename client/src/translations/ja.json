@@ -111,9 +111,50 @@
     }
   },
   "workshop": {
-    "simulateBug": "バグをシミュレート！",
-    "fixBug": "修正！",
-    "copyCode": "コードをコピー"
+    "title": "ライブデバッグワークショップ",
+    "galleryDemo": "写真ギャラリー - デモ",
+    "componentCode": "コンポーネントコード",
+    "simulateBug": "🐛 バグをシミュレート！",
+    "fixBug": "✅ 修正！",
+    "copyCode": "コードをコピー",
+    "codeCopied": "コードがコピーされました！",
+    "codeDescription": "コードがクリップボードにコピーされました。",
+    "error": "エラー",
+    "copyError": "コードのコピーに失敗しました。",
+    "mountainAlt": "日の出の山の景色",
+    "oceanAlt": "ゴールデンアワーの海の波"
+  },
+  "translationDemo": {
+    "title": "ライブ翻訳モジュール",
+    "testKeys": "翻訳キーをテスト"
+  },
+  "performance": {
+    "title": "パフォーマンス最適化",
+    "lazyLoading": "レイジーローディング",
+    "lazyLoadingDesc": "画像とコンポーネント",
+    "imageOptimization": "画像最適化",
+    "imageOptDesc": ".avif + .webpフォーマット",
+    "codeSplitting": "コード分割",
+    "codeSplittingDesc": "React.lazy + Suspense",
+    "bundleAnalysis": "バンドル分析",
+    "bundleAnalysisDesc": "Viteバンドルアナライザー"
+  },
+  "testing": {
+    "phaseTitle": "フェーズ 5: 品質保証",
+    "phaseSubtitle": "プロフェッショナルテスト",
+    "unitTestExample": "単体テスト例",
+    "testResults": "テスト結果",
+    "testResultsVitest": "テスト結果 - Vitest",
+    "testingStack": "テストスタック",
+    "testRunner": "テストランナー:",
+    "testingLibrary": "テストライブラリ:",
+    "coverage": "カバレッジ:",
+    "e2eTests": "E2Eテスト:",
+    "e2eTestsValue": "Playwright (近日公開)",
+    "firstContentfulPaint": "初回コンテンツフルペイント",
+    "largestContentfulPaint": "最大コンテンツフルペイント",
+    "cumulativeLayoutShift": "累積レイアウトシフト",
+    "timeToInteractive": "インタラクティブ時間"
   },
   "translation": {
     "testKey": "翻訳キーを入力：",
