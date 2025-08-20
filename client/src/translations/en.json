@@ -164,6 +164,16 @@
       "ja": "Japanese"
     }
   },
+  "creator": {
+    "sectionTitle": "Project Creator",
+    "sectionSubtitle": "Developer with Passion",
+    "name": "Full Stack Overflow Developer",
+    "description": "A technology enthusiast who combines creativity with technical precision. This AI Genesis project is an example of the symbiosis between human vision and artificial intelligence capabilities in creating modern web applications.",
+    "selfTaughtButton": "Self-taught",
+    "storyTitle": "Self-taught Story",
+    "storyText": "Behind this project stands a 67-year-old retiree who has been independently exploring the secrets of programming languages for 21 years, using books, educational videos, and internet resources. For the past two years, he has been supported by artificial intelligence both in building projects and in code analysis for bug removal. He can dedicate even 8-10 hours daily to his passion.\n\nHis story proves that anyone can learn programming at any age. What matters is not age, but desire, determination, and belief that you can break through your own limitations. The author started by creating a simple portfolio for his daughter - it was the first step that ignited true passion. Since then, he has completed over 120 websites, the vast majority in the last six years.\n\nThis project is not just another website. It's proof that perseverance, curiosity, and openness to new technologies can lead to extraordinary results. It's also inspiration for everyone who dreams of starting their coding journey - regardless of their age and life stage.\n\nBecause in the world of programming, the only limits are set by imagination.",
+    "closeButton": "Close"
+  },
   "contact": {
     "title": "Contact",
     "subtitle": "Ready for your own AI-assisted development project?",

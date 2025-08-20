@@ -1,13 +1,17 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
+import { Button } from "@/components/ui/button";
 import { ControlHub } from "@/components/control-hub";
 import { InteractiveWorkshop } from "@/components/interactive-workshop";
 import { TranslationDemo } from "@/components/translation-demo";
 import { ContactForm } from "@/components/contact-form";
+import { CreatorStoryModal } from "@/components/creator-story-modal";
 import devPhotoUrl from "@assets/generation-e708a120-0c3a-4d4c-b78c-c58991e69165_1755692585443.png";
 
 export default function Home() {
   const { t } = useTranslation();
+  const [isStoryModalOpen, setIsStoryModalOpen] = useState(false);
 
   return (
     <>
@@ -753,31 +757,42 @@ describe('ControlHub', () => {
         </section>
         
         {/* Developer Section */}
-        <section className="py-20 px-8 bg-accent/5">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="text-center mb-16 animate-fade-in">
-              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">Twórca Projektu</h2>
-              <p className="text-xl text-foreground/70">Developer z Pasją</p>
+        <section className="py-12 sm:py-20 px-4 sm:px-8 bg-accent/5">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16 animate-fade-in">
+              <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">{t('creator.sectionTitle')}</h2>
+              <p className="text-lg sm:text-xl text-foreground/70">{t('creator.sectionSubtitle')}</p>
             </div>
             
-            <div className="bg-card rounded-lg p-8 border border-border inline-block shadow-lg">
-              <div className="mb-6">
+            <div className="bg-card rounded-lg border border-border shadow-xl overflow-hidden">
+              {/* Full Width Hero Image */}
+              <div className="relative h-64 sm:h-96 lg:h-[500px] w-full">
                 <img 
                   src={devPhotoUrl} 
-                  alt="Full Stack Overflow Developer" 
-                  className="w-64 h-64 object-cover rounded-lg mx-auto shadow-lg"
+                  alt={t('creator.name')} 
+                  className="w-full h-full object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-white">
+                  <h3 className="font-playfair text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">{t('creator.name')}</h3>
+                </div>
               </div>
-              <h3 className="font-playfair text-2xl font-semibold mb-4">Full Stack Overflow Developer</h3>
-              <p className="text-foreground/70 max-w-2xl mx-auto leading-relaxed">
-                Pasjonat technologii, który łączy kreatywność z techniczną precyzją. 
-                Ten projekt AI Genesis to przykład symbioty między ludzką wizją a możliwościami sztucznej inteligencji 
-                w tworzeniu nowoczesnych aplikacji webowych.
-              </p>
-              <div className="mt-6">
-                <span className="inline-block bg-accent text-accent-foreground px-4 py-2 rounded-full text-sm font-semibold">
-                  🇵🇱 Made in Poland
-                </span>
+              
+              {/* Content */}
+              <div className="p-6 sm:p-8">
+                <p className="text-foreground/80 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 max-w-4xl mx-auto text-center">
+                  {t('creator.description')}
+                </p>
+                
+                <div className="text-center">
+                  <Button
+                    onClick={() => setIsStoryModalOpen(true)}
+                    className="bg-accent hover:bg-accent-light text-accent-foreground px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
+                    data-testid="creator-story-button"
+                  >
+                    🎓 {t('creator.selfTaughtButton')}
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
@@ -799,6 +814,11 @@ describe('ControlHub', () => {
           </div>
         </section>
       </main>
+      
+      <CreatorStoryModal 
+        isOpen={isStoryModalOpen} 
+        onClose={() => setIsStoryModalOpen(false)} 
+      />
     </>
   );
 }

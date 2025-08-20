@@ -164,6 +164,16 @@
       "ja": "日本語"
     }
   },
+  "creator": {
+    "sectionTitle": "Twórca Projektu",
+    "sectionSubtitle": "Developer z Pasją",
+    "name": "Full Stack Overflow Developer",
+    "description": "Pasjonat technologii, który łączy kreatywność z techniczną precyzją. Ten projekt AI Genesis to przykład symbioty między ludzką wizją a możliwościami sztucznej inteligencji w tworzeniu nowoczesnych aplikacji webowych.",
+    "selfTaughtButton": "Samouk",
+    "storyTitle": "Historia Samouczka",
+    "storyText": "Za projektem stoi 67-letni emeryt, który od 21 lat samodzielnie zgłębia tajniki języków programowania, korzystając z książek, filmów edukacyjnych oraz zasobów internetu. Od dwóch lat wspiera się sztuczną inteligencją zarówno w budowaniu projektów, jak i w analizie kodu pod kątem usuwania błędów. Każdego dnia swojej pasji potrafi poświęcić nawet 8–10 godzin.\n\nJego historia udowadnia, że programować może nauczyć się każdy, w każdym wieku. Nie liczy się metryka, lecz chęć, determinacja i wiara w to, że można przełamywać własne ograniczenia. Autor zaczynał od stworzenia prostego portfolio dla swojej córki – to był pierwszy krok, który rozpalił prawdziwą pasję. Od tamtego czasu zrealizował już ponad 120 stron internetowych, z czego zdecydowaną większość w ciągu ostatnich sześciu lat.\n\nTen projekt to nie tylko kolejna witryna. To dowód, że wytrwałość, ciekawość i otwartość na nowe technologie mogą prowadzić do niezwykłych rezultatów. To także inspiracja dla wszystkich, którzy marzą, by zacząć swoją przygodę z kodowaniem – niezależnie od tego, ile mają lat i w jakim punkcie życia się znajdują.\n\nBo w świecie programowania granice wyznacza tylko wyobraźnia.",
+    "closeButton": "Zamknij"
+  },
   "contact": {
     "title": "Kontakt",
     "subtitle": "Gotowy na własny projekt AI-assisted development?",
