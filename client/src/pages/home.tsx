@@ -59,7 +59,7 @@ export default function Home() {
 
       <ControlHub />
 
-      
+
 
       {/* Main Content */}
       <main className="lg:ml-16 transition-all duration-300 w-full overflow-x-hidden">
@@ -802,6 +802,18 @@ describe('ControlHub', () => {
         isOpen={isStoryModalOpen} 
         onClose={() => setIsStoryModalOpen(false)} 
       />
+
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          data-testid="scroll-to-top-home"
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-accent hover:bg-accent-light text-accent-foreground shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center font-bold text-lg sm:w-14 sm:h-14"
+          aria-label="Przewiń na górę"
+        >
+          ↑
+        </button>
+      )}
     </>
   );
 }

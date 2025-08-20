@@ -167,6 +167,13 @@
       font-size: 0.75rem !important;
       line-height: 1.2 !important;
     }
+
+    /* Global image styling for responsive behavior */
+    img {
+      max-width: 100% !important;
+      height: auto !important;
+      object-fit: contain !important;
+    }
   }
 }
 
