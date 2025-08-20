@@ -728,31 +728,6 @@ describe('ControlHub', () => {
                 </div>
               </div>
             </div>
-
-            {/* Final CTA */}
-            <div className="text-center mt-20 animate-fade-in">
-              <h3 className="font-playfair text-3xl font-bold mb-6">{t('phases.phase5.missionComplete')}</h3>
-              <p className="text-lg mb-8 max-w-2xl mx-auto leading-relaxed text-foreground/70">
-                {t('phases.phase5.finalDescription')}
-              </p>
-
-              <div className="flex flex-wrap justify-center gap-4">
-                <a 
-                  href="#contact" 
-                  className="bg-accent hover:bg-accent-light text-accent-foreground px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
-                  data-testid="contact-cta"
-                >
-                  {t('phases.phase5.contactCta')}
-                </a>
-                <a 
-                  href="#phase-0" 
-                  className="bg-background border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground px-8 py-4 rounded-lg font-semibold transition-all duration-200"
-                  data-testid="restart-cta"
-                >
-                  {t('phases.phase5.restartCta')}
-                </a>
-              </div>
-            </div>
           </div>
         </section>
 
