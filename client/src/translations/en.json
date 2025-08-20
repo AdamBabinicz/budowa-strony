@@ -158,6 +158,7 @@
   },
   "translation": {
     "testKey": "Enter translation key:",
+    "inputPlaceholder": "Enter translation key:",
     "languages": {
       "pl": "Polish",
       "en": "English",

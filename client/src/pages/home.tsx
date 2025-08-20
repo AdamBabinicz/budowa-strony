@@ -41,7 +41,7 @@ export default function Home() {
       </Helmet>
 
       <ControlHub />
-      
+
       {/* Mobile Menu Button */}
       <button 
         className="lg:hidden fixed top-4 left-4 z-50 w-12 h-12 bg-background border border-border rounded-lg flex items-center justify-center shadow-lg"
@@ -52,7 +52,7 @@ export default function Home() {
       >
         <span className="text-xl">📱</span>
       </button>
-      
+
       {/* Main Content */}
       <main className="lg:ml-16 transition-all duration-300">
         {/* Hero Section */}
@@ -63,7 +63,7 @@ export default function Home() {
             <div className="absolute top-1/2 right-20 w-16 h-16 bg-accent/20 rounded-full animate-bounce-subtle delay-1000"></div>
             <div className="absolute bottom-20 left-1/3 w-12 h-12 bg-accent/15 rounded-full animate-bounce-subtle delay-2000"></div>
           </div>
-          
+
           <div className="text-center z-10 animate-fade-in w-full max-w-4xl mx-auto">
             <h1 className="font-playfair text-3xl sm:text-5xl lg:text-7xl font-bold mb-6">
               <span className="gradient-gold bg-clip-text text-transparent">
@@ -76,7 +76,7 @@ export default function Home() {
             <p className="text-base sm:text-lg lg:text-xl mb-12 max-w-2xl mx-auto leading-relaxed text-foreground/70 px-4">
               {t('hero.description')}
             </p>
-            
+
             {/* Progress Indicator */}
             <div className="mb-12">
               <div className="flex justify-center space-x-4 mb-4">
@@ -90,7 +90,7 @@ export default function Home() {
               </div>
               <p className="text-sm text-foreground/60">{t('phases.phaseCount')}</p>
             </div>
-            
+
             <a 
               href="#phase-0" 
               className="inline-flex items-center space-x-3 bg-accent hover:bg-accent-light text-accent-foreground px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105 animate-glow"
@@ -101,7 +101,7 @@ export default function Home() {
             </a>
           </div>
         </section>
-        
+
         {/* Phase 0: Iskra */}
         <section id="phase-0" className="min-h-screen py-20 px-8">
           <div className="max-w-6xl mx-auto">
@@ -114,7 +114,7 @@ export default function Home() {
                 {t('phases.phase0.subtitle')}
               </p>
             </div>
-            
+
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="animate-slide-in">
                 <h3 className="font-playfair text-2xl font-semibold mb-6">{t('phases.phase0.rawIdeaTitle')}</h3>
@@ -126,7 +126,7 @@ export default function Home() {
                     "{t('phases.phase0.userNote')}"
                   </p>
                 </div>
-                
+
                 <div className="bg-accent/10 rounded-lg p-6">
                   <h4 className="font-semibold mb-4 flex items-center">
                     <span className="mr-2">🤖</span>
@@ -137,7 +137,7 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              
+
               <div className="animate-fade-in">
                 <div className="bg-primary text-primary-foreground rounded-lg p-6 border border-border">
                   <div className="flex items-center mb-4">
@@ -158,7 +158,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        
+
         {/* Phase 1: Fundamenty */}
         <section id="phase-1" className="min-h-screen py-12 sm:py-20 px-4 sm:px-8 bg-secondary/5">
           <div className="max-w-6xl mx-auto">
@@ -171,11 +171,11 @@ export default function Home() {
                 {t('phases.phase1.subtitle')}
               </p>
             </div>
-            
+
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
               <div className="animate-slide-in">
                 <h3 className="font-playfair text-xl sm:text-2xl font-semibold mb-6">{t('phases.phase1.projectStructure')}</h3>
-                
+
                 <div className="code-block rounded-lg p-4 sm:p-6 text-white font-mono text-xs sm:text-sm overflow-x-auto">
                   <div className="text-accent mb-4">ai-genesis-project/</div>
                   <div className="ml-4 space-y-1">
@@ -197,10 +197,10 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="animate-fade-in">
                 <h3 className="font-playfair text-xl sm:text-2xl font-semibold mb-6">{t('phases.phase1.techStack')}</h3>
-                
+
                 <div className="space-y-4 sm:space-y-6">
                   <div className="bg-card rounded-lg p-4 sm:p-6 border border-border">
                     <div className="flex items-center mb-3 sm:mb-4">
@@ -211,7 +211,7 @@ export default function Home() {
                       {t('phases.phase1.typeScriptDesc')}
                     </p>
                   </div>
-                  
+
                   <div className="bg-card rounded-lg p-4 sm:p-6 border border-border">
                     <div className="flex items-center mb-3 sm:mb-4">
                       <div className="w-8 h-8 bg-cyan-500 rounded flex items-center justify-center text-white text-sm font-bold mr-3">TW</div>
@@ -221,7 +221,7 @@ export default function Home() {
                       {t('phases.phase1.tailwindDesc')}
                     </p>
                   </div>
-                  
+
                   <div className="bg-card rounded-lg p-4 sm:p-6 border border-border">
                     <div className="flex items-center mb-3 sm:mb-4">
                       <div className="w-8 h-8 bg-green-500 rounded flex items-center justify-center text-white text-sm font-bold mr-3">⚡</div>
@@ -232,7 +232,7 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="mt-6 sm:mt-8 bg-accent/10 rounded-lg p-4 sm:p-6">
                   <h4 className="font-semibold mb-4 flex items-center">
                     <span className="mr-2">🤖</span>
@@ -246,7 +246,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        
+
         {/* Phase 2: Innowacja UI */}
         <section id="phase-2" className="min-h-screen py-12 sm:py-20 px-4 sm:px-8">
           <div className="max-w-6xl mx-auto">
@@ -259,7 +259,7 @@ export default function Home() {
                 {t('phases.phase2.subtitle')}
               </p>
             </div>
-            
+
             <div className="mb-12 animate-slide-in">
               <div className="bg-accent/10 border-l-4 border-accent p-6 rounded-r-lg">
                 <h3 className="font-playfair text-xl font-semibold mb-4">{t('phases.phase2.designDecision')}</h3>
@@ -268,11 +268,11 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            
+
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
               <div className="animate-fade-in">
                 <h3 className="font-playfair text-xl sm:text-2xl font-semibold mb-6">{t('phases.phase2.hubFeatures')}</h3>
-                
+
                 <div className="space-y-4">
                   <div className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-card rounded-lg border border-border">
                     <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm">🧭</div>
@@ -281,7 +281,7 @@ export default function Home() {
                       <p className="text-sm text-foreground/70">{t('phases.phase2.navDesc')}</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-card rounded-lg border border-border">
                     <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">🌐</div>
                     <div>
@@ -289,7 +289,7 @@ export default function Home() {
                       <p className="text-sm text-foreground/70">{t('phases.phase2.langDesc')}</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-card rounded-lg border border-border">
                     <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm">🌙</div>
                     <div>
@@ -297,7 +297,7 @@ export default function Home() {
                       <p className="text-sm text-foreground/70">{t('phases.phase2.themeDesc')}</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-card rounded-lg border border-border">
                     <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-sm">♿</div>
                     <div>
@@ -307,10 +307,10 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="animate-slide-in">
                 <h3 className="font-playfair text-xl sm:text-2xl font-semibold mb-6">{t('phases.phase2.demoTitle')}</h3>
-                
+
                 <div className="relative bg-muted rounded-lg p-6 h-96 overflow-hidden">
                   <div className="absolute left-0 top-0 h-full w-12 bg-card border-r border-border hover:w-32 transition-all duration-300 group">
                     <div className="p-2 space-y-2">
@@ -323,7 +323,7 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="ml-16 p-4">
                     <h4 className="font-semibold mb-2">{t('phases.phase2.mainContent')}</h4>
                     <p className="text-sm text-foreground/70 mb-4">
@@ -340,7 +340,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        
+
         {/* Phase 3: Development & Debugging */}
         <section id="phase-3" className="min-h-screen py-20 px-8 bg-secondary/5">
           <div className="max-w-6xl mx-auto">
@@ -353,13 +353,13 @@ export default function Home() {
                 {t('phases.phase3.subtitle')}
               </p>
             </div>
-            
+
             <InteractiveWorkshop />
-            
+
             {/* AI Dialogue Example */}
             <div className="animate-fade-in">
               <h3 className="font-playfair text-2xl font-semibold mb-8 text-center">{t('phases.phase3.aiDialogue')}</h3>
-              
+
               <div className="bg-card rounded-lg p-6 border border-border space-y-6">
                 <div className="flex space-x-4">
                   <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm">👤</div>
@@ -371,7 +371,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex space-x-4">
                   <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-accent-foreground text-sm">🤖</div>
                   <div className="flex-1">
@@ -379,7 +379,7 @@ export default function Home() {
                       <p className="text-sm">
                         <strong>{t('phases.phase3.aiResponse')}</strong> <code className="bg-muted px-2 py-1 rounded">components/ImageModal.tsx</code>.
                       </p>
-                      
+
                       <div className="mt-4 code-block rounded p-4 text-white font-mono text-xs">
                         <pre><code>{`${t('phases.phase3.generatedComment')}
 import { createPortal } from 'react-dom';
@@ -417,7 +417,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({ src, alt, onClose }) => 
             </div>
           </div>
         </section>
-        
+
         {/* Phase 4: Globalny Zasięg */}
         <section id="phase-4" className="min-h-screen py-20 px-8">
           <div className="max-w-6xl mx-auto">
@@ -430,13 +430,13 @@ export const ImageModal: React.FC<ImageModalProps> = ({ src, alt, onClose }) => 
                 {t('phases.phase4.subtitle')}
               </p>
             </div>
-            
+
             <div className="grid md:grid-cols-2 gap-12">
               <TranslationDemo />
-              
+
               <div className="animate-fade-in">
                 <h3 className="font-playfair text-2xl font-semibold mb-6">{t('phases.phase4.seoImplementation')}</h3>
-                
+
                 <div className="space-y-6">
                   <div className="bg-card rounded-lg p-6 border border-border">
                     <h4 className="font-semibold mb-4 flex items-center">
@@ -455,7 +455,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({ src, alt, onClose }) => 
 </Helmet>`}</code></pre>
                     </div>
                   </div>
-                  
+
                   <div className="bg-card rounded-lg p-6 border border-border">
                     <h4 className="font-semibold mb-4 flex items-center">
                       <span className="mr-2">🏷️</span>
@@ -478,7 +478,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({ src, alt, onClose }) => 
 }`}</code></pre>
                     </div>
                   </div>
-                  
+
                   <div className="bg-accent/10 rounded-lg p-6">
                     <h4 className="font-semibold mb-4">📊 {t('performance.title')}</h4>
                     <div className="grid grid-cols-2 gap-4 text-sm">
@@ -505,7 +505,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({ src, alt, onClose }) => 
             </div>
           </div>
         </section>
-        
+
         {/* Phase 5: Testing & Quality */}
         <section className="py-20 px-8 bg-secondary/5">
           <div className="max-w-6xl mx-auto">
@@ -514,11 +514,11 @@ export const ImageModal: React.FC<ImageModalProps> = ({ src, alt, onClose }) => 
               <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">{t('testing.phaseTitle')}</h2>
               <p className="text-xl text-foreground/70 mb-12">{t('testing.phaseSubtitle')}</p>
             </div>
-            
+
             <div className="grid md:grid-cols-2 gap-12">
               <div className="animate-slide-in">
                 <h3 className="font-playfair text-2xl font-semibold mb-6">🔬 {t('testing.unitTestExample')}</h3>
-                
+
                 <div className="code-block rounded-lg p-6 text-white font-mono text-sm">
                   <pre><code>{`// ControlHub.test.tsx
 import { render, screen, fireEvent } from '@testing-library/react';
@@ -527,12 +527,12 @@ import { ControlHub } from '../ControlHub';
 describe('ControlHub', () => {
   it('should expand on hover', async () => {
     render(<ControlHub />);
-    
+
     const hub = screen.getByTestId('control-hub');
     expect(hub).toHaveClass('control-hub-collapsed');
-    
+
     fireEvent.mouseEnter(hub);
-    
+
     await waitFor(() => {
       expect(hub).toHaveClass('control-hub-expanded');
     });
@@ -540,19 +540,19 @@ describe('ControlHub', () => {
 
   it('should navigate to correct section', () => {
     render(<ControlHub />);
-    
+
     const iskraLink = screen.getByText('Iskra');
     fireEvent.click(iskraLink);
-    
+
     expect(window.location.hash).toBe('#phase-0');
   });
 });`}</code></pre>
                 </div>
               </div>
-              
+
               <div className="animate-fade-in">
                 <h3 className="font-playfair text-2xl font-semibold mb-6">✅ {t('testing.testResults')}</h3>
-                
+
                 <div className="bg-primary text-primary-foreground rounded-lg p-6 border border-border">
                   <div className="flex items-center mb-4">
                     <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
@@ -577,7 +577,7 @@ describe('ControlHub', () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="mt-6 bg-card rounded-lg p-6 border border-border">
                   <h4 className="font-semibold mb-4">🛠️ {t('testing.testingStack')}</h4>
                   <div className="space-y-3 text-sm">
@@ -603,7 +603,7 @@ describe('ControlHub', () => {
             </div>
           </div>
         </section>
-        
+
         {/* Phase 6: Deployment */}
         <section id="phase-5" className="min-h-screen py-20 px-8">
           <div className="max-w-6xl mx-auto">
@@ -616,11 +616,11 @@ describe('ControlHub', () => {
                 {t('phases.phase5.subtitle')}
               </p>
             </div>
-            
+
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="animate-slide-in">
                 <h3 className="font-playfair text-2xl font-semibold mb-6">🌐 {t('phases.phase5.deploymentProcess')}</h3>
-                
+
                 <div className="bg-card rounded-lg p-6 border border-border">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-4">
@@ -631,7 +631,7 @@ describe('ControlHub', () => {
                       </div>
                       <div className="text-green-500">✓</div>
                     </div>
-                    
+
                     <div className="flex items-center space-x-4">
                       <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">2</div>
                       <div className="flex-1">
@@ -640,7 +640,7 @@ describe('ControlHub', () => {
                       </div>
                       <div className="text-green-500">✓</div>
                     </div>
-                    
+
                     <div className="flex items-center space-x-4">
                       <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm">3</div>
                       <div className="flex-1">
@@ -649,7 +649,7 @@ describe('ControlHub', () => {
                       </div>
                       <div className="text-green-500">✓</div>
                     </div>
-                    
+
                     <div className="flex items-center space-x-4">
                       <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-sm">4</div>
                       <div className="flex-1">
@@ -659,7 +659,7 @@ describe('ControlHub', () => {
                       <div className="text-green-500">✓</div>
                     </div>
                   </div>
-                  
+
                   <div className="mt-6 bg-accent/10 rounded-lg p-4">
                     <div className="flex items-center space-x-2">
                       <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
@@ -668,16 +668,16 @@ describe('ControlHub', () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="animate-fade-in">
                 <h3 className="font-playfair text-2xl font-semibold mb-6">📊 {t('phases.phase5.lighthouseReport')}</h3>
-                
+
                 <div className="bg-card rounded-lg p-6 border border-border">
                   <div className="text-center mb-6">
                     <h4 className="font-semibold text-lg mb-2">{t('phases.phase5.auditResults')}</h4>
                     <p className="text-sm text-foreground/70">{t('phases.phase5.auditSubtitle')}</p>
                   </div>
-                  
+
                   <div className="grid grid-cols-2 gap-6">
                     {[
                       { name: "Performance", score: 100 },
@@ -696,7 +696,7 @@ describe('ControlHub', () => {
                       </div>
                     ))}
                   </div>
-                  
+
                   <div className="mt-6 text-center">
                     <div className="text-2xl font-bold text-green-600 mb-2">{t('phases.phase5.perfectScore')}</div>
                     <p className="text-sm text-foreground/70">
@@ -704,7 +704,7 @@ describe('ControlHub', () => {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="mt-6 bg-accent/10 rounded-lg p-6">
                   <h4 className="font-semibold mb-4">{t('phases.phase5.keyMetrics')}</h4>
                   <div className="grid grid-cols-2 gap-4 text-sm">
@@ -728,14 +728,14 @@ describe('ControlHub', () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Final CTA */}
             <div className="text-center mt-20 animate-fade-in">
               <h3 className="font-playfair text-3xl font-bold mb-6">{t('phases.phase5.missionComplete')}</h3>
               <p className="text-lg mb-8 max-w-2xl mx-auto leading-relaxed text-foreground/70">
                 {t('phases.phase5.finalDescription')}
               </p>
-              
+
               <div className="flex flex-wrap justify-center gap-4">
                 <a 
                   href="#contact" 
@@ -755,7 +755,7 @@ describe('ControlHub', () => {
             </div>
           </div>
         </section>
-        
+
         {/* Developer Section */}
         <section className="py-12 sm:py-20 px-4 sm:px-8 bg-accent/5">
           <div className="max-w-6xl mx-auto">
@@ -763,7 +763,7 @@ describe('ControlHub', () => {
               <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">{t('creator.sectionTitle')}</h2>
               <p className="text-lg sm:text-xl text-foreground/70">{t('creator.sectionSubtitle')}</p>
             </div>
-            
+
             <div className="bg-card rounded-lg border border-border shadow-xl overflow-hidden">
               {/* Full Width Hero Image */}
               <div className="relative h-64 sm:h-96 lg:h-[500px] w-full">
@@ -777,13 +777,13 @@ describe('ControlHub', () => {
                   <h3 className="font-playfair text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">{t('creator.name')}</h3>
                 </div>
               </div>
-              
+
               {/* Content */}
               <div className="p-6 sm:p-8">
                 <p className="text-foreground/80 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 max-w-4xl mx-auto text-center">
                   {t('creator.description')}
                 </p>
-                
+
                 <div className="text-center">
                   <Button
                     onClick={() => setIsStoryModalOpen(true)}
@@ -797,7 +797,7 @@ describe('ControlHub', () => {
             </div>
           </div>
         </section>
-        
+
         {/* Contact Section */}
         <section id="contact" className="py-20 px-8 bg-primary text-primary-foreground">
           <div className="max-w-4xl mx-auto">
@@ -809,12 +809,12 @@ describe('ControlHub', () => {
                 {t('contact.subtitle')}
               </p>
             </div>
-            
+
             <ContactForm />
           </div>
         </section>
       </main>
-      
+
       <CreatorStoryModal 
         isOpen={isStoryModalOpen} 
         onClose={() => setIsStoryModalOpen(false)} 

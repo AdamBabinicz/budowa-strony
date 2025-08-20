@@ -41,10 +41,10 @@ export function TranslationDemo() {
       <h3 className="font-playfair text-2xl font-semibold mb-6">
         🔄 {t('translationDemo.title')}
       </h3>
-      
+
       <div className="bg-card rounded-lg p-6 border border-border">
         <h4 className="font-semibold mb-4">{t('translationDemo.testKeys')}</h4>
-        
+
         <div className="mb-4">
           <Label htmlFor="translation-key" className="block text-sm font-medium mb-2">
             {t('translation.testKey')}
@@ -53,46 +53,46 @@ export function TranslationDemo() {
             id="translation-key"
             data-testid="translation-key-input"
             type="text"
-            placeholder="hero.title"
+            placeholder={t('translation.inputPlaceholder')}
             value={translationKey}
             onChange={(e) => setTranslationKey(e.target.value)}
             className="w-full"
           />
         </div>
-        
+
         <div className="space-y-3">
           <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
             <div className="flex items-center space-x-3">
               <span className="w-8 h-5 bg-red-500 rounded"></span>
               <span className="font-medium">{t('translation.languages.pl')}</span>
             </div>
-            <span 
-              className="text-sm" 
+            <span
+              className="text-sm"
               data-testid="translation-pl"
             >
               {currentTranslations.pl}
             </span>
           </div>
-          
+
           <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
             <div className="flex items-center space-x-3">
               <span className="w-8 h-5 bg-blue-500 rounded"></span>
               <span className="font-medium">{t('translation.languages.en')}</span>
             </div>
-            <span 
+            <span
               className="text-sm"
               data-testid="translation-en"
             >
               {currentTranslations.en}
             </span>
           </div>
-          
+
           <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
             <div className="flex items-center space-x-3">
               <span className="w-8 h-5 bg-red-600 rounded"></span>
               <span className="font-medium">{t('translation.languages.ja')}</span>
             </div>
-            <span 
+            <span
               className="text-sm"
               data-testid="translation-ja"
             >
@@ -100,7 +100,7 @@ export function TranslationDemo() {
             </span>
           </div>
         </div>
-        
+
         <div className="mt-4 code-block rounded p-3 text-white font-mono text-xs">
           <pre><code>{`// i18n.ts implementation
 import i18n from 'i18next';

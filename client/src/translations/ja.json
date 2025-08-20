@@ -158,6 +158,7 @@
   },
   "translation": {
     "testKey": "翻訳キーを入力：",
+    "inputPlaceholder": "翻訳キーを入力:",
     "languages": {
       "pl": "ポーランド語",
       "en": "英語",
