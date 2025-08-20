@@ -4,6 +4,7 @@ import { ControlHub } from "@/components/control-hub";
 import { InteractiveWorkshop } from "@/components/interactive-workshop";
 import { TranslationDemo } from "@/components/translation-demo";
 import { ContactForm } from "@/components/contact-form";
+import devPhotoUrl from "@assets/generation-e708a120-0c3a-4d4c-b78c-c58991e69165_1755692585443.png";
 
 export default function Home() {
   const { t } = useTranslation();
@@ -746,6 +747,37 @@ describe('ControlHub', () => {
                 >
                   {t('phases.phase5.restartCta')}
                 </a>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        {/* Developer Section */}
+        <section className="py-20 px-8 bg-accent/5">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="text-center mb-16 animate-fade-in">
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">Twórca Projektu</h2>
+              <p className="text-xl text-foreground/70">Developer z Pasją</p>
+            </div>
+            
+            <div className="bg-card rounded-lg p-8 border border-border inline-block shadow-lg">
+              <div className="mb-6">
+                <img 
+                  src={devPhotoUrl} 
+                  alt="Full Stack Overflow Developer" 
+                  className="w-64 h-64 object-cover rounded-lg mx-auto shadow-lg"
+                />
+              </div>
+              <h3 className="font-playfair text-2xl font-semibold mb-4">Full Stack Overflow Developer</h3>
+              <p className="text-foreground/70 max-w-2xl mx-auto leading-relaxed">
+                Pasjonat technologii, który łączy kreatywność z techniczną precyzją. 
+                Ten projekt AI Genesis to przykład symbioty między ludzką wizją a możliwościami sztucznej inteligencji 
+                w tworzeniu nowoczesnych aplikacji webowych.
+              </p>
+              <div className="mt-6">
+                <span className="inline-block bg-accent text-accent-foreground px-4 py-2 rounded-full text-sm font-semibold">
+                  🇵🇱 Made in Poland
+                </span>
               </div>
             </div>
           </div>
