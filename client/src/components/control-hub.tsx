@@ -211,15 +211,15 @@ export function ControlHub() {
       <button
         data-testid="mobile-menu-toggle"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 rounded-md bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300"
+        className="lg:hidden fixed top-4 right-4 z-50 p-3 rounded-lg bg-card/90 backdrop-blur-sm border border-border text-foreground shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
       >
         {isMobileMenuOpen ? '✕' : '☰'}
       </button>
 
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-black bg-opacity-50 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)}>
-          <div className="fixed left-0 top-0 h-full w-64 bg-background border-r border-border shadow-lg p-4 flex flex-col" onClick={(e) => e.stopPropagation()}>
+        <div className="lg:hidden fixed inset-0 z-40 bg-black/20 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)}>
+          <div className="fixed left-0 top-0 h-full w-72 bg-background/95 backdrop-blur-md border-r border-border shadow-2xl p-4 flex flex-col animate-slide-in" onClick={(e) => e.stopPropagation()}>
             {/* Logo/Brand */}
             <div className="p-3 border-b border-border">
               <div className="flex items-center space-x-3">
