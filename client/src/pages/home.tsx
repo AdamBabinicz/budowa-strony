@@ -7,7 +7,7 @@ import { TranslationDemo } from "@/components/translation-demo";
 import { ContactForm } from "@/components/contact-form";
 import { CreatorStoryModal } from "@/components/creator-story-modal";
 import { GeminiShowcase } from "@/components/gemini-showcase";
-import devPhotoUrl from "@/assets/4.png";
+import devPhotoUrl from "@/assets/3.avif";
 
 export default function Home() {
   const { t } = useTranslation();

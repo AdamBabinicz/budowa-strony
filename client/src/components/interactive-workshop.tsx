@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import devPhotoUrl from "@/assets/1.avif";
+import devPhotoUrl1 from "@/assets/2.avif";
 
 const workingCode = `// ImageGallery.tsx
 import React, { useState } from 'react';
@@ -122,13 +124,13 @@ export default function InteractiveWorkshop() {
           >
             <div className="grid grid-cols-2 gap-4 mb-4">
               <img
-                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300"
+                src={devPhotoUrl}
                 alt={t("workshop.mountainAlt")}
                 className="rounded-lg shadow-md hover:scale-105 transition-all duration-200 cursor-pointer"
                 loading="lazy"
               />
               <img
-                src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300"
+                src={devPhotoUrl1}
                 alt={t("workshop.oceanAlt")}
                 className="rounded-lg shadow-md hover:scale-105 transition-all duration-200 cursor-pointer"
                 loading="lazy"
