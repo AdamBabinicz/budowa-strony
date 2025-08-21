@@ -7,12 +7,25 @@
   },
   "nav": {
     "iskra": "Iskra",
-    "fundamenty": "Fundamenty", 
+    "fundamenty": "Fundamenty",
     "innowacja": "Innowacja UI",
     "development": "Development",
     "zasieg": "Zasięg",
     "deployment": "Deployment",
     "contact": "Kontakt"
+  },
+  "legalNav": {
+    "terms": "Regulamin",
+    "privacy": "Polityka Prywatności",
+    "backToHome": "Wróć do strony głównej"
+  },
+  "accessibility": {
+    "toggleOff": "Ułatwienia dostępu",
+    "toggleOn": "Normalny widok"
+  },
+  "theme": {
+    "lightMode": "Tryb Jasny",
+    "darkMode": "Tryb Ciemny"
   },
   "phases": {
     "phaseCount": "6 faz rozwoju projektu",
@@ -52,7 +65,7 @@
       "navDesc": "Płynne przewijanie z tooltipami po najechaniu na ikony.",
       "langFeature": "Przełącznik Języka (PL/EN/JP)",
       "langDesc": "Dynamiczna zmiana języka z react-i18next.",
-      "themeFeature": "Dark/Light Mode",
+      "themeFeature": "Tryb Ciemny/Jasny",
       "themeDesc": "Płynne przejścia między motywami z localStorage.",
       "a11yFeature": "Opcje Dostępności",
       "a11yDesc": "Wysoki kontrast, focus management, ARIA labels.",
@@ -85,30 +98,71 @@
     "phase5": {
       "title": "Faza 6: Wielki Finał",
       "subtitle": "Deployment i Dowód Jakości",
-      "qualityAssurance": "🧪 Gwarancja Jakości",
-      "testingDesc": "Projekt wykorzystuje Vitest i React Testing Library dla zapewnienia najwyższej jakości kodu. Każdy komponent jest testowany pod kątem funkcjonalności i dostępności.",
-      "lighthouse": "📊 Wyniki Lighthouse",
-      "lighthouseDesc": "Strona osiąga doskonałe wyniki we wszystkich kategoriach Lighthouse, potwierdzając wysoką jakość techniczną.",
-      "deploymentTitle": "🚀 Deployment na Netlify",
-      "deploymentDesc": "Automatyczny deployment z GitHub, optymalizacja zasobów, CDN i SSL. Pełna integracja CI/CD.",
-      "finalThoughts": "💭 Podsumowanie",
-      "conclusion": "AI Genesis to więcej niż strona internetowa - to żywy dowód na potęgę współpracy między człowiekiem a sztuczną inteligencją. Każda linijka kodu, każdy element designu został przemyślanie stworzony, aby pokazać pełen potencjał nowoczesnego web developmentu.",
-      "deploymentProcess": "Proces Deploymentu",
-      "gitPush": "Kod wypchany do repozytorium",
-      "netlifyBuild": "Vite build + optimizacja",
-      "functionsDeploy": "Serverless backend",
-      "cdnDistribution": "Globalne udostępnienie",
-      "liveAt": "Live at: ai-genesis-tutorial.netlify.app",
-      "lighthouseReport": "Lighthouse Report",
+      "deploymentProcess": "Proces Wdrożenia",
+      "gitPush": "Kod wypchnięty do repozytorium",
+      "netlifyBuild": "Budowanie projektu (Vite) i optymalizacja",
+      "functionsDeploy": "Wdrożenie funkcji serwerowych",
+      "cdnDistribution": "Dystrybucja w globalnej sieci CDN",
+      "liveAt": "Dostępne pod adresem: ai-genesis-tutorial.netlify.app",
+      "lighthouseReport": "Raport Lighthouse",
       "auditResults": "Wyniki Audytu Jakości",
       "auditSubtitle": "Ostateczny dowód mistrzostwa technicznego",
-      "perfectScore": "🏆 Perfect Score!",
+      "perfectScore": "🏆 Perfekcyjny Wynik!",
       "perfectDesc": "Aplikacja spełnia najwyższe standardy jakości w każdej kategorii",
-      "keyMetrics": "🚀 Kluczowe Metryki",
-      "missionComplete": "🎯 Misja Zakończona",
-      "finalDescription": "Projekt AI Genesis demonstruje pełen potencjał współpracy człowiek-AI w tworzeniu nowoczesnych aplikacji webowych. Od pierwszego pomysłu po produkcyjny deployment - to jest przyszłość developmentu.",
-      "contactCta": "💬 Skontaktuj się",
-      "restartCta": "🔄 Rozpocznij ponownie"
+      "keyMetrics": "🚀 Kluczowe Metryki"
+    }
+  },
+  "geminiPhase": {
+    "sectionTitle": "Faza 7: Ewolucja z Gemini",
+    "sectionSubtitle": "Nowy rozdział współpracy.",
+    "intro": "Jestem Gemini, duży model językowy od Google. Zostałem zaproszony do tego projektu przez jego twórcę, aby przeanalizować, udoskonalić i wzmocnić kod wygenerowany przez mojego poprzednika. Ta faza pokazuje, że rozwój oprogramowania to ciągły proces ulepszania, w którym ludzki nadzór i iteracja z AI prowadzą do najlepszych rezultatów.",
+    "changelogTitle": "Od Błędów do Perfekcji: Nasz Dialog",
+    "cards": [
+      {
+        "title": "Zagubiony Scroll",
+        "userQuote": "po wybraniu w panelu bocznym zakładki z którymś z plików następuje przekierowanie, ale strona nie otwiera się od góry",
+        "geminiSolution": "Zdiagnozowałem to jako klasyczny problem aplikacji jednostronicowych (SPA). Moim rozwiązaniem było zaimplementowanie dedykowanego komponentu `ScrollToTop`, który nasłuchuje na zmiany ścieżki i automatycznie przewija okno na samą górę, zapewniając naturalne doświadczenie użytkownika."
+      },
+      {
+        "title": "Uśpiona Dostępność",
+        "userQuote": "do czego służy ten przycisk i czy on w ogóle działa, bo nie widzę różnicy, gdy w niego klikam? Accessibility",
+        "geminiSolution": "Rozpoznając to jako placeholder, zbudowałem od podstaw tryb wysokiego kontrastu. Wymagało to zarządzania stanem w Reakcie, dodania globalnej klasy CSS do dokumentu oraz napisania specyficznych reguł stylów dla maksymalnej czytelności."
+      },
+      {
+        "title": "Wojna Stylów",
+        "userQuote": "tekst w modalu jest szary i niewidoczny, czyli skutek odwrotny do zamierzonego",
+        "geminiSolution": "Zidentyfikowałem konflikt specyficzności CSS z wtyczką Tailwind Typography. Rozwiązaniem było dodanie bardziej specyficznej reguły w `index.css`, która wymusza biały kolor tekstu wewnątrz kontenera `.prose`, gdy tryb dostępności jest aktywny."
+      },
+      {
+        "title": "Niewidzialny Przycisk 'X'",
+        "userQuote": "czy uważasz, że biała ikona X na żółtym tle jest lepsza? moim zdaniem, nie tło jest winne, tylko kolor Ikony X (powinna być ciemna)",
+        "geminiSolution": "To był doskonały przykład synergii człowiek-AI. Twoja intuicja była kluczowa. Początkowo zaproponowałem błędne rozwiązanie, ale Twoja informacja zwrotna doprowadziła mnie do wdrożenia idealnej poprawki: zmiany koloru samej ikony po najechaniu, co zapewniło perfekcyjny kontrast i udowodniło, że współpraca przynosi najlepsze rezultaty."
+      }
+    ],
+    "showcase": {
+      "title": "Interaktywny Warsztat Gemini",
+      "intro": "Ten interaktywny moduł powstał w wyniku naszej rozmowy. Zamiast tylko opisywać poprawki, pozwala Ci ich doświadczyć. To najlepszy dowód na to, jak dialog człowiek-AI prowadzi do tworzenia lepszych, bardziej angażujących rozwiązań.",
+      "demo1": {
+        "title": "Demo 1: Tryb Dostępności",
+        "previewTitle": "Tekst Podglądu",
+        "previewText": "Zobacz, jak zmieniają się kolory.",
+        "button": "Przełącz Kontrast (Demo)",
+        "code": {
+          "on": "/* CSS */\n.demo-contrast-on {\n  background-color: #000 !important;\n}\n.demo-contrast-on p {\n  color: #fff !important;\n}",
+          "off": "/* Domyślne style są stosowane\n   przez zmienne CSS motywu */"
+        }
+      },
+      "demo2": {
+        "title": "Demo 2: Poprawka Przycisku 'X'",
+        "instruction": "Najedź kursorem na oba przyciski:",
+        "before": "Przed",
+        "after": "Po",
+        "code": {
+          "default": "// Najedź na przycisk,\n// aby zobaczyć jego kod CSS.",
+          "before": "/* Błędny kod */\n.demo-buggy-button:hover {\n  background-color: var(--secondary);\n  color: var(--secondary-foreground);\n}",
+          "after": "/* Poprawny kod */\n.demo-fixed-button:hover {\n  background-color: #222;\n  color: #fafa00;\n}"
+        }
+      }
     }
   },
   "workshop": {
@@ -162,7 +216,7 @@
     "inputPlaceholder": "Wprowadź klucz tłumaczenia:",
     "languages": {
       "pl": "Polski",
-      "en": "English", 
+      "en": "English",
       "ja": "日本語"
     }
   },
@@ -172,8 +226,8 @@
     "name": "Full Stack Overflow Developer",
     "description": "Pasjonat technologii, który łączy kreatywność z techniczną precyzją. Ten projekt AI Genesis to przykład symbioty między ludzką wizją a możliwościami sztucznej inteligencji w tworzeniu nowoczesnych aplikacji webowych.",
     "selfTaughtButton": "Samouk",
-    "storyTitle": "Historia Samouczka",
-    "storyText": "Za projektem stoi 67-letni emeryt, który od 21 lat samodzielnie zgłębia tajniki języków programowania, korzystając z książek, filmów edukacyjnych oraz zasobów internetu. Od dwóch lat wspiera się sztuczną inteligencją zarówno w budowaniu projektów, jak i w analizie kodu pod kątem usuwania błędów. Każdego dnia swojej pasji potrafi poświęcić nawet 8–10 godzin.\n\nJego historia udowadnia, że programować może nauczyć się każdy, w każdym wieku. Nie liczy się metryka, lecz chęć, determinacja i wiara w to, że można przełamywać własne ograniczenia. Autor zaczynał od stworzenia prostego portfolio dla swojej córki – to był pierwszy krok, który rozpalił prawdziwą pasję. Od tamtego czasu zrealizował już ponad 120 stron internetowych, z czego zdecydowaną większość w ciągu ostatnich sześciu lat.\n\nTen projekt to nie tylko kolejna witryna. To dowód, że wytrwałość, ciekawość i otwartość na nowe technologie mogą prowadzić do niezwykłych rezultatów. To także inspiracja dla wszystkich, którzy marzą, by zacząć swoją przygodę z kodowaniem – niezależnie od tego, ile mają lat i w jakim punkcie życia się znajdują.\n\nBo w świecie programowania granice wyznacza tylko wyobraźnia.",
+    "storyTitle": "Historia Pomysłodawcy Projektu",
+    "storyText": "Za projektem stoi 69-letni emeryt, który od 21 lat samodzielnie zgłębia tajniki języków programowania, korzystając z książek, filmów edukacyjnych oraz zasobów internetu. Od dwóch lat wspiera się sztuczną inteligencją zarówno w budowaniu projektów, jak i w analizie kodu pod kątem usuwania błędów. Każdego dnia swojej pasji potrafi poświęcić nawet 8–10 godzin.\n\nJego historia udowadnia, że programować może nauczyć się każdy, w każdym wieku. Nie liczy się metryka, lecz chęć, determinacja i wiara w to, że można przełamywać własne ograniczenia. Autor zaczynał od stworzenia prostego portfolio dla swojej córki – to był pierwszy krok, który rozpalił prawdziwą pasję. Od tamtego czasu zrealizował już ponad 120 stron internetowych, z czego zdecydowaną większość w ciągu ostatnich sześciu lat.\n\nTen projekt to nie tylko kolejna witryna. To dowód, że wytrwałość, ciekawość i otwartość na nowe technologie mogą prowadzić do niezwykłych rezultatów. To także inspiracja dla wszystkich, którzy marzą, by zacząć swoją przygodę z kodowaniem – niezależnie od tego, ile mają lat i w jakim punkcie życia się znajdują.\n\nBo w świecie programowania granice wyznacza tylko wyobraźnia.",
     "closeButton": "Zamknij"
   },
   "contact": {
@@ -195,5 +249,17 @@
   "seo": {
     "title": "AI Genesis: Interaktywny Meta-Tutorial | Replit Development Masterclass",
     "description": "Przełomowy interaktywny tutorial pokazujący pełny cykl życia projektu - od pomysłu do wdrożenia z wykorzystaniem AI i nowoczesnych technologii."
+  },
+  "termsPage": {
+    "seoTitle": "Regulamin | AI Genesis",
+    "seoDescription": "Regulamin korzystania z interaktywnego serwisu AI Genesis.",
+    "title": "Regulamin",
+    "content": "<h2>1. Postanowienia ogólne</h2>\n\nNiniejszy regulamin określa zasady korzystania z serwisu internetowego AI Genesis, dostępnego pod adresem [Twój Adres Strony]. Serwis ma charakter edukacyjny i demonstracyjny, prezentując proces tworzenia aplikacji internetowych przy wsparciu sztucznej inteligencji.\n\nKorzystanie z serwisu jest równoznaczne z akceptacją wszystkich postanowień niniejszego regulaminu. Użytkownik zobowiązuje się do korzystania z serwisu w sposób zgodny z obowiązującym prawem oraz zasadami współżycia społecznego.\n\n<h2>2. Prawa autorskie</h2>\n\nWszystkie treści, w tym teksty, grafiki, kod źródłowy oraz koncepcja interaktywna serwisu, są własnością twórcy projektu i podlegają ochronie prawnej. Kopiowanie, modyfikowanie oraz rozpowszechnianie zawartości serwisu bez pisemnej zgody autora jest zabronione. Fragmenty kodu prezentowane w celach edukacyjnych mogą być wykorzystywane wyłącznie w ramach dozwolonego użytku osobistego.\n\n<h2>3. Odpowiedzialność</h2>\n\nTreści prezentowane w serwisie AI Genesis mają charakter wyłącznie informacyjny i demonstracyjny. Autor nie ponosi odpowiedzialności za jakiekolwiek szkody wynikłe z wykorzystania informacji lub narzędzi prezentowanych na stronie. Użytkownik korzysta z serwisu na własne ryzyko. Nie gwarantujemy nieprzerwanego i bezbłędnego działania serwisu."
+  },
+  "privacyPage": {
+    "seoTitle": "Polityka Prywatności | AI Genesis",
+    "seoDescription": "Polityka prywatności i plików cookies serwisu AI Genesis.",
+    "title": "Polityka Prywatności",
+    "content": "<h2>1. Administrator danych</h2>\n\nAdministratorem danych osobowych w rozumieniu obowiązujących przepisów jest twórca projektu AI Genesis. Wszelkie pytania dotyczące przetwarzania danych prosimy kierować za pośrednictwem formularza kontaktowego.\n\n<h2>2. Zbieranie i przetwarzanie danych</h2>\n\nSerwis AI Genesis szanuje prywatność swoich użytkowników. Nie zbieramy danych osobowych w sposób zautomatyzowany. Jedynym miejscem, w którym użytkownik może dobrowolnie podać swoje dane (imię, adres e-mail), jest formularz kontaktowy.\n\nPodane dane są wykorzystywane wyłącznie w celu udzielenia odpowiedzi na przesłane zapytanie. Dane te nie są przechowywane w bazie danych, nie są udostępniane podmiotom trzecim ani nie są wykorzystywane w celach marketingowych.\n\n<h2>3. Pliki Cookies</h2>\n\nSerwis może wykorzystywać niezbędne pliki cookies w celu zapewnienia prawidłowego funkcjonowania podstawowych mechanizmów, takich jak przełączanie motywu (jasny/ciemny) czy preferencje językowe. Nie używamy analitycznych ani marketingowych plików cookies do śledzenia aktywności użytkowników."
   }
 }

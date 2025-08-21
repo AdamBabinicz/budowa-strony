@@ -64,17 +64,16 @@ export default {
         },
       },
       fontFamily: {
-        playfair: ["var(--font-playfair)", "serif"],
-        inter: ["var(--font-inter)", "sans-serif"],
-        mono: ["var(--font-mono)", "monospace"],
-        sans: ["var(--font-inter)", "sans-serif"],
-        serif: ["var(--font-playfair)", "serif"],
+        sans: ["Inter", "sans-serif"],
+        inter: ["Inter", "sans-serif"], // <-- DODANO BRAKUJĄCY WPIS
+        mono: ["'JetBrains Mono'", "monospace"],
+        poppins: ["Poppins", "sans-serif"],
       },
       animation: {
         "fade-in": "fadeIn 0.6s ease-in-out",
         "slide-in": "slideIn 0.8s ease-out",
         "bounce-subtle": "bounceSubtle 2s infinite",
-        "glow": "glow 2s ease-in-out infinite alternate",
+        glow: "glow 2s ease-in-out infinite alternate",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },

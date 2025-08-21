@@ -1,0 +1,3577 @@
+import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
+import { Button } from "@/components/ui/button";
+import { ControlHub } from "@/components/control-hub";
+import { InteractiveWorkshop } from "@/components/interactive-workshop";
+import { TranslationDemo } from "@/components/translation-demo";
+import { ContactForm } from "@/components/contact-form";
+import { CreatorStoryModal } from "@/components/creator-story-modal";
+import devPhotoUrl from "@assets/generation-e708a120-0c3a-4d4c-b78c-c58991e69165_1755692585443.png";
+
+export default function Home() {
+  const { t } = useTranslation();
+  const [isStoryModalOpen, setIsStoryModalOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  return (
+    <>
+      <Helmet>
+        <title>{t('seo.title')}</title>
+        <meta name="description" content={t('seo.description')} />
+        <meta property="og:title" content={t('seo.title')} />
+        <meta property="og:description" content={t('seo.description')} />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href={window.location.href} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": t('seo.title'),
+            "description": t('seo.description'),
+            "author": {
+              "@type": "Person",
+              "name": "AI Genesis"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "AI Genesis"
+            }
+          })}
+        </script>
+      </Helmet>
+
+      <ControlHub />
+
+
+
+      {/* Main Content */}
+      <main className="lg:ml-16 transition-all duration-300 w-full overflow-x-hidden">
+        {/* Hero Section */}
+        <section className="min-h-screen bg-gradient-to-br from-background via-secondary/5 to-accent/5 flex items-center justify-center relative overflow-hidden px-4 lg:px-8 w-full max-w-full">
+          {/* Animated background elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-10 left-10 w-20 h-20 bg-accent/10 rounded-full animate-bounce-subtle"></div>
+            <div className="absolute top-1/2 right-20 w-16 h-16 bg-accent/20 rounded-full animate-bounce-subtle delay-1000"></div>
+            <div className="absolute bottom-20 left-1/3 w-12 h-12 bg-accent/15 rounded-full animate-bounce-subtle delay-2000"></div>
+          </div>
+
+          <div className="text-center z-10 animate-fade-in w-full max-w-4xl mx-auto">
+            <h1 className="font-playfair text-3xl sm:text-5xl lg:text-7xl font-bold mb-6">
+              <span className="gradient-gold bg-clip-text text-transparent">
+                {t('hero.title')}
+              </span>
+            </h1>
+            <h2 className="font-playfair text-lg sm:text-2xl lg:text-3xl mb-8 text-foreground/80">
+              {t('hero.subtitle')}
+            </h2>
+            <p className="text-base sm:text-lg lg:text-xl mb-12 max-w-2xl mx-auto leading-relaxed text-foreground/70 px-4">
+              {t('hero.description')}
+            </p>
+
+            {/* Progress Indicator */}
+            <div className="mb-12">
+              <div className="flex justify-center space-x-4 mb-4">
+                {[...Array(6)].map((_, i) => (
+                  <div 
+                    key={i}
+                    className="w-2 h-2 bg-accent rounded-full animate-pulse"
+                    style={{ animationDelay: `${i * 0.2}s` }}
+                  ></div>
+                ))}
+              </div>
+              <p className="text-sm text-foreground/60">{t('phases.phaseCount')}</p>
+            </div>
+
+            <a 
+              href="#phase-0" 
+              className="inline-flex items-center space-x-3 bg-accent hover:bg-accent-light text-accent-foreground px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105 animate-glow"
+              data-testid="hero-cta"
+            >
+              <span>{t('hero.cta')}</span>
+              <span>🚀</span>
+            </a>
+          </div>
+        </section>
+
+        {/* Phase 0: Iskra */}
+        <section id="phase-0" className="min-h-screen py-12 sm:py-20 px-4 sm:px-8 w-full max-w-full overflow-x-hidden">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="w-20 h-20 bg-gradient-to-br from-accent to-accent-light rounded-full flex items-center justify-center text-3xl mx-auto mb-6">💡</div>
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">
+                {t('phases.phase0.title')}
+              </h2>
+              <p className="text-xl text-foreground/70 mb-12">
+                {t('phases.phase0.subtitle')}
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="animate-slide-in">
+                <h3 className="font-playfair text-2xl font-semibold mb-6">{t('phases.phase0.rawIdeaTitle')}</h3>
+                <div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 p-6 mb-8 transform rotate-1">
+                  <div className="font-mono text-sm mb-4 text-yellow-700 dark:text-yellow-300">
+                    {t('phases.phase0.noteComment')}
+                  </div>
+                  <p className="text-foreground leading-relaxed">
+                    "{t('phases.phase0.userNote')}"
+                  </p>
+                </div>
+
+                <div className="bg-accent/10 rounded-lg p-6">
+                  <h4 className="font-semibold mb-4 flex items-center">
+                    <span className="mr-2">🤖</span>
+                    {t('phases.phase0.aiInterpretation')}
+                  </h4>
+                  <p className="text-sm leading-relaxed">
+                    {t('phases.phase0.aiDescription')}
+                  </p>
+                </div>
+              </div>
+
+              <div className="animate-fade-in">
+                <div className="bg-primary text-primary-foreground rounded-lg p-6 border border-border">
+                  <div className="flex items-center mb-4">
+                    <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+                    <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                    <span className="text-sm ml-4">{t('phases.phase0.terminalTitle')}</span>
+                  </div>
+                  <div className="font-mono text-green-400 text-sm space-y-2">
+                    <div className="animate-pulse">&gt; {t('phases.phase0.analyzing')}</div>
+                    <div className="animate-pulse" style={{animationDelay: '0.5s'}}>&gt; {t('phases.phase0.generating')}</div>
+                    <div className="animate-pulse" style={{animationDelay: '1s'}}>&gt; {t('phases.phase0.planning')}</div>
+                    <div className="animate-pulse" style={{animationDelay: '1.5s'}}>&gt; {t('phases.phase0.designing')}</div>
+                    <div className="animate-pulse" style={{animationDelay: '2s'}}>&gt; {t('phases.phase0.complete')}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Phase 1: Fundamenty */}
+        <section id="phase-1" className="min-h-screen py-12 sm:py-20 px-4 sm:px-8 bg-secondary/5 w-full max-w-full overflow-x-hidden">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">🏗️</div>
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">
+                {t('phases.phase1.title')}
+              </h2>
+              <p className="text-xl text-foreground/70 mb-12">
+                {t('phases.phase1.subtitle')}
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+              <div className="animate-slide-in">
+                <h3 className="font-playfair text-xl sm:text-2xl font-semibold mb-6">{t('phases.phase1.projectStructure')}</h3>
+
+                <div className="code-block rounded-lg p-4 sm:p-6 text-white font-mono text-xs sm:text-sm overflow-x-auto max-w-full">
+                  <div className="text-accent mb-4">ai-genesis-project/</div>
+                  <div className="ml-4 space-y-1">
+                    <div>├── <span className="text-yellow-400">functions/</span></div>
+                    <div className="ml-4">└── submit-form.ts</div>
+                    <div>├── <span className="text-yellow-400">src/</span></div>
+                    <div className="ml-4">├── <span className="text-blue-400">components/</span></div>
+                    <div className="ml-8">├── __tests__/</div>
+                    <div className="ml-8">├── ControlHub.tsx</div>
+                    <div className="ml-8">└── InteractiveWorkshop.tsx</div>
+                    <div className="ml-4">├── <span className="text-green-400">pages/</span></div>
+                    <div className="ml-4">├── <span className="text-purple-400">translations/</span></div>
+                    <div className="ml-8">├── pl.json</div>
+                    <div className="ml-8">├── en.json</div>
+                    <div className="ml-8">└── ja.json</div>
+                    <div className="ml-4">├── App.tsx</div>
+                    <div className="ml-4">├── main.tsx</div>
+                    <div className="ml-4">└── i18n.ts</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="animate-fade-in">
+                <h3 className="font-playfair text-xl sm:text-2xl font-semibold mb-6">{t('phases.phase1.techStack')}</h3>
+
+                <div className="space-y-4 sm:space-y-6">
+                  <div className="bg-card rounded-lg p-4 sm:p-6 border border-border">
+                    <div className="flex items-center mb-3 sm:mb-4">
+                      <div className="w-8 h-8 bg-blue-500 rounded flex items-center justify-center text-white text-sm font-bold mr-3">TS</div>
+                      <h4 className="font-semibold text-sm sm:text-base">TypeScript + React + Vite</h4>
+                    </div>
+                    <p className="text-sm text-foreground/70">
+                      {t('phases.phase1.typeScriptDesc')}
+                    </p>
+                  </div>
+
+                  <div className="bg-card rounded-lg p-4 sm:p-6 border border-border">
+                    <div className="flex items-center mb-3 sm:mb-4">
+                      <div className="w-8 h-8 bg-cyan-500 rounded flex items-center justify-center text-white text-sm font-bold mr-3">TW</div>
+                      <h4 className="font-semibold text-sm sm:text-base">TailwindCSS + Framer Motion</h4>
+                    </div>
+                    <p className="text-sm text-foreground/70">
+                      {t('phases.phase1.tailwindDesc')}
+                    </p>
+                  </div>
+
+                  <div className="bg-card rounded-lg p-4 sm:p-6 border border-border">
+                    <div className="flex items-center mb-3 sm:mb-4">
+                      <div className="w-8 h-8 bg-green-500 rounded flex items-center justify-center text-white text-sm font-bold mr-3">⚡</div>
+                      <h4 className="font-semibold text-sm sm:text-base">Netlify Functions + Testing</h4>
+                    </div>
+                    <p className="text-sm text-foreground/70">
+                      {t('phases.phase1.netlifyDesc')}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-6 sm:mt-8 bg-accent/10 rounded-lg p-4 sm:p-6">
+                  <h4 className="font-semibold mb-4 flex items-center">
+                    <span className="mr-2">🤖</span>
+                    {t('phases.phase1.aiJustification')}
+                  </h4>
+                  <p className="text-sm leading-relaxed">
+                    "{t('phases.phase1.stackReasoning')}"
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Phase 2: Innowacja UI */}
+        <section id="phase-2" className="min-h-screen py-12 sm:py-20 px-4 sm:px-8 w-full max-w-full overflow-x-hidden">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">🎨</div>
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">
+                {t('phases.phase2.title')}
+              </h2>
+              <p className="text-xl text-foreground/70 mb-12">
+                {t('phases.phase2.subtitle')}
+              </p>
+            </div>
+
+            <div className="mb-12 animate-slide-in">
+              <div className="bg-accent/10 border-l-4 border-accent p-6 rounded-r-lg">
+                <h3 className="font-playfair text-xl font-semibold mb-4">{t('phases.phase2.designDecision')}</h3>
+                <p className="leading-relaxed">
+                  {t('phases.phase2.designReasoning')}
+                </p>
+              </div>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+              <div className="animate-fade-in">
+                <h3 className="font-playfair text-xl sm:text-2xl font-semibold mb-6">{t('phases.phase2.hubFeatures')}</h3>
+
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-card rounded-lg border border-border">
+                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm">🧭</div>
+                    <div>
+                      <h4 className="font-semibold mb-1">{t('phases.phase2.navFeature')}</h4>
+                      <p className="text-sm text-foreground/70">{t('phases.phase2.navDesc')}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-card rounded-lg border border-border">
+                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">🌐</div>
+                    <div>
+                      <h4 className="font-semibold mb-1">{t('phases.phase2.langFeature')}</h4>
+                      <p className="text-sm text-foreground/70">{t('phases.phase2.langDesc')}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-card rounded-lg border border-border">
+                    <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm">🌙</div>
+                    <div>
+                      <h4 className="font-semibold mb-1">{t('phases.phase2.themeFeature')}</h4>
+                      <p className="text-sm text-foreground/70">{t('phases.phase2.themeDesc')}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-card rounded-lg border border-border">
+                    <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-sm">♿</div>
+                    <div>
+                      <h4 className="font-semibold mb-1">{t('phases.phase2.a11yFeature')}</h4>
+                      <p className="text-sm text-foreground/70">{t('phases.phase2.a11yDesc')}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="animate-slide-in">
+                <h3 className="font-playfair text-xl sm:text-2xl font-semibold mb-6">{t('phases.phase2.demoTitle')}</h3>
+
+                <div className="relative bg-muted rounded-lg p-6 h-96 overflow-hidden">
+                  <div className="absolute left-0 top-0 h-full w-12 bg-card border-r border-border hover:w-32 transition-all duration-300 group">
+                    <div className="p-2 space-y-2">
+                      <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center text-accent-foreground text-xs font-bold">AI</div>
+                      <div className="space-y-1">
+                        <div className="w-8 h-8 flex items-center justify-center text-xl">💡</div>
+                        <div className="w-8 h-8 flex items-center justify-center text-xl">🏗️</div>
+                        <div className="w-8 h-8 flex items-center justify-center text-xl">🎨</div>
+                        <div className="w-8 h-8 flex items-center justify-center text-xl">⚙️</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="ml-16 p-4">
+                    <h4 className="font-semibold mb-2">{t('phases.phase2.mainContent')}</h4>
+                    <p className="text-sm text-foreground/70 mb-4">
+                      {t('phases.phase2.hubDescription')}
+                    </p>
+                    <div className="space-y-2">
+                      <div className="h-2 bg-secondary rounded"></div>
+                      <div className="h-2 bg-secondary rounded w-3/4"></div>
+                      <div className="h-2 bg-secondary rounded w-1/2"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Phase 3: Development & Debugging */}
+        <section id="phase-3" className="min-h-screen py-12 sm:py-20 px-4 sm:px-8 bg-secondary/5 w-full max-w-full overflow-x-hidden">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="w-20 h-20 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">⚙️</div>
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">
+                {t('phases.phase3.title')}
+              </h2>
+              <p className="text-xl text-foreground/70 mb-12">
+                {t('phases.phase3.subtitle')}
+              </p>
+            </div>
+
+            <InteractiveWorkshop />
+
+            {/* AI Dialogue Example */}
+            <div className="animate-fade-in">
+              <h3 className="font-playfair text-2xl font-semibold mb-8 text-center">{t('phases.phase3.aiDialogue')}</h3>
+
+              <div className="bg-card rounded-lg p-6 border border-border space-y-6">
+                <div className="flex space-x-4">
+                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm">👤</div>
+                  <div className="flex-1">
+                    <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-4">
+                      <p className="font-mono text-sm">
+                        "{t('phases.phase3.userRequest')}"
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex space-x-4">
+                  <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-accent-foreground text-sm">🤖</div>
+                  <div className="flex-1">
+                    <div className="bg-accent/10 rounded-lg p-4">
+                      <p className="text-sm">
+                        <strong>{t('phases.phase3.aiResponse')}</strong> <code className="bg-muted px-2 py-1 rounded">components/ImageModal.tsx</code>.
+                      </p>
+
+                      <div className="mt-4 code-block rounded p-4 text-white font-mono text-xs">
+                        <pre><code>{`${t('phases.phase3.generatedComment')}
+import { createPortal } from 'react-dom';
+import { useEffect } from 'react';
+
+interface ImageModalProps {
+  src: string;
+  alt: string;
+  onClose: () => void;
+}
+
+export const ImageModal: React.FC<ImageModalProps> = ({ src, alt, onClose }) => {
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [onClose]);
+
+  return createPortal(
+    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+         onClick={onClose}>
+      <img src={src} alt={alt} className="max-w-full max-h-full" 
+           onClick={(e) => e.stopPropagation()} />
+    </div>,
+    document.body
+  );
+};`}</code></pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Phase 4: Globalny Zasięg */}
+        <section id="phase-4" className="min-h-screen py-12 sm:py-20 px-4 sm:px-8 w-full max-w-full overflow-x-hidden">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">🌍</div>
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">
+                {t('phases.phase4.title')}
+              </h2>
+              <p className="text-xl text-foreground/70 mb-12">
+                {t('phases.phase4.subtitle')}
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12">
+              <TranslationDemo />
+
+              <div className="animate-fade-in">
+                <h3 className="font-playfair text-2xl font-semibold mb-6">{t('phases.phase4.seoImplementation')}</h3>
+
+                <div className="space-y-6">
+                  <div className="bg-card rounded-lg p-6 border border-border">
+                    <h4 className="font-semibold mb-4 flex items-center">
+                      <span className="mr-2">📋</span>
+                      {t('phases.phase4.metaTags')}
+                    </h4>
+                    <div className="code-block rounded p-4 text-white font-mono text-xs">
+                      <pre><code>{`${t('phases.phase4.metaComment')}
+<Helmet>
+  <title>{t('seo.title')}</title>
+  <meta name="description" content={t('seo.description')} />
+  <meta property="og:title" content={t('seo.title')} />
+  <meta property="og:description" content={t('seo.description')} />
+  <link rel="canonical" href={canonicalUrl} />
+  <html lang={currentLanguage} />
+</Helmet>`}</code></pre>
+                    </div>
+                  </div>
+
+                  <div className="bg-card rounded-lg p-6 border border-border">
+                    <h4 className="font-semibold mb-4 flex items-center">
+                      <span className="mr-2">🏷️</span>
+                      {t('phases.phase4.jsonLD')}
+                    </h4>
+                    <div className="code-block rounded p-4 text-white font-mono text-xs">
+                      <pre><code>{`{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AI Genesis: Interactive Meta-Tutorial",
+  "description": "Comprehensive guide to AI-assisted development",
+  "author": {
+    "@type": "Person",
+    "name": "AI Genesis"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AI Genesis"
+  }
+}`}</code></pre>
+                    </div>
+                  </div>
+
+                  <div className="bg-accent/10 rounded-lg p-6">
+                    <h4 className="font-semibold mb-4">📊 {t('performance.title')}</h4>
+                    <div className="grid grid-cols-2 gap-4 text-sm">
+                      <div>
+                        <div className="font-medium">{t('performance.lazyLoading')}</div>
+                        <div className="text-foreground/70">{t('performance.lazyLoadingDesc')}</div>
+                      </div>
+                      <div>
+                        <div className="font-medium">{t('performance.imageOptimization')}</div>
+                        <div className="text-foreground/70">{t('performance.imageOptDesc')}</div>
+                      </div>
+                      <div>
+                        <div className="font-medium">{t('performance.codeSplitting')}</div>
+                        <div className="text-foreground/70">{t('performance.codeSplittingDesc')}</div>
+                      </div>
+                      <div>
+                        <div className="font-medium">{t('performance.bundleAnalysis')}</div>
+                        <div className="text-foreground/70">{t('performance.bundleAnalysisDesc')}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Phase 5: Testing & Quality */}
+        <section className="py-12 sm:py-20 px-4 sm:px-8 bg-secondary/5 w-full max-w-full overflow-x-hidden">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">🧪</div>
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">{t('testing.phaseTitle')}</h2>
+              <p className="text-xl text-foreground/70 mb-12">{t('testing.phaseSubtitle')}</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12">
+              <div className="animate-slide-in">
+                <h3 className="font-playfair text-2xl font-semibold mb-6">🔬 {t('testing.unitTestExample')}</h3>
+
+                <div className="code-block rounded-lg p-6 text-white font-mono text-sm">
+                  <pre><code>{`// ControlHub.test.tsx
+import { render, screen, fireEvent } from '@testing-library/react';
+import { ControlHub } from '../ControlHub';
+
+describe('ControlHub', () => {
+  it('should expand on hover', async () => {
+    render(<ControlHub />);
+
+    const hub = screen.getByTestId('control-hub');
+    expect(hub).toHaveClass('control-hub-collapsed');
+
+    fireEvent.mouseEnter(hub);
+
+    await waitFor(() => {
+      expect(hub).toHaveClass('control-hub-expanded');
+    });
+  });
+
+  it('should navigate to correct section', () => {
+    render(<ControlHub />);
+
+    const iskraLink = screen.getByText('Iskra');
+    fireEvent.click(iskraLink);
+
+    expect(window.location.hash).toBe('#phase-0');
+  });
+});`}</code></pre>
+                </div>
+              </div>
+
+              <div className="animate-fade-in">
+                <h3 className="font-playfair text-2xl font-semibold mb-6">✅ {t('testing.testResults')}</h3>
+
+                <div className="bg-primary text-primary-foreground rounded-lg p-6 border border-border">
+                  <div className="flex items-center mb-4">
+                    <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+                    <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                    <span className="text-sm ml-4">{t('testing.testResultsVitest')}</span>
+                  </div>
+                  <div className="font-mono text-green-400 text-sm space-y-1">
+                    <div>✓ ControlHub.test.tsx (2)</div>
+                    <div className="ml-4">✓ should expand on hover</div>
+                    <div className="ml-4">✓ should navigate to correct section</div>
+                    <div>✓ TranslationModule.test.tsx (3)</div>
+                    <div className="ml-4">✓ should switch languages correctly</div>
+                    <div className="ml-4">✓ should fallback to English</div>
+                    <div className="ml-4">✓ should update translations dynamically</div>
+                    <div>✓ InteractiveWorkshop.test.tsx (2)</div>
+                    <div className="ml-4">✓ should simulate bug correctly</div>
+                    <div className="ml-4">✓ should fix bug on demand</div>
+                    <div className="text-accent mt-4">
+                      <strong>Tests:  7 passed, 7 total</strong><br/>
+                      <strong>Time:   2.14s</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 bg-card rounded-lg p-6 border border-border">
+                  <h4 className="font-semibold mb-4">🛠️ {t('testing.testingStack')}</h4>
+                  <div className="space-y-3 text-sm">
+                    <div className="flex justify-between">
+                      <span>{t('testing.testRunner')}</span>
+                      <span className="font-mono">Vitest</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>{t('testing.testingLibrary')}</span>
+                      <span className="font-mono">@testing-library/react</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>{t('testing.coverage')}</span>
+                      <span className="text-green-600 font-mono">96.8%</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>{t('testing.e2eTests')}</span>
+                      <span className="font-mono">{t('testing.e2eTestsValue')}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Phase 6: Deployment */}
+        <section id="phase-5" className="min-h-screen py-12 sm:py-20 px-4 sm:px-8 w-full max-w-full overflow-x-hidden">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="w-20 h-20 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">🚀</div>
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">
+                {t('phases.phase5.title')}
+              </h2>
+              <p className="text-xl text-foreground/70 mb-12">
+                {t('phases.phase5.subtitle')}
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="animate-slide-in">
+                <h3 className="font-playfair text-2xl font-semibold mb-6">🌐 {t('phases.phase5.deploymentProcess')}</h3>
+
+                <div className="bg-card rounded-lg p-6 border border-border">
+                  <div className="space-y-4">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm">1</div>
+                      <div className="flex-1">
+                        <div className="font-semibold">Git Push</div>
+                        <div className="text-sm text-foreground/70">{t('phases.phase5.gitPush')}</div>
+                      </div>
+                      <div className="text-green-500">✓</div>
+                    </div>
+
+                    <div className="flex items-center space-x-4">
+                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">2</div>
+                      <div className="flex-1">
+                        <div className="font-semibold">Netlify Build</div>
+                        <div className="text-sm text-foreground/70">{t('phases.phase5.netlifyBuild')}</div>
+                      </div>
+                      <div className="text-green-500">✓</div>
+                    </div>
+
+                    <div className="flex items-center space-x-4">
+                      <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm">3</div>
+                      <div className="flex-1">
+                        <div className="font-semibold">Functions Deploy</div>
+                        <div className="text-sm text-foreground/70">{t('phases.phase5.functionsDeploy')}</div>
+                      </div>
+                      <div className="text-green-500">✓</div>
+                    </div>
+
+                    <div className="flex items-center space-x-4">
+                      <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-sm">4</div>
+                      <div className="flex-1">
+                        <div className="font-semibold">CDN Distribution</div>
+                        <div className="text-sm text-foreground/70">{t('phases.phase5.cdnDistribution')}</div>
+                      </div>
+                      <div className="text-green-500">✓</div>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 bg-accent/10 rounded-lg p-4">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
+                      <span className="font-semibold text-green-700 dark:text-green-400">{t('phases.phase5.liveAt')}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="animate-fade-in">
+                <h3 className="font-playfair text-2xl font-semibold mb-6">📊 {t('phases.phase5.lighthouseReport')}</h3>
+
+                <div className="bg-card rounded-lg p-6 border border-border">
+                  <div className="text-center mb-6">
+                    <h4 className="font-semibold text-lg mb-2">{t('phases.phase5.auditResults')}</h4>
+                    <p className="text-sm text-foreground/70">{t('phases.phase5.auditSubtitle')}</p>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-6">
+                    {[
+                      { name: "Performance", score: 100 },
+                      { name: "Accessibility", score: 100 },
+                      { name: "Best Practices", score: 100 },
+                      { name: "SEO", score: 100 }
+                    ].map((metric) => (
+                      <div key={metric.name} className="text-center">
+                        <div className="relative w-20 h-20 mx-auto mb-2">
+                          <div className="absolute inset-0 bg-green-100 dark:bg-green-900/20 rounded-full"></div>
+                          <div className="absolute inset-2 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">
+                            {metric.score}
+                          </div>
+                        </div>
+                        <div className="text-sm font-semibold">{metric.name}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-6 text-center">
+                    <div className="text-2xl font-bold text-green-600 mb-2">{t('phases.phase5.perfectScore')}</div>
+                    <p className="text-sm text-foreground/70">
+                      {t('phases.phase5.perfectDesc')}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-6 bg-accent/10 rounded-lg p-6">
+                  <h4 className="font-semibold mb-4">{t('phases.phase5.keyMetrics')}</h4>
+                  <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <div className="font-medium">{t('testing.firstContentfulPaint')}</div>
+                      <div className="text-green-600 font-mono">1.2s</div>
+                    </div>
+                    <div>
+                      <div className="font-medium">{t('testing.largestContentfulPaint')}</div>
+                      <div className="text-green-600 font-mono">2.1s</div>
+                    </div>
+                    <div>
+                      <div className="font-medium">{t('testing.cumulativeLayoutShift')}</div>
+                      <div className="text-green-600 font-mono">0.01</div>
+                    </div>
+                    <div>
+                      <div className="font-medium">{t('testing.timeToInteractive')}</div>
+                      <div className="text-green-600 font-mono">2.8s</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Developer Section */}
+        <section className="py-12 sm:py-20 px-4 sm:px-8 bg-accent/5">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16 animate-fade-in">
+              <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">{t('creator.sectionTitle')}</h2>
+              <p className="text-lg sm:text-xl text-foreground/70">{t('creator.sectionSubtitle')}</p>
+            </div>
+
+            <div className="bg-card rounded-lg border border-border shadow-xl overflow-hidden">
+              {/* Full Width Hero Image */}
+              <div className="relative h-64 sm:h-96 lg:h-[500px] w-full">
+                <img 
+                  src={devPhotoUrl} 
+                  alt={t('creator.name')} 
+                  className="w-full h-full object-contain object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-white">
+                  <h3 className="font-playfair text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">{t('creator.name')}</h3>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6 sm:p-8">
+                <p className="text-foreground/80 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 max-w-4xl mx-auto text-center">
+                  {t('creator.description')}
+                </p>
+
+                <div className="text-center">
+                  <Button
+                    onClick={() => setIsStoryModalOpen(true)}
+                    className="bg-accent hover:bg-accent-light text-accent-foreground px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
+                    data-testid="creator-story-button"
+                  >
+                    🎓 {t('creator.selfTaughtButton')}
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section id="contact" className="py-12 sm:py-20 px-4 sm:px-8 bg-primary text-primary-foreground w-full max-w-full overflow-x-hidden">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">
+                {t('contact.title')}
+              </h2>
+              <p className="text-xl text-primary-foreground/70">
+                {t('contact.subtitle')}
+              </p>
+            </div>
+
+            <ContactForm />
+          </div>
+        </section>
+      </main>
+
+      <CreatorStoryModal 
+        isOpen={isStoryModalOpen} 
+        onClose={() => setIsStoryModalOpen(false)} 
+      />
+
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          data-testid="scroll-to-top-home"
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-accent hover:bg-accent-light text-accent-foreground shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center font-bold text-lg sm:w-14 sm:h-14"
+          aria-label="Przewiń na górę"
+        >
+          ↑
+        </button>
+      )}
+    </>
+  );
+}
+
+---------------------------------------------
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(0 0% 10.2%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(0 0% 10.2%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(0 0% 10.2%);
+  --primary: hsl(0 0% 10.2%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(0 0% 87.8%);
+  --secondary-foreground: hsl(0 0% 10.2%);
+  --muted: hsl(0 0% 87.8%);
+  --muted-foreground: hsl(0 0% 45.1%);
+  --accent: hsl(38 48% 56%);
+  --accent-light: hsl(38 55% 65%);
+  --accent-foreground: hsl(0 0% 100%);
+  --destructive: hsl(0 84.2% 60.2%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(0 0% 87.8%);
+  --input: hsl(0 0% 87.8%);
+  --ring: hsl(38 48% 56%);
+  --radius: 0.5rem;
+
+  /* Custom colors from design */
+  --color-primary: hsl(0 0% 10.2%);
+  --color-secondary: hsl(0 0% 87.8%);
+  --color-accent: hsl(38 48% 56%);
+  --color-accent-light: hsl(38 55% 65%);
+
+  /* Typography */
+  --font-playfair: "Playfair Display", serif;
+  --font-inter: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+.dark {
+  --background: hsl(0 0% 10.2%);
+  --foreground: hsl(0 0% 100%);
+  --card: hsl(0 0% 10.2%);
+  --card-foreground: hsl(0 0% 100%);
+  --popover: hsl(0 0% 10.2%);
+  --popover-foreground: hsl(0 0% 100%);
+  --primary: hsl(0 0% 10.2%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(0 0% 16.5%);
+  --secondary-foreground: hsl(0 0% 100%);
+  --muted: hsl(0 0% 16.5%);
+  --muted-foreground: hsl(0 0% 65.9%);
+  --accent: hsl(38 48% 56%);
+  --accent-light: hsl(38 55% 65%);
+  --accent-foreground: hsl(0 0% 100%);
+  --destructive: hsl(0 62.8% 30.6%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(0 0% 16.5%);
+  --input: hsl(0 0% 16.5%);
+  --ring: hsl(38 48% 56%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
+    /* max-width: 100vw; */
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    overflow-x: hidden;
+    width: 100%;
+    /* max-width: 100vw; */
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* Prevent horizontal overflow on all elements */
+  * {
+    max-width: 100%;
+  }
+
+  /* Fix for mobile containers */
+  @media (max-width: 768px) {
+    .container,
+    .max-w-6xl,
+    .max-w-4xl {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      max-width: calc(100vw - 2rem) !important;
+    }
+
+    /* Ensure sections don't overflow on mobile */
+    section {
+      width: 100% !important;
+      max-width: 100vw !important;
+      overflow-x: hidden !important;
+    }
+
+    /* Fix grid layouts on mobile */
+    .grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* Fix code blocks on mobile */
+    .code-block {
+      overflow-x: auto !important;
+      max-width: calc(100vw - 4rem) !important;
+    }
+
+    /* Mobile navigation visibility */
+    .lg\:hidden {
+      display: block !important;
+    }
+
+    /* Ensure mobile menu is above other elements */
+    .lg\:hidden .fixed {
+      z-index: 60 !important;
+    }
+
+    /* Ensure scroll-to-top button is visible on mobile */
+    button[data-testid="scroll-to-top"] {
+      display: flex !important;
+      z-index: 55 !important;
+    }
+
+    /* Ensure all text wraps properly */
+    * {
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+    }
+
+    /* Fix for pre elements in code blocks */
+    pre {
+      white-space: pre-wrap !important;
+      word-wrap: break-word !important;
+    }
+
+    /* Fix for long text elements */
+    .font-mono,
+    code {
+      font-size: 0.75rem !important;
+      line-height: 1.2 !important;
+    }
+
+    /* Global image styling for responsive behavior */
+    img {
+      max-width: 100% !important;
+      height: auto !important;
+      object-fit: contain !important;
+    }
+  }
+}
+
+@layer components {
+  .gradient-gold {
+    background: linear-gradient(
+      135deg,
+      var(--color-accent) 0%,
+      var(--color-accent-light) 100%
+    );
+  }
+
+  .code-block {
+    background: linear-gradient(
+      135deg,
+      hsl(0 0% 10.2%) 0%,
+      hsl(0 0% 16.5%) 100%
+    );
+  }
+
+  .control-hub-collapsed {
+    width: 4rem;
+  }
+
+  .control-hub-expanded {
+    width: 17.5rem;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.8s ease-out;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounceSubtle 2s infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceSubtle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px rgba(196, 161, 90, 0.3);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(196, 161, 90, 0.6);
+  }
+}
+
+-------------------------------
+
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+
+const workingCode = `// ImageGallery.tsx
+import React, { useState } from 'react';
+
+const ImageGallery: React.FC = () => {
+  const [images] = useState([
+    { id: 1, src: '/mountain.jpg', alt: 'Mountain' },
+    { id: 2, src: '/ocean.jpg', alt: 'Ocean' }
+  ]);
+
+  return (
+    <div className="grid grid-cols-2 gap-4">
+      {images.map(img => (
+        <img 
+          key={img.id}
+          src={img.src}
+          alt={img.alt}
+          className="rounded-lg hover:scale-105 transition-transform"
+        />
+      ))}
+    </div>
+  );
+};`;
+
+const buggyCode = `// ImageGallery.tsx - WITH BUG! 🐛
+import React, { useState } from 'react';
+
+const ImageGallery: React.FC = () => {
+  const [images] = useState([
+    { id: 1, src: '/mountain.jpg', alt: 'Mountain' },
+    { id: 2, src: '/ocean.jpg', alt: 'Ocean' }
+  ]);
+
+  return (
+    <div className="grid grid-cols-1 gap-4"> {/* BUG: Wrong grid-cols! */}
+      {images.map(img => (
+        <img 
+          key={img.id}
+          src={img.src}
+          alt={img.alt}
+          className="rounded-lg w-12 h-12" {/* BUG: Wrong dimensions! */}
+        />
+      ))}
+    </div>
+  );
+};`;
+
+export function InteractiveWorkshop() {
+  const [isBugActive, setIsBugActive] = useState(false);
+  const [currentCode, setCurrentCode] = useState(workingCode);
+  const { t } = useTranslation();
+  const { toast } = useToast();
+
+  const simulateBug = () => {
+    if (!isBugActive) {
+      setIsBugActive(true);
+      setCurrentCode(buggyCode);
+      
+      // Apply visual bug
+      const gallery = document.getElementById('gallery-demo');
+      if (gallery) {
+        const grid = gallery.querySelector('.grid');
+        if (grid) {
+          grid.classList.remove('grid-cols-2');
+          grid.classList.add('grid-cols-1');
+        }
+        
+        gallery.querySelectorAll('img').forEach(img => {
+          img.classList.add('w-12', 'h-12', 'object-none');
+          img.classList.remove('hover:scale-105');
+        });
+      }
+    } else {
+      setIsBugActive(false);
+      setCurrentCode(workingCode);
+      
+      // Fix visual bug
+      const gallery = document.getElementById('gallery-demo');
+      if (gallery) {
+        const grid = gallery.querySelector('.grid');
+        if (grid) {
+          grid.classList.remove('grid-cols-1');
+          grid.classList.add('grid-cols-2');
+        }
+        
+        gallery.querySelectorAll('img').forEach(img => {
+          img.classList.remove('w-12', 'h-12', 'object-none');
+          img.classList.add('hover:scale-105');
+        });
+      }
+    }
+  };
+
+  const copyCode = async () => {
+    try {
+      await navigator.clipboard.writeText(currentCode);
+      toast({
+        title: t('workshop.codeCopied'),
+        description: t('workshop.codeDescription'),
+      });
+    } catch (err) {
+      toast({
+        title: t('workshop.error'),
+        description: t('workshop.copyError'),
+        variant: "destructive",
+      });
+    }
+  };
+
+  return (
+    <div className="mb-16 animate-slide-in">
+      <h3 className="font-playfair text-2xl font-semibold mb-8 text-center">
+        🔧 {t('workshop.title')}
+      </h3>
+      
+      <div className="grid md:grid-cols-2 gap-12">
+        {/* Live Component Demo */}
+        <div>
+          <h4 className="font-semibold mb-4">{t('workshop.galleryDemo')}</h4>
+          <div 
+            id="gallery-demo" 
+            className="bg-card rounded-lg p-6 border border-border"
+            data-testid="gallery-demo"
+          >
+            {/* Working gallery component */}
+            <div className="grid grid-cols-2 gap-4 mb-4">
+              <img 
+                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
+                alt={t('workshop.mountainAlt')} 
+                className="rounded-lg shadow-md hover:scale-105 transition-transform duration-200 cursor-pointer"
+                loading="lazy"
+              />
+              <img 
+                src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
+                alt={t('workshop.oceanAlt')} 
+                className="rounded-lg shadow-md hover:scale-105 transition-transform duration-200 cursor-pointer"
+                loading="lazy"
+              />
+            </div>
+            
+            <div className="flex space-x-4">
+              <Button
+                data-testid="bug-button"
+                onClick={simulateBug}
+                variant={isBugActive ? "default" : "destructive"}
+                className={isBugActive ? "bg-green-500 hover:bg-green-600" : ""}
+              >
+                {isBugActive ? t('workshop.fixBug') : t('workshop.simulateBug')}
+              </Button>
+            </div>
+          </div>
+        </div>
+        
+        {/* Code Display */}
+        <div>
+          <h4 className="font-semibold mb-4">{t('workshop.componentCode')}</h4>
+          <div className="code-block rounded-lg p-6 text-white font-mono text-sm overflow-x-auto">
+            <pre data-testid="code-display">
+              <code>{currentCode}</code>
+            </pre>
+          </div>
+          
+          <Button
+            data-testid="copy-code-button"
+            onClick={copyCode}
+            variant="outline"
+            className="mt-4 bg-accent hover:bg-accent-light text-accent-foreground"
+          >
+            📋 {t('workshop.copyCode')}
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+-------------------------------
+
+import type { Config } from "tailwindcss";
+
+export default {
+  darkMode: ["class"],
+  content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        card: {
+          DEFAULT: "var(--card)",
+          foreground: "var(--card-foreground)",
+        },
+        popover: {
+          DEFAULT: "var(--popover)",
+          foreground: "var(--popover-foreground)",
+        },
+        primary: {
+          DEFAULT: "var(--primary)",
+          foreground: "var(--primary-foreground)",
+        },
+        secondary: {
+          DEFAULT: "var(--secondary)",
+          foreground: "var(--secondary-foreground)",
+        },
+        muted: {
+          DEFAULT: "var(--muted)",
+          foreground: "var(--muted-foreground)",
+        },
+        accent: {
+          DEFAULT: "var(--accent)",
+          light: "var(--accent-light)",
+          foreground: "var(--accent-foreground)",
+        },
+        destructive: {
+          DEFAULT: "var(--destructive)",
+          foreground: "var(--destructive-foreground)",
+        },
+        border: "var(--border)",
+        input: "var(--input)",
+        ring: "var(--ring)",
+        chart: {
+          "1": "var(--chart-1)",
+          "2": "var(--chart-2)",
+          "3": "var(--chart-3)",
+          "4": "var(--chart-4)",
+          "5": "var(--chart-5)",
+        },
+        sidebar: {
+          DEFAULT: "var(--sidebar-background)",
+          foreground: "var(--sidebar-foreground)",
+          primary: "var(--sidebar-primary)",
+          "primary-foreground": "var(--sidebar-primary-foreground)",
+          accent: "var(--sidebar-accent)",
+          "accent-foreground": "var(--sidebar-accent-foreground)",
+          border: "var(--sidebar-border)",
+          ring: "var(--sidebar-ring)",
+        },
+      },
+      fontFamily: {
+        playfair: ["var(--font-playfair)", "serif"],
+        inter: ["var(--font-inter)", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
+        sans: ["var(--font-inter)", "sans-serif"],
+        serif: ["var(--font-playfair)", "serif"],
+      },
+      animation: {
+        "fade-in": "fadeIn 0.6s ease-in-out",
+        "slide-in": "slideIn 0.8s ease-out",
+        "bounce-subtle": "bounceSubtle 2s infinite",
+        "glow": "glow 2s ease-in-out infinite alternate",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      keyframes: {
+        fadeIn: {
+          from: { opacity: "0", transform: "translateY(20px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        slideIn: {
+          from: { opacity: "0", transform: "translateX(-30px)" },
+          to: { opacity: "1", transform: "translateX(0)" },
+        },
+        bounceSubtle: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-5px)" },
+        },
+        glow: {
+          from: { boxShadow: "0 0 20px rgba(196, 161, 90, 0.3)" },
+          to: { boxShadow: "0 0 30px rgba(196, 161, 90, 0.6)" },
+        },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+    },
+  },
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+} satisfies Config;
+
+-------------------------------
+
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Button } from "@/components/ui/button";
+import { X } from "lucide-react";
+
+interface CreatorStoryModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export function CreatorStoryModal({ isOpen, onClose }: CreatorStoryModalProps) {
+  const { t } = useTranslation();
+
+  if (!isOpen) return null;
+
+  return (
+    <div 
+      className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+      onClick={onClose}
+      data-testid="creator-story-modal-overlay"
+    >
+      <div 
+        className="bg-background rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-border shadow-xl"
+        onClick={(e) => e.stopPropagation()}
+        data-testid="creator-story-modal"
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between p-6 border-b border-border">
+          <h2 className="text-2xl font-bold font-playfair">
+            {t('creator.storyTitle')}
+          </h2>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={onClose}
+            data-testid="close-modal-button"
+            className="hover:bg-accent/10"
+          >
+            <X className="w-4 h-4" />
+          </Button>
+        </div>
+
+        {/* Content */}
+        <div className="p-6">
+          <div className="prose prose-lg max-w-none dark:prose-invert">
+            {t('creator.storyText').split('\\n\\n').map((paragraph, index) => (
+              <p key={index} className="mb-4 leading-relaxed text-foreground/90">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="flex justify-center p-6 border-t border-border">
+          <Button 
+            onClick={onClose}
+            className="bg-accent hover:bg-accent-light text-accent-foreground px-8"
+            data-testid="close-story-button"
+          >
+            {t('creator.closeButton')}
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+------------------------------------
+
+import { useTranslation } from "react-i18next";
+import { Button } from "@/components/ui/button";
+import { X } from "lucide-react";
+
+interface CreatorStoryModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export function CreatorStoryModal({ isOpen, onClose }: CreatorStoryModalProps) {
+  const { t } = useTranslation();
+
+  if (!isOpen) return null;
+
+  return (
+    <div
+      className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+      onClick={onClose}
+      data-testid="creator-story-modal-overlay"
+    >
+      <div
+        className="bg-background rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-border shadow-xl"
+        onClick={(e) => e.stopPropagation()}
+        data-testid="creator-story-modal"
+      >
+        <div className="flex items-center justify-between p-6 border-b border-border">
+          <h2 className="text-2xl font-bold font-playfair">
+            {t("creator.storyTitle")}
+          </h2>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={onClose}
+            data-testid="close-modal-button"
+            className="hover:bg-accent/10"
+          >
+            <X className="w-4 h-4" />
+          </Button>
+        </div>
+
+        <div className="p-6">
+          <div className="prose prose-lg max-w-none dark:prose-invert">
+            {t("creator.storyText")
+              .split("\n\n")
+              .map((paragraph, index) => (
+                <p
+                  key={index}
+                  className="mb-4 leading-relaxed text-foreground/90"
+                >
+                  {paragraph}
+                </p>
+              ))}
+          </div>
+        </div>
+
+        <div className="flex justify-center p-6 border-t border-border">
+          <Button
+            onClick={onClose}
+            className="bg-accent hover:bg-accent-light text-accent-foreground px-8"
+            data-testid="close-story-button"
+          >
+            {t("creator.closeButton")}
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+-------------------------------
+
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { useTheme } from "@/components/theme-provider";
+import { cn } from "@/lib/utils";
+import i18n from "@/lib/i18n";
+
+export function ControlHub() {
+  const { t } = useTranslation();
+  const { theme, setTheme } = useTheme();
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [activePhase, setActivePhase] = useState('phase-0');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showScrollToTop, setShowScrollToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['phase-0', 'phase-1', 'phase-2', 'phase-3', 'phase-4', 'phase-5', 'contact'];
+      const currentSection = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+
+      if (currentSection && currentSection !== activePhase) {
+        setActivePhase(currentSection);
+      }
+
+      // Show/hide scroll to top button
+      if (window.scrollY > 300) {
+        setShowScrollToTop(true);
+      } else {
+        setShowScrollToTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [activePhase]);
+
+  const phases = [
+    { id: 'phase-0', icon: '💡', label: t('nav.iskra') },
+    { id: 'phase-1', icon: '🏗️', label: t('nav.fundamenty') },
+    { id: 'phase-2', icon: '🎨', label: t('nav.innowacja') },
+    { id: 'phase-3', icon: '⚙️', label: t('nav.development') },
+    { id: 'phase-4', icon: '🌍', label: t('nav.zasieg') },
+    { id: 'phase-5', icon: '🚀', label: t('nav.deployment') },
+    { id: 'contact', icon: '📧', label: t('nav.contact') }
+  ];
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setActivePhase(sectionId);
+      setIsMobileMenuOpen(false); // Close mobile menu after navigation
+    }
+  };
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <>
+      {/* Desktop Navigation */}
+      <div 
+        className={`hidden lg:block fixed left-4 top-1/2 transform -translate-y-1/2 z-50 transition-all duration-300 ${
+          isExpanded ? 'control-hub-expanded' : 'control-hub-collapsed'
+        } bg-card border border-border rounded-lg shadow-lg hover:shadow-xl`}
+        onMouseEnter={() => setIsExpanded(true)}
+        onMouseLeave={() => setIsExpanded(false)}
+        data-testid="control-hub"
+      >
+        <div className="flex flex-col h-full">
+          {/* Logo/Brand */}
+          <div className="p-3 lg:p-4 border-b border-border">
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 gradient-gold rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                AI
+              </div>
+              <span 
+                className={cn(
+                  "font-playfair font-semibold text-lg transition-opacity duration-300 whitespace-nowrap",
+                  isExpanded ? "opacity-100" : "opacity-0"
+                )}
+              >
+                Genesis
+              </span>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <nav className="flex-1 py-3 lg:py-4">
+            <div className="space-y-1 lg:space-y-2 px-1 lg:px-2">
+              {phases.map((phase) => (
+                <button
+                  key={phase.id}
+                  data-testid={`nav-${phase.id}`}
+                  onClick={() => scrollToSection(phase.id)}
+                  className={cn(
+                    "nav-item flex items-center space-x-3 p-2 lg:p-3 rounded-lg hover:bg-accent/10 transition-colors duration-200 group/item relative w-full text-left",
+                    activePhase === phase.id ? "bg-accent text-accent-foreground" : ""
+                  )}
+                  title={phase.label}
+                >
+                  <div className="w-6 h-6 flex items-center justify-center text-xl">
+                    {phase.icon}
+                  </div>
+                  <span 
+                    className={cn(
+                      "nav-text transition-opacity duration-300 whitespace-nowrap",
+                      isExpanded ? "opacity-100" : "opacity-0"
+                    )}
+                  >
+                    {phase.label}
+                  </span>
+                  {!isExpanded && (
+                    <div className="absolute left-full ml-2 px-2 py-1 bg-primary text-primary-foreground text-xs rounded opacity-0 group-hover/item:opacity-100 transition-opacity duration-200 pointer-events-none">
+                      {phase.label}
+                    </div>
+                  )}
+                </button>
+              ))}
+            </div>
+          </nav>
+
+          {/* Controls */}
+          <div className="border-t border-border p-4 space-y-3">
+            {/* Language Switcher */}
+            <div className="flex items-center space-x-3">
+              <div className="w-6 h-6 flex items-center justify-center text-xl">🌐</div>
+              <select
+                data-testid="language-selector"
+                value={i18n.language}
+                onChange={(e) => changeLanguage(e.target.value)}
+                className={cn(
+                  "bg-background border border-border rounded px-2 py-1 text-sm transition-opacity duration-300 text-foreground",
+                  isExpanded ? "opacity-100" : "opacity-0"
+                )}
+              >
+                <option value="pl">Polski</option>
+                <option value="en">English</option>
+                <option value="ja">日本語</option>
+              </select>
+            </div>
+
+            {/* Theme Toggle */}
+            <div className="flex items-center space-x-3">
+              <div className="w-6 h-6 flex items-center justify-center text-xl">
+                {theme === "dark" ? "🌙" : "☀️"}
+              </div>
+              <button
+                data-testid="theme-toggle"
+                onClick={toggleTheme}
+                className={cn(
+                  "text-sm transition-opacity duration-300 whitespace-nowrap",
+                  isExpanded ? "opacity-100" : "opacity-0"
+                )}
+              >
+                {theme === "dark" ? "Light Mode" : "Dark Mode"}
+              </button>
+            </div>
+
+            {/* Accessibility */}
+            <div className="flex items-center space-x-3">
+              <div className="w-6 h-6 flex items-center justify-center text-xl">♿</div>
+              <button
+                data-testid="accessibility-toggle"
+                className={cn(
+                  "text-sm transition-opacity duration-300 whitespace-nowrap",
+                  isExpanded ? "opacity-100" : "opacity-0"
+                )}
+              >
+                Accessibility
+              </button>
+            </div>
+          </div>
+
+          {/* Social Links */}
+          <div className="border-t border-border p-4">
+            <div className={cn(
+              "flex space-x-3 transition-all duration-300",
+              isExpanded ? "justify-start" : "justify-center"
+            )}>
+              <a href="#" className="text-muted-foreground hover:text-accent transition-colors" title="GitHub">
+                <div className="w-5 h-5 text-lg">📂</div>
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-accent transition-colors" title="Twitter">
+                <div className="w-5 h-5 text-lg">🐦</div>
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-accent transition-colors" title="LinkedIn">
+                <div className="w-5 h-5 text-lg">💼</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Navigation Toggle */}
+      <button
+        data-testid="mobile-menu-toggle"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        className="lg:hidden fixed top-4 right-4 z-50 p-3 rounded-lg bg-card/90 backdrop-blur-sm border border-border text-foreground shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
+      >
+        {isMobileMenuOpen ? '✕' : '☰'}
+      </button>
+
+      {/* Mobile Navigation Menu */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden fixed inset-0 z-40 bg-black/20 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)}>
+          <div className="fixed left-0 top-0 h-full w-72 bg-background/95 backdrop-blur-md border-r border-border shadow-2xl p-4 flex flex-col animate-slide-in" onClick={(e) => e.stopPropagation()}>
+            {/* Logo/Brand */}
+            <div className="p-3 border-b border-border">
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 gradient-gold rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                  AI
+                </div>
+                <span className="font-playfair font-semibold text-lg">Genesis</span>
+              </div>
+            </div>
+
+            {/* Navigation */}
+            <nav className="flex-1 py-4">
+              <div className="space-y-2 px-2">
+                {phases.map((phase) => (
+                  <button
+                    key={phase.id}
+                    data-testid={`mobile-nav-${phase.id}`}
+                    onClick={() => scrollToSection(phase.id)}
+                    className={cn(
+                      "nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-accent/10 transition-colors duration-200 w-full text-left",
+                      activePhase === phase.id ? "bg-accent text-accent-foreground" : ""
+                    )}
+                    title={phase.label}
+                  >
+                    <div className="w-6 h-6 flex items-center justify-center text-xl">
+                      {phase.icon}
+                    </div>
+                    <span className="nav-text">
+                      {phase.label}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </nav>
+
+            {/* Controls */}
+            <div className="border-t border-border p-4 space-y-3">
+              {/* Language Switcher */}
+              <div className="flex items-center space-x-3">
+                <div className="w-6 h-6 flex items-center justify-center text-xl">🌐</div>
+                <select
+                  data-testid="mobile-language-selector"
+                  value={i18n.language}
+                  onChange={(e) => changeLanguage(e.target.value)}
+                  className="bg-background border border-border rounded px-2 py-1 text-sm text-foreground w-full"
+                >
+                  <option value="pl">Polski</option>
+                  <option value="en">English</option>
+                  <option value="ja">日本語</option>
+                </select>
+              </div>
+
+              {/* Theme Toggle */}
+              <div className="flex items-center space-x-3">
+                <div className="w-6 h-6 flex items-center justify-center text-xl">
+                  {theme === "dark" ? "🌙" : "☀️"}
+                </div>
+                <button
+                  data-testid="mobile-theme-toggle"
+                  onClick={toggleTheme}
+                  className="text-sm w-full text-left"
+                >
+                  {theme === "dark" ? "Light Mode" : "Dark Mode"}
+                </button>
+              </div>
+
+              {/* Accessibility */}
+              <div className="flex items-center space-x-3">
+                <div className="w-6 h-6 flex items-center justify-center text-xl">♿</div>
+                <button
+                  data-testid="mobile-accessibility-toggle"
+                  className="text-sm w-full text-left"
+                >
+                  Accessibility
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Scroll to Top Button */}
+      {showScrollToTop && (
+        <button
+          data-testid="scroll-to-top"
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-accent hover:bg-accent-light text-accent-foreground shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center font-bold text-lg"
+          aria-label="Przewiń na górę"
+        >
+          ↑
+        </button>
+      )}
+    </>
+  );
+}
+
+-------------------------------
+
+import { Switch, Route } from "wouter";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { HelmetProvider } from "react-helmet-async";
+import { Suspense } from "react";
+
+import { queryClient } from "./lib/queryClient";
+import { Toaster } from "@/components/ui/toaster";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { ThemeProvider } from "@/components/theme-provider";
+import "./lib/i18n";
+import Home from "@/pages/home";
+import NotFound from "@/pages/not-found";
+
+function Router() {
+  return (
+    <Switch>
+      <Route path="/" component={Home} />
+      <Route component={NotFound} />
+    </Switch>
+  );
+}
+
+function App() {
+  return (
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider defaultTheme="system" storageKey="ai-genesis-theme">
+          <TooltipProvider>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Toaster />
+              <Router />
+            </Suspense>
+          </TooltipProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
+  );
+}
+
+export default App;
+
+-------------------------ostatni dobry---------------------
+import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
+import { Button } from "@/components/ui/button";
+import { ControlHub } from "@/components/control-hub";
+import InteractiveWorkshop from "@/components/interactive-workshop";
+import { TranslationDemo } from "@/components/translation-demo";
+import { ContactForm } from "@/components/contact-form";
+import { CreatorStoryModal } from "@/components/creator-story-modal";
+import devPhotoUrl from "@assets/generation-e708a120-0c3a-4d4c-b78c-c58991e69165_1755692585443.png";
+
+export default function Home() {
+  const { t } = useTranslation();
+  const [isStoryModalOpen, setIsStoryModalOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <>
+      <Helmet>
+        <title>{t("seo.title")}</title>
+        <meta name="description" content={t("seo.description")} />
+        <meta property="og:title" content={t("seo.title")} />
+        <meta property="og:description" content={t("seo.description")} />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href={window.location.href} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: t("seo.title"),
+            description: t("seo.description"),
+            author: {
+              "@type": "Person",
+              name: "AI Genesis",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "AI Genesis",
+            },
+          })}
+        </script>
+      </Helmet>
+
+      <ControlHub />
+
+      <main className="lg:ml-16 transition-all duration-300 w-full overflow-x-hidden">
+        <section className="min-h-screen bg-gradient-to-br from-background via-secondary/5 to-accent/5 flex items-center justify-center relative overflow-hidden px-4 lg:px-8 w-full">
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-10 left-10 w-20 h-20 bg-accent/10 rounded-full animate-bounce-subtle"></div>
+            <div className="absolute top-1/2 right-20 w-16 h-16 bg-accent/20 rounded-full animate-bounce-subtle delay-1000"></div>
+            <div className="absolute bottom-20 left-1/3 w-12 h-12 bg-accent/15 rounded-full animate-bounce-subtle delay-2000"></div>
+          </div>
+
+          <div className="text-center z-10 animate-fade-in w-full max-w-4xl mx-auto">
+            <h1 className="font-playfair text-3xl sm:text-5xl lg:text-7xl font-bold mb-6">
+              <span className="gradient-gold bg-clip-text text-transparent">
+                {t("hero.title")}
+              </span>
+            </h1>
+            <h2 className="font-playfair text-lg sm:text-2xl lg:text-3xl mb-8 text-foreground/80">
+              {t("hero.subtitle")}
+            </h2>
+            <p className="text-base sm:text-lg lg:text-xl mb-12 max-w-2xl mx-auto leading-relaxed text-foreground/70 px-4">
+              {t("hero.description")}
+            </p>
+
+            <div className="mb-12">
+              <div className="flex justify-center space-x-4 mb-4">
+                {[...Array(6)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="w-2 h-2 bg-accent rounded-full animate-pulse"
+                    style={{ animationDelay: `${i * 0.2}s` }}
+                  ></div>
+                ))}
+              </div>
+              <p className="text-sm text-foreground/60">
+                {t("phases.phaseCount")}
+              </p>
+            </div>
+
+            <a
+              href="#phase-0"
+              className="inline-flex items-center space-x-3 bg-accent hover:bg-accent-light text-accent-foreground px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105 animate-glow"
+              data-testid="hero-cta"
+            >
+              <span>{t("hero.cta")}</span>
+              <span>🚀</span>
+            </a>
+          </div>
+        </section>
+
+        <section
+          id="phase-0"
+          className="min-h-screen py-12 sm:py-20 px-4 sm:px-8"
+        >
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="w-20 h-20 bg-gradient-to-br from-accent to-accent-light rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
+                💡
+              </div>
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">
+                {t("phases.phase0.title")}
+              </h2>
+              <p className="text-xl text-foreground/70 mb-12">
+                {t("phases.phase0.subtitle")}
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="animate-slide-in">
+                <h3 className="font-playfair text-2xl font-semibold mb-6">
+                  {t("phases.phase0.rawIdeaTitle")}
+                </h3>
+                <div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 p-6 mb-8 transform rotate-1">
+                  <div className="font-mono text-sm mb-4 text-yellow-700 dark:text-yellow-300">
+                    {t("phases.phase0.noteComment")}
+                  </div>
+                  <p className="text-foreground leading-relaxed">
+                    "{t("phases.phase0.userNote")}"
+                  </p>
+                </div>
+
+                <div className="bg-accent/10 rounded-lg p-6">
+                  <h4 className="font-semibold mb-4 flex items-center">
+                    <span className="mr-2">🤖</span>
+                    {t("phases.phase0.aiInterpretation")}
+                  </h4>
+                  <p className="text-sm leading-relaxed">
+                    {t("phases.phase0.aiDescription")}
+                  </p>
+                </div>
+              </div>
+
+              <div className="animate-fade-in">
+                <div className="bg-primary text-primary-foreground rounded-lg p-6 border border-border">
+                  <div className="flex items-center mb-4">
+                    <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+                    <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                    <span className="text-sm ml-4">
+                      {t("phases.phase0.terminalTitle")}
+                    </span>
+                  </div>
+                  <div className="font-mono text-green-400 text-sm space-y-2">
+                    <div className="animate-pulse">
+                      &gt; {t("phases.phase0.analyzing")}
+                    </div>
+                    <div
+                      className="animate-pulse"
+                      style={{ animationDelay: "0.5s" }}
+                    >
+                      &gt; {t("phases.phase0.generating")}
+                    </div>
+                    <div
+                      className="animate-pulse"
+                      style={{ animationDelay: "1s" }}
+                    >
+                      &gt; {t("phases.phase0.planning")}
+                    </div>
+                    <div
+                      className="animate-pulse"
+                      style={{ animationDelay: "1.5s" }}
+                    >
+                      &gt; {t("phases.phase0.designing")}
+                    </div>
+                    <div
+                      className="animate-pulse"
+                      style={{ animationDelay: "2s" }}
+                    >
+                      &gt; {t("phases.phase0.complete")}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="phase-1"
+          className="min-h-screen py-12 sm:py-20 px-4 sm:px-8 bg-secondary/5"
+        >
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
+                🏗️
+              </div>
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">
+                {t("phases.phase1.title")}
+              </h2>
+              <p className="text-xl text-foreground/70 mb-12">
+                {t("phases.phase1.subtitle")}
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+              <div className="animate-slide-in">
+                <h3 className="font-playfair text-xl sm:text-2xl font-semibold mb-6">
+                  {t("phases.phase1.projectStructure")}
+                </h3>
+
+                <div className="code-block rounded-lg p-4 sm:p-6 text-white font-mono text-xs sm:text-sm overflow-x-auto">
+                  <div className="text-accent mb-4">ai-genesis-project/</div>
+                  <div className="ml-4 space-y-1">
+                    <div>
+                      ├── <span className="text-yellow-400">functions/</span>
+                    </div>
+                    <div className="ml-4">└── submit-form.ts</div>
+                    <div>
+                      ├── <span className="text-yellow-400">src/</span>
+                    </div>
+                    <div className="ml-4">
+                      ├── <span className="text-blue-400">components/</span>
+                    </div>
+                    <div className="ml-8">├── __tests__/</div>
+                    <div className="ml-8">├── ControlHub.tsx</div>
+                    <div className="ml-8">└── InteractiveWorkshop.tsx</div>
+                    <div className="ml-4">
+                      ├── <span className="text-green-400">pages/</span>
+                    </div>
+                    <div className="ml-4">
+                      ├── <span className="text-purple-400">translations/</span>
+                    </div>
+                    <div className="ml-8">├── pl.json</div>
+                    <div className="ml-8">├── en.json</div>
+                    <div className="ml-8">└── ja.json</div>
+                    <div className="ml-4">├── App.tsx</div>
+                    <div className="ml-4">├── main.tsx</div>
+                    <div className="ml-4">└── i18n.ts</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="animate-fade-in">
+                <h3 className="font-playfair text-xl sm:text-2xl font-semibold mb-6">
+                  {t("phases.phase1.techStack")}
+                </h3>
+
+                <div className="space-y-4 sm:space-y-6">
+                  <div className="bg-card rounded-lg p-4 sm:p-6 border border-border">
+                    <div className="flex items-center mb-3 sm:mb-4">
+                      <div className="w-8 h-8 bg-blue-500 rounded flex items-center justify-center text-white text-sm font-bold mr-3">
+                        TS
+                      </div>
+                      <h4 className="font-semibold text-sm sm:text-base">
+                        TypeScript + React + Vite
+                      </h4>
+                    </div>
+                    <p className="text-sm text-foreground/70">
+                      {t("phases.phase1.typeScriptDesc")}
+                    </p>
+                  </div>
+
+                  <div className="bg-card rounded-lg p-4 sm:p-6 border border-border">
+                    <div className="flex items-center mb-3 sm:mb-4">
+                      <div className="w-8 h-8 bg-cyan-500 rounded flex items-center justify-center text-white text-sm font-bold mr-3">
+                        TW
+                      </div>
+                      <h4 className="font-semibold text-sm sm:text-base">
+                        TailwindCSS + Framer Motion
+                      </h4>
+                    </div>
+                    <p className="text-sm text-foreground/70">
+                      {t("phases.phase1.tailwindDesc")}
+                    </p>
+                  </div>
+
+                  <div className="bg-card rounded-lg p-4 sm:p-6 border border-border">
+                    <div className="flex items-center mb-3 sm:mb-4">
+                      <div className="w-8 h-8 bg-green-500 rounded flex items-center justify-center text-white text-sm font-bold mr-3">
+                        ⚡
+                      </div>
+                      <h4 className="font-semibold text-sm sm:text-base">
+                        Netlify Functions + Testing
+                      </h4>
+                    </div>
+                    <p className="text-sm text-foreground/70">
+                      {t("phases.phase1.netlifyDesc")}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-6 sm:mt-8 bg-accent/10 rounded-lg p-4 sm:p-6">
+                  <h4 className="font-semibold mb-4 flex items-center">
+                    <span className="mr-2">🤖</span>
+                    {t("phases.phase1.aiJustification")}
+                  </h4>
+                  <p className="text-sm leading-relaxed">
+                    "{t("phases.phase1.stackReasoning")}"
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="phase-2"
+          className="min-h-screen py-12 sm:py-20 px-4 sm:px-8"
+        >
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
+                🎨
+              </div>
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">
+                {t("phases.phase2.title")}
+              </h2>
+              <p className="text-xl text-foreground/70 mb-12">
+                {t("phases.phase2.subtitle")}
+              </p>
+            </div>
+
+            <div className="mb-12 animate-slide-in">
+              <div className="bg-accent/10 border-l-4 border-accent p-6 rounded-r-lg">
+                <h3 className="font-playfair text-xl font-semibold mb-4">
+                  {t("phases.phase2.designDecision")}
+                </h3>
+                <p className="leading-relaxed">
+                  {t("phases.phase2.designReasoning")}
+                </p>
+              </div>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+              <div className="animate-fade-in">
+                <h3 className="font-playfair text-xl sm:text-2xl font-semibold mb-6">
+                  {t("phases.phase2.hubFeatures")}
+                </h3>
+
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-card rounded-lg border border-border">
+                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm">
+                      🧭
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">
+                        {t("phases.phase2.navFeature")}
+                      </h4>
+                      <p className="text-sm text-foreground/70">
+                        {t("phases.phase2.navDesc")}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-card rounded-lg border border-border">
+                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">
+                      🌐
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">
+                        {t("phases.phase2.langFeature")}
+                      </h4>
+                      <p className="text-sm text-foreground/70">
+                        {t("phases.phase2.langDesc")}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-card rounded-lg border border-border">
+                    <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm">
+                      🌙
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">
+                        {t("phases.phase2.themeFeature")}
+                      </h4>
+                      <p className="text-sm text-foreground/70">
+                        {t("phases.phase2.themeDesc")}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-card rounded-lg border border-border">
+                    <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-sm">
+                      ♿
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">
+                        {t("phases.phase2.a11yFeature")}
+                      </h4>
+                      <p className="text-sm text-foreground/70">
+                        {t("phases.phase2.a11yDesc")}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="animate-slide-in">
+                <h3 className="font-playfair text-xl sm:text-2xl font-semibold mb-6">
+                  {t("phases.phase2.demoTitle")}
+                </h3>
+
+                <div className="relative bg-muted rounded-lg p-6 h-96 overflow-hidden">
+                  <div className="absolute left-0 top-0 h-full w-12 bg-card border-r border-border hover:w-32 transition-all duration-300 group">
+                    <div className="p-2 space-y-2">
+                      <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center text-accent-foreground text-xs font-bold">
+                        AI
+                      </div>
+                      <div className="space-y-1">
+                        <div className="w-8 h-8 flex items-center justify-center text-xl">
+                          💡
+                        </div>
+                        <div className="w-8 h-8 flex items-center justify-center text-xl">
+                          🏗️
+                        </div>
+                        <div className="w-8 h-8 flex items-center justify-center text-xl">
+                          🎨
+                        </div>
+                        <div className="w-8 h-8 flex items-center justify-center text-xl">
+                          ⚙️
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="ml-16 p-4">
+                    <h4 className="font-semibold mb-2">
+                      {t("phases.phase2.mainContent")}
+                    </h4>
+                    <p className="text-sm text-foreground/70 mb-4">
+                      {t("phases.phase2.hubDescription")}
+                    </p>
+                    <div className="space-y-2">
+                      <div className="h-2 bg-secondary rounded"></div>
+                      <div className="h-2 bg-secondary rounded w-3/4"></div>
+                      <div className="h-2 bg-secondary rounded w-1/2"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="phase-3"
+          className="min-h-screen py-12 sm:py-20 px-4 sm:px-8 bg-secondary/5"
+        >
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="w-20 h-20 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
+                ⚙️
+              </div>
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">
+                {t("phases.phase3.title")}
+              </h2>
+              <p className="text-xl text-foreground/70 mb-12">
+                {t("phases.phase3.subtitle")}
+              </p>
+            </div>
+
+            <InteractiveWorkshop />
+
+            <div className="animate-fade-in">
+              <h3 className="font-playfair text-2xl font-semibold mb-8 text-center">
+                {t("phases.phase3.aiDialogue")}
+              </h3>
+
+              <div className="bg-card rounded-lg py-4 px-0 md:p-6 border border-border space-y-12">
+                <div className="flex flex-col items-center md:flex-row md:items-start md:space-x-4">
+                  <div className="mb-4 md:mb-0 w-10 h-10 bg-blue-500 rounded-full flex-shrink-0 flex items-center justify-center text-white text-base">
+                    👤
+                  </div>
+                  <div className="w-full flex-1">
+                    <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-4">
+                      <p className="font-mono text-sm">
+                        "{t("phases.phase3.userRequest")}"
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center md:flex-row md:items-start md:space-x-4">
+                  <div className="mb-4 md:mb-0 w-10 h-10 bg-accent rounded-full flex-shrink-0 flex items-center justify-center text-accent-foreground text-base">
+                    🤖
+                  </div>
+                  <div className="w-full flex-1">
+                    <div className="bg-accent/10 rounded-lg p-4">
+                      <p className="text-sm">
+                        <strong>{t("phases.phase3.aiResponse")}</strong>{" "}
+                        <code className="bg-muted px-2 py-1 rounded">
+                          components/ImageModal.tsx
+                        </code>
+                        .
+                      </p>
+                      <div className="mt-4 code-block rounded p-4 text-white font-mono text-xs">
+                        <pre>
+                          <code className="whitespace-pre-wrap break-words">{`${t(
+                            "phases.phase3.generatedComment"
+                          )}
+import { createPortal } from 'react-dom';
+import { useEffect } from 'react';
+
+interface ImageModalProps {
+  src: string;
+  alt: string;
+  onClose: () => void;
+}
+
+export const ImageModal: React.FC<ImageModalProps> = ({ src, alt, onClose }) => {
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [onClose]);
+
+  return createPortal(
+    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+         onClick={onClose}>
+      <img src={src} alt={alt} className="max-w-full max-h-full"
+           onClick={(e) => e.stopPropagation()} />
+    </div>,
+    document.body
+  );
+};`}</code>
+                        </pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="phase-4"
+          className="min-h-screen py-12 sm:py-20 px-4 sm:px-8"
+        >
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
+                🌍
+              </div>
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">
+                {t("phases.phase4.title")}
+              </h2>
+              <p className="text-xl text-foreground/70 mb-12">
+                {t("phases.phase4.subtitle")}
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12">
+              <TranslationDemo />
+
+              <div className="animate-fade-in">
+                <h3 className="font-playfair text-2xl font-semibold mb-6">
+                  {t("phases.phase4.seoImplementation")}
+                </h3>
+
+                <div className="space-y-6">
+                  <div className="bg-card rounded-lg p-6 border border-border">
+                    <h4 className="font-semibold mb-4 flex items-center">
+                      <span className="mr-2">📋</span>
+                      {t("phases.phase4.metaTags")}
+                    </h4>
+                    <div className="code-block rounded p-4 text-white font-mono text-xs">
+                      <pre>
+                        <code className="whitespace-pre-wrap break-words">{`${t(
+                          "phases.phase4.metaComment"
+                        )}
+<Helmet>
+  <title>{t('seo.title')}</title>
+  <meta name="description" content={t('seo.description')} />
+  <meta property="og:title" content={t('seo.title')} />
+  <meta property="og:description" content={t('seo.description')} />
+  <link rel="canonical" href={canonicalUrl} />
+  <html lang={currentLanguage} />
+</Helmet>`}</code>
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="bg-card rounded-lg p-6 border border-border">
+                    <h4 className="font-semibold mb-4 flex items-center">
+                      <span className="mr-2">🏷️</span>
+                      {t("phases.phase4.jsonLD")}
+                    </h4>
+                    <div className="code-block rounded p-4 text-white font-mono text-xs">
+                      <pre>
+                        <code className="whitespace-pre-wrap break-words">{`{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AI Genesis: Interactive Meta-Tutorial",
+  "description": "Comprehensive guide to AI-assisted development",
+  "author": {
+    "@type": "Person",
+    "name": "AI Genesis"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AI Genesis"
+  }
+}`}</code>
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="bg-accent/10 rounded-lg p-6">
+                    <h4 className="font-semibold mb-4">
+                      📊 {t("performance.title")}
+                    </h4>
+                    <div className="grid grid-cols-2 gap-4 text-sm">
+                      <div>
+                        <div className="font-medium">
+                          {t("performance.lazyLoading")}
+                        </div>
+                        <div className="text-foreground/70">
+                          {t("performance.lazyLoadingDesc")}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="font-medium">
+                          {t("performance.imageOptimization")}
+                        </div>
+                        <div className="text-foreground/70">
+                          {t("performance.imageOptDesc")}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="font-medium">
+                          {t("performance.codeSplitting")}
+                        </div>
+                        <div className="text-foreground/70">
+                          {t("performance.codeSplittingDesc")}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="font-medium">
+                          {t("performance.bundleAnalysis")}
+                        </div>
+                        <div className="text-foreground/70">
+                          {t("performance.bundleAnalysisDesc")}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-12 sm:py-20 px-4 sm:px-8 bg-secondary/5">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
+                🧪
+              </div>
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">
+                {t("testing.phaseTitle")}
+              </h2>
+              <p className="text-xl text-foreground/70 mb-12">
+                {t("testing.phaseSubtitle")}
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12">
+              <div className="animate-slide-in">
+                <h3 className="font-playfair text-2xl font-semibold mb-6">
+                  🔬 {t("testing.unitTestExample")}
+                </h3>
+
+                <div className="code-block rounded-lg p-6 text-white font-mono text-sm">
+                  <pre>
+                    <code className="whitespace-pre-wrap break-words">{`// ControlHub.test.tsx
+import { render, screen, fireEvent } from '@testing-library/react';
+import { ControlHub } from '../ControlHub';
+
+describe('ControlHub', () => {
+  it('should expand on hover', async () => {
+    render(<ControlHub />);
+
+    const hub = screen.getByTestId('control-hub');
+    expect(hub).toHaveClass('control-hub-collapsed');
+
+    fireEvent.mouseEnter(hub);
+
+    await waitFor(() => {
+      expect(hub).toHaveClass('control-hub-expanded');
+    });
+  });
+
+  it('should navigate to correct section', () => {
+    render(<ControlHub />);
+
+    const iskraLink = screen.getByText('Iskra');
+    fireEvent.click(iskraLink);
+
+    expect(window.location.hash).toBe('#phase-0');
+  });
+});`}</code>
+                  </pre>
+                </div>
+              </div>
+
+              <div className="animate-fade-in">
+                <h3 className="font-playfair text-2xl font-semibold mb-6">
+                  ✅ {t("testing.testResults")}
+                </h3>
+
+                <div className="bg-primary text-primary-foreground rounded-lg p-6 border border-border">
+                  <div className="flex items-center mb-4">
+                    <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+                    <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                    <span className="text-sm ml-4">
+                      {t("testing.testResultsVitest")}
+                    </span>
+                  </div>
+                  <div className="font-mono text-green-400 text-sm space-y-1">
+                    <div>✓ ControlHub.test.tsx (2)</div>
+                    <div className="ml-4">✓ should expand on hover</div>
+                    <div className="ml-4">
+                      ✓ should navigate to correct section
+                    </div>
+                    <div>✓ TranslationModule.test.tsx (3)</div>
+                    <div className="ml-4">
+                      ✓ should switch languages correctly
+                    </div>
+                    <div className="ml-4">✓ should fallback to English</div>
+                    <div className="ml-4">
+                      ✓ should update translations dynamically
+                    </div>
+                    <div>✓ InteractiveWorkshop.test.tsx (2)</div>
+                    <div className="ml-4">✓ should simulate bug correctly</div>
+                    <div className="ml-4">✓ should fix bug on demand</div>
+                    <div className="text-accent mt-4">
+                      <strong>Tests: 7 passed, 7 total</strong>
+                      <br />
+                      <strong>Time: 2.14s</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 bg-card rounded-lg p-6 border border-border">
+                  <h4 className="font-semibold mb-4">
+                    🛠️ {t("testing.testingStack")}
+                  </h4>
+                  <div className="space-y-3 text-sm">
+                    <div className="flex justify-between">
+                      <span>{t("testing.testRunner")}</span>
+                      <span className="font-mono">Vitest</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>{t("testing.testingLibrary")}</span>
+                      <span className="font-mono">@testing-library/react</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>{t("testing.coverage")}</span>
+                      <span className="text-green-600 font-mono">96.8%</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>{t("testing.e2eTests")}</span>
+                      <span className="font-mono">
+                        {t("testing.e2eTestsValue")}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="phase-5"
+          className="min-h-screen py-12 sm:py-20 px-4 sm:px-8"
+        >
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="w-20 h-20 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
+                🚀
+              </div>
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">
+                {t("phases.phase5.title")}
+              </h2>
+              <p className="text-xl text-foreground/70 mb-12">
+                {t("phases.phase5.subtitle")}
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="animate-slide-in">
+                <h3 className="font-playfair text-2xl font-semibold mb-6">
+                  🌐 {t("phases.phase5.deploymentProcess")}
+                </h3>
+
+                <div className="bg-card rounded-lg p-6 border border-border">
+                  <div className="space-y-4">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm">
+                        1
+                      </div>
+                      <div className="flex-1">
+                        <div className="font-semibold">Git Push</div>
+                        <div className="text-sm text-foreground/70">
+                          {t("phases.phase5.gitPush")}
+                        </div>
+                      </div>
+                      <div className="text-green-500">✓</div>
+                    </div>
+
+                    <div className="flex items-center space-x-4">
+                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">
+                        2
+                      </div>
+                      <div className="flex-1">
+                        <div className="font-semibold">Netlify Build</div>
+                        <div className="text-sm text-foreground/70">
+                          {t("phases.phase5.netlifyBuild")}
+                        </div>
+                      </div>
+                      <div className="text-green-500">✓</div>
+                    </div>
+
+                    <div className="flex items-center space-x-4">
+                      <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm">
+                        3
+                      </div>
+                      <div className="flex-1">
+                        <div className="font-semibold">Functions Deploy</div>
+                        <div className="text-sm text-foreground/70">
+                          {t("phases.phase5.functionsDeploy")}
+                        </div>
+                      </div>
+                      <div className="text-green-500">✓</div>
+                    </div>
+
+                    <div className="flex items-center space-x-4">
+                      <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-sm">
+                        4
+                      </div>
+                      <div className="flex-1">
+                        <div className="font-semibold">CDN Distribution</div>
+                        <div className="text-sm text-foreground/70">
+                          {t("phases.phase5.cdnDistribution")}
+                        </div>
+                      </div>
+                      <div className="text-green-500">✓</div>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 bg-accent/10 rounded-lg p-4">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
+                      <span className="font-semibold text-green-700 dark:text-green-400">
+                        {t("phases.phase5.liveAt")}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="animate-fade-in">
+                <h3 className="font-playfair text-2xl font-semibold mb-6">
+                  📊 {t("phases.phase5.lighthouseReport")}
+                </h3>
+
+                <div className="bg-card rounded-lg p-6 border border-border">
+                  <div className="text-center mb-6">
+                    <h4 className="font-semibold text-lg mb-2">
+                      {t("phases.phase5.auditResults")}
+                    </h4>
+                    <p className="text-sm text-foreground/70">
+                      {t("phases.phase5.auditSubtitle")}
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-6">
+                    {[
+                      { name: "Performance", score: 100 },
+                      { name: "Accessibility", score: 100 },
+                      { name: "Best Practices", score: 100 },
+                      { name: "SEO", score: 100 },
+                    ].map((metric) => (
+                      <div key={metric.name} className="text-center">
+                        <div className="relative w-20 h-20 mx-auto mb-2">
+                          <div className="absolute inset-0 bg-green-100 dark:bg-green-900/20 rounded-full"></div>
+                          <div className="absolute inset-2 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">
+                            {metric.score}
+                          </div>
+                        </div>
+                        <div className="text-sm font-semibold">
+                          {metric.name}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-6 text-center">
+                    <div className="text-2xl font-bold text-green-600 mb-2">
+                      {t("phases.phase5.perfectScore")}
+                    </div>
+                    <p className="text-sm text-foreground/70">
+                      {t("phases.phase5.perfectDesc")}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-6 bg-accent/10 rounded-lg p-6">
+                  <h4 className="font-semibold mb-4">
+                    {t("phases.phase5.keyMetrics")}
+                  </h4>
+                  <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <div className="font-medium">
+                        {t("testing.firstContentfulPaint")}
+                      </div>
+                      <div className="text-green-600 font-mono">1.2s</div>
+                    </div>
+                    <div>
+                      <div className="font-medium">
+                        {t("testing.largestContentfulPaint")}
+                      </div>
+                      <div className="text-green-600 font-mono">2.1s</div>
+                    </div>
+                    <div>
+                      <div className="font-medium">
+                        {t("testing.cumulativeLayoutShift")}
+                      </div>
+                      <div className="text-green-600 font-mono">0.01</div>
+                    </div>
+                    <div>
+                      <div className="font-medium">
+                        {t("testing.timeToInteractive")}
+                      </div>
+                      <div className="text-green-600 font-mono">2.8s</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-12 sm:py-20 px-4 sm:px-8 bg-accent/5">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16 animate-fade-in">
+              <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
+                {t("creator.sectionTitle")}
+              </h2>
+              <p className="text-lg sm:text-xl text-foreground/70">
+                {t("creator.sectionSubtitle")}
+              </p>
+            </div>
+
+            <div className="bg-card rounded-lg border border-border shadow-xl overflow-hidden max-w-3xl mx-auto">
+              <div className="relative h-64 sm:h-96 lg:h-[500px] w-full">
+                <img
+                  src={devPhotoUrl}
+                  alt={t("creator.name")}
+                  className="w-full h-full object-contain object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-white">
+                  <h3 className="font-playfair text-center text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">
+                    {t("creator.name")}
+                  </h3>
+                </div>
+              </div>
+
+              <div className="p-6 sm:p-8">
+                <p className="text-foreground/80 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 max-w-4xl mx-auto text-center">
+                  {t("creator.description")}
+                </p>
+
+                <div className="text-center">
+                  <Button
+                    onClick={() => setIsStoryModalOpen(true)}
+                    className="bg-accent hover:bg-accent-light text-accent-foreground px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
+                    data-testid="creator-story-button"
+                  >
+                    🎓 {t("creator.selfTaughtButton")}
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="contact"
+          className="py-12 sm:py-20 px-4 sm:px-8 bg-primary text-primary-foreground"
+        >
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">
+                {t("contact.title")}
+              </h2>
+              <p className="text-xl text-primary-foreground/70">
+                {t("contact.subtitle")}
+              </p>
+            </div>
+
+            <ContactForm />
+          </div>
+        </section>
+      </main>
+
+      <CreatorStoryModal
+        isOpen={isStoryModalOpen}
+        onClose={() => setIsStoryModalOpen(false)}
+      />
+
+      {showScrollTop && (
+        <button
+          data-testid="scroll-to-top-home"
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-accent hover:bg-accent-light text-accent-foreground shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center font-bold text-lg sm:w-14 sm:h-14"
+          aria-label="Przewiń na górę"
+        >
+          ↑
+        </button>
+      )}
+    </>
+  );
+}
+
+----------------------------
+
+{
+  "hero": {
+    "title": "AI ジェネシス",
+    "subtitle": "Replit でのウェブサイト作成のインタラクティブメタチュートリアル",
+    "description": "ウェブアプリケーション開発における人間の創造性と人工知能の共生関係を示す画期的でインタラクティブなウェブサイト。",
+    "cta": "旅を始める"
+  },
+  "nav": {
+    "iskra": "スパーク",
+    "fundamenty": "基礎",
+    "innowacja": "UI革新",
+    "development": "開発",
+    "zasieg": "グローバル展開",
+    "deployment": "デプロイメント",
+    "contact": "コンタクト"
+  },
+  "phases": {
+    "phaseCount": "6つの開発フェーズ",
+    "phase0": {
+      "title": "フェーズ 0: 火花",
+      "subtitle": "アイデアとAIブリーフ",
+      "rawIdeaTitle": "ユーザーの生のアイデア",
+      "noteComment": "// ナプキンメモ",
+      "userNote": "AIがウェブサイト作成をどう支援するかを示すサイトが欲しい...メタ！インタラクティブにして、コード例も、アニメーションも？プロセス全体を見せて - アイデアからデプロイメントまで。",
+      "aiInterpretation": "AI解釈",
+      "aiDescription": "この簡単な説明から、AIは包括的な技術仕様を生成しました：インタラクティブな物語、革新的なコントロールハブ、デバッグワークショップ、翻訳モジュール、テスト付き完全実装。",
+      "terminalTitle": "AI処理ターミナル",
+      "analyzing": "ユーザーリクエストを分析中...",
+      "generating": "技術仕様を生成中...",
+      "planning": "コンポーネントアーキテクチャを計画中...",
+      "designing": "インタラクションパターンを設計中...",
+      "complete": "✓ 仕様完成！"
+    },
+    "phase1": {
+      "title": "フェーズ 1: 基礎",
+      "subtitle": "セットアップとアーキテクチャ",
+      "projectStructure": "プロジェクト構造",
+      "techStack": "技術スタック",
+      "typeScriptDesc": "タイプセーフティ、高速開発、最適バンドリングを保証するモダンスタック。",
+      "tailwindDesc": "モダンUXのためのスムーズアニメーション付きユーティリティファーストCSS。",
+      "netlifyDesc": "品質保証のためのVitestとReact Testing Libraryを使用したサーバーレスバックエンド。",
+      "aiJustification": "AI正当化",
+      "stackReasoning": "TypeScriptが動的環境でタイプセーフティを保証し、Viteが最速のホットリロードを提供し、TailwindCSSがデザインの妥協なしに迅速なプロトタイピングを可能にするため、このスタックを選択しました。"
+    },
+    "phase2": {
+      "title": "フェーズ 2: UI革新",
+      "subtitle": "コントロールハブの誕生",
+      "designDecision": "デザイン決定",
+      "designReasoning": "従来のナビゲーションバーは物語ページには非効率的です。サイドの'コントロールハブ'は、コンテンツを隠すことなく、コンテキストとツールを常に手の届くところに置きます。IDEと開発者ツールインターフェースからインスピレーションを得ています。",
+      "hubFeatures": "コントロールハブ機能",
+      "navFeature": "スムーススクロール付きナビゲーション",
+      "navDesc": "アイコンホバー時のツールチップ付きスムーススクロール。",
+      "langFeature": "言語切替（PL/EN/JP）",
+      "langDesc": "react-i18nextによる動的言語切替。",
+      "themeFeature": "ダーク/ライトモード",
+      "themeDesc": "localStorageによるテーマ間のスムーズ遷移。",
+      "a11yFeature": "アクセシビリティオプション",
+      "a11yDesc": "高コントラスト、フォーカス管理、ARIAラベル。",
+      "demoTitle": "インタラクティブデモンストレーション",
+      "mainContent": "メインページコンテンツ",
+      "hubDescription": "コントロールハブは常にアクセス可能でありながらコンテンツを隠しません..."
+    },
+    "phase3": {
+      "title": "フェーズ 3: 開発",
+      "subtitle": "インタラクティブデバッグワークショップ",
+      "workshopTitle": "🔧 ライブデバッグワークショップ",
+      "galleryDemo": "画像ギャラリー - デモンストレーション",
+      "componentCode": "コンポーネントコード",
+      "aiDialogue": "🤖 AI対話例",
+      "userRequest": "ImageModal.tsxコンポーネントを生成してください。srcとaltをpropsとして受け取る必要があります。背景クリックとEscapeキーでの閉じる機能を実装してください。React Portalsを使用してbodyにレンダリングしてください。",
+      "aiResponse": "完了しました。React Portalsを使用してコンポーネントを実装しました。アクセシビリティ向上のためイベント処理とフォーカストラップを追加しました。コードは",
+      "generatedComment": "// ImageModal.tsx - AIによって生成"
+    },
+    "phase4": {
+      "title": "フェーズ 4: グローバルリーチ",
+      "subtitle": "SEOと多言語サポート",
+      "translationModule": "🔄 ライブ翻訳モジュール",
+      "testTranslations": "翻訳キーをテスト",
+      "seoImplementation": "🔍 SEO実装",
+      "metaTags": "動的メタタグ",
+      "jsonLD": "JSON-LDスキーマ",
+      "metaComment": "// react-helmet-async実装",
+      "jsonComment": "// 検索エンジン用の構造化データ"
+    },
+    "phase5": {
+      "title": "フェーズ 6: グランドフィナーレ",
+      "subtitle": "デプロイメントと品質証明",
+      "qualityAssurance": "🧪 品質保証",
+      "testingDesc": "プロジェクトは最高のコード品質を保証するためVitestとReact Testing Libraryを使用しています。すべてのコンポーネントが機能性とアクセシビリティについてテストされています。",
+      "lighthouse": "📊 Lighthouse結果",
+      "lighthouseDesc": "サイトはすべてのLighthouseカテゴリで優秀な結果を達成し、高い技術品質を確認しています。",
+      "deploymentTitle": "🚀 Netlifyデプロイメント",
+      "deploymentDesc": "GitHubからの自動デプロイメント、リソース最適化、CDNとSSL。完全なCI/CD統合。",
+      "finalThoughts": "💭 まとめ",
+      "conclusion": "AI Genesisはウェブサイト以上のもの - 人間と人工知能の協力の力の生きた証拠です。すべてのコード行、すべてのデザイン要素は、モダンウェブ開発の完全な可能性を示すために思慮深く作成されました。",
+      "deploymentProcess": "デプロイメントプロセス",
+      "gitPush": "リポジトリにコードをプッシュ",
+      "netlifyBuild": "Viteビルド + 最適化",
+      "functionsDeploy": "サーバーレスバックエンド",
+      "cdnDistribution": "グローバル配信",
+      "liveAt": "ライブ: ai-genesis-tutorial.netlify.app",
+      "lighthouseReport": "Lighthouseレポート",
+      "auditResults": "品質監査結果",
+      "auditSubtitle": "技術的卒業の究極の証明",
+      "perfectScore": "🏆 パーフェクトスコア！",
+      "perfectDesc": "アプリケーションはすべてのカテゴリで最高の品質基準を満たしています",
+      "keyMetrics": "🚀 キーメトリックス",
+      "missionComplete": "🎯 ミッションコンプリート",
+      "finalDescription": "AI Genesisプロジェクトは、モダンウェブアプリケーションの作成における人間とAIの協力の完全な可能性を実証しています。初期アイデアから本番デプロイメントまで - これが開発の未来です。",
+      "contactCta": "💬 お問い合わせ",
+      "restartCta": "🔄 最初から"
+    }
+  },
+  "workshop": {
+    "title": "ライブデバッグワークショップ",
+    "galleryDemo": "写真ギャラリー - デモ",
+    "componentCode": "コンポーネントコード",
+    "simulateBug": "🐛 バグをシミュレート！",
+    "fixBug": "✅ 修正！",
+    "copyCode": "コードをコピー",
+    "codeCopied": "コードがコピーされました！",
+    "codeDescription": "コードがクリップボードにコピーされました。",
+    "error": "エラー",
+    "copyError": "コードのコピーに失敗しました。",
+    "mountainAlt": "日の出の山の景色",
+    "oceanAlt": "ゴールデンアワーの海の波"
+  },
+  "translationDemo": {
+    "title": "ライブ翻訳モジュール",
+    "testKeys": "翻訳キーをテスト"
+  },
+  "performance": {
+    "title": "パフォーマンス最適化",
+    "lazyLoading": "レイジーローディング",
+    "lazyLoadingDesc": "画像とコンポーネント",
+    "imageOptimization": "画像最適化",
+    "imageOptDesc": ".avif + .webpフォーマット",
+    "codeSplitting": "コード分割",
+    "codeSplittingDesc": "React.lazy + Suspense",
+    "bundleAnalysis": "バンドル分析",
+    "bundleAnalysisDesc": "Viteバンドルアナライザー"
+  },
+  "testing": {
+    "phaseTitle": "フェーズ 5: 品質保証",
+    "phaseSubtitle": "プロフェッショナルテスト",
+    "unitTestExample": "単体テスト例",
+    "testResults": "テスト結果",
+    "testResultsVitest": "テスト結果 - Vitest",
+    "testingStack": "テストスタック",
+    "testRunner": "テストランナー:",
+    "testingLibrary": "テストライブラリ:",
+    "coverage": "カバレッジ:",
+    "e2eTests": "E2Eテスト:",
+    "e2eTestsValue": "Playwright (近日公開)",
+    "firstContentfulPaint": "初回コンテンツフルペイント",
+    "largestContentfulPaint": "最大コンテンツフルペイント",
+    "cumulativeLayoutShift": "累積レイアウトシフト",
+    "timeToInteractive": "インタラクティブ時間"
+  },
+  "translation": {
+    "testKey": "翻訳キーを入力：",
+    "inputPlaceholder": "翻訳キーを入力:",
+    "languages": {
+      "pl": "ポーランド語",
+      "en": "英語",
+      "ja": "日本語"
+    }
+  },
+  "creator": {
+    "sectionTitle": "プロジェクト作成者",
+    "sectionSubtitle": "情熱的な開発者",
+    "name": "フルスタックオーバーフロー開発者",
+    "description": "創造性と技術的精度を組み合わせた技術愛好者。このAI Genesisプロジェクトは、現代のWebアプリケーション作成における人間のビジョンと人工知能の能力の共生の例です。",
+    "selfTaughtButton": "独学",
+    "storyTitle": "プロジェクト発案者の物語",
+    "storyText": "このプロジェクトの背後には69歳の退職者がいます。彼は21年間、書籍、教育ビデオ、インターネットリソースを使用して、独立してプログラミング言語の秘密を探求してきました。過去2年間は、プロジェクトの構築とバグ除去のためのコード分析の両方で人工知能に支援されています。彼は毎日8-10時間を情熱に捧げることができます。\n\n彼の物語は、誰でもどんな年齢でもプログラミングを学ぶことができることを証明しています。重要なのは年齢ではなく、欲望、決意、そして自分の限界を突破できるという信念です。作者は娘のシンプルなポートフォリオを作成することから始めました - それが真の情熱に火をつけた最初の一歩でした。それ以来、彼は120以上のウェブサイトを完成させ、その圧倒的大多数は過去6年間で作成されました。\n\nこのプロジェクトは単なる別のウェブサイトではありません。それは忍耐力、好奇心、新しい技術への開放性が並外れた結果につながることの証明です。それはまた、年齢や人生の段階に関係なく、コーディングの旅を始めることを夢見るすべての人への インスピレーションでもあります。\n\nなぜなら、プログラミングの世界では、想像力だけが限界を設定するからです。",
+    "closeButton": "閉じる"
+  },
+  "contact": {
+    "title": "お問い合わせ",
+    "subtitle": "AI支援開発プロジェクトの準備はできていますか？",
+    "name": "氏名",
+    "email": "メール",
+    "project": "プロジェクトタイプ",
+    "projectTypes": {
+      "website": "ウェブサイト",
+      "webapp": "ウェブアプリケーション",
+      "ecommerce": "Eコマース",
+      "tutorial": "チュートリアル/教育",
+      "other": "その他"
+    },
+    "message": "プロジェクト概要",
+    "submit": "お問い合わせを送信"
+  },
+  "seo": {
+    "title": "AI ジェネシス: インタラクティブメタチュートリアル | Replit 開発マスタークラス",
+    "description": "AIと現代技術を使用したアイデアからデプロイメントまでの完全なプロジェクトライフサイクルを示す画期的なインタラクティブチュートリアル。"
+  },
+  "legalNav": {
+    "terms": "利用規約",
+    "privacy": "プライバシーポリシー",
+    "backToHome": "ホームページに戻る"
+  },
+  "termsPage": {
+    "seoTitle": "利用規約 | AI Genesis",
+    "seoDescription": "AI Genesisインタラクティブウェブサイトの利用規約。",
+    "content": "<h2>利用規約</h2>\n\n<h2>1. 総則</h2>\n\n本規約は、[あなたのウェブサイトアドレス]で利用可能なAI Genesisウェブサイトの利用に関する規則を定めます。このウェブサイトは教育およびデモンストレーションを目的としており、人工知能の支援を受けたウェブアプリケーションの作成プロセスを紹介しています。\n\nこのウェブサイトにアクセスすることにより、これらの利用規約に同意したものとみなします。このページに記載されているすべての利用規約に同意しない場合は、AI Genesisの利用を中止してください。\n\n<h2>2. 著作権</h2>\n\nテキスト、グラフィック、ソースコード、およびサイトのインタラクティブなコンセプトを含むすべてのコンテンツは、プロジェクト作成者の所有物であり、法律によって保護されています。著者の書面による許可なく、サイトのコンテンツをコピー、変更、配布することは禁じられています。教育目的で提示されるコードスニペットは、個人的な公正利用の範囲内でのみ使用できます。\n\n<h2>3. 責任</h2>\n\nAI Genesisウェブサイトで提示されるコンテンツは、情報提供およびデモンストレーションのみを目的としています。サイトで提示された情報やツールの使用に起因するいかなる損害についても、著者は責任を負いません。利用者は自己の責任において本サービスを利用するものとします。我々はウェブサイトの中断のない、またはエラーのない運用を保証しません。"
+  },
+  "privacyPage": {
+    "seoTitle": "プライバシーポリシー | AI Genesis",
+    "seoDescription": "AI Genesisウェブサイトのプライバシーおよびクッキーポリシー。",
+    "content": "<h2>プライバシーポリシー</h2>\n\n<h2>1. データ管理者</h2>\n\n適用される規制の意味における個人データの管理者は、AI Genesisプロジェクトの作成者です。データ処理に関するご質問は、お問い合わせフォームからご連絡ください。\n\n<h2>2. データの収集と処理</h2>\n\nAI Genesisは利用者のプライバシーを尊重します。我々は自動的に個人データを収集することはありません。利用者が自発的にデータ（名前、メールアドレス）を提供できる唯一の場所は、お問い合わせフォームです。\n\n提供されたデータは、送信されたお問い合わせに返信する目的でのみ使用されます。このデータはデータベースに保存されず、第三者と共有されることも、マーケティング目的で使用されることもありません。\n\n<h2>3. クッキー</h2>\n\n当ウェブサイトは、テーマの切り替え（ライト/ダーク）や言語設定など、基本的なメカニズムの適切な機能を確保するために、不可欠なクッキーを使用することがあります。我々は利用者の活動を追跡するための分析クッキーやマーケティングクッキーを使用しません。"
+  }
+}
+
+---------------------------------
+
+{
+  "hero": {
+    "title": "AI Genesis",
+    "subtitle": "Interactive Meta-Tutorial for Creating a Website in Replit",
+    "description": "Groundbreaking, interactive website showing the symbiotic relationship between human creativity and artificial intelligence in web application development.",
+    "cta": "Start the journey"
+  },
+  "nav": {
+    "iskra": "Spark",
+    "fundamenty": "Foundations",
+    "innowacja": "UI Innovation",
+    "development": "Development",
+    "zasieg": "Global Reach",
+    "deployment": "Deployment",
+    "contact": "Contact"
+  },
+  "phases": {
+    "phaseCount": "6 development phases",
+    "phase0": {
+      "title": "Phase 0: Spark",
+      "subtitle": "Idea and AI Brief",
+      "rawIdeaTitle": "User's Raw Idea",
+      "noteComment": "// Napkin note",
+      "userNote": "I want a website that shows how AI helps create websites... meta! Make it interactive, with code examples, maybe some animations? And show the whole process - from idea to deployment.",
+      "aiInterpretation": "AI Interpretation",
+      "aiDescription": "From this simple description, AI generated a complete technical specification including: interactive narrative, innovative Control Hub, debugging workshop, translation module, and full implementation with tests.",
+      "terminalTitle": "AI Processing Terminal",
+      "analyzing": "Analyzing user request...",
+      "generating": "Generating technical specification...",
+      "planning": "Planning component architecture...",
+      "designing": "Designing interaction patterns...",
+      "complete": "✓ Specification complete!"
+    },
+    "phase1": {
+      "title": "Phase 1: Foundations",
+      "subtitle": "Setup and Architecture",
+      "projectStructure": "Project Structure",
+      "techStack": "Technology Stack",
+      "typeScriptDesc": "Modern stack ensuring type safety, fast development, and optimal bundling.",
+      "tailwindDesc": "Utility-first CSS with smooth animations for modern UX.",
+      "netlifyDesc": "Serverless backend with Vitest and React Testing Library for QA.",
+      "aiJustification": "AI Justification",
+      "stackReasoning": "I chose this stack because TypeScript ensures type safety in a dynamic environment, Vite offers the fastest hot reload, and TailwindCSS enables rapid prototyping without design compromises."
+    },
+    "phase2": {
+      "title": "Phase 2: UI Innovation",
+      "subtitle": "Birth of Control Hub",
+      "designDecision": "Design Decision",
+      "designReasoning": "Traditional navbar is inefficient for narrative pages. The side 'Control Hub' keeps context and tools always at hand without obscuring content. Inspired by IDE and developer tool interfaces.",
+      "hubFeatures": "Control Hub Features",
+      "navFeature": "Navigation with Smooth Scroll",
+      "navDesc": "Smooth scrolling with tooltips on icon hover.",
+      "langFeature": "Language Switcher (PL/EN/JP)",
+      "langDesc": "Dynamic language switching with react-i18next.",
+      "themeFeature": "Dark/Light Mode",
+      "themeDesc": "Smooth transitions between themes with localStorage.",
+      "a11yFeature": "Accessibility Options",
+      "a11yDesc": "High contrast, focus management, ARIA labels.",
+      "demoTitle": "Interactive Demonstration",
+      "mainContent": "Main page content",
+      "hubDescription": "Control Hub doesn't obscure content while remaining always accessible..."
+    },
+    "phase3": {
+      "title": "Phase 3: Development",
+      "subtitle": "Interactive Debugging Workshops",
+      "workshopTitle": "🔧 Live Debugging Workshop",
+      "galleryDemo": "Image Gallery - Demonstration",
+      "componentCode": "Component Code",
+      "aiDialogue": "🤖 AI Dialogue Example",
+      "userRequest": "Generate ImageModal.tsx component. Must accept src and alt as props. Implement closing on background click and Escape key. Use React Portals to render in body.",
+      "aiResponse": "Done. Component implemented using React Portals. Added event handling and focus trap for improved accessibility. Code is in",
+      "generatedComment": "// ImageModal.tsx - Generated by AI"
+    },
+    "phase4": {
+      "title": "Phase 4: Global Reach",
+      "subtitle": "SEO and Multilingual Support",
+      "translationModule": "🔄 Live Translation Module",
+      "testTranslations": "Test translation keys",
+      "seoImplementation": "🔍 SEO Implementation",
+      "metaTags": "Dynamic Meta Tags",
+      "jsonLD": "JSON-LD Schema",
+      "metaComment": "// react-helmet-async implementation",
+      "jsonComment": "// Structured data for search engines"
+    },
+    "phase5": {
+      "title": "Phase 6: Grand Finale",
+      "subtitle": "Deployment and Quality Proof",
+      "qualityAssurance": "🧪 Quality Assurance",
+      "testingDesc": "The project uses Vitest and React Testing Library to ensure the highest code quality. Every component is tested for functionality and accessibility.",
+      "lighthouse": "📊 Lighthouse Results",
+      "lighthouseDesc": "The site achieves excellent results in all Lighthouse categories, confirming high technical quality.",
+      "deploymentTitle": "🚀 Netlify Deployment",
+      "deploymentDesc": "Automatic deployment from GitHub, resource optimization, CDN and SSL. Full CI/CD integration.",
+      "finalThoughts": "💭 Summary",
+      "conclusion": "AI Genesis is more than a website - it's living proof of the power of collaboration between humans and artificial intelligence. Every line of code, every design element was thoughtfully created to showcase the full potential of modern web development.",
+      "deploymentProcess": "Deployment Process",
+      "gitPush": "Code pushed to repository",
+      "netlifyBuild": "Vite build + optimization",
+      "functionsDeploy": "Serverless backend",
+      "cdnDistribution": "Global distribution",
+      "liveAt": "Live at: ai-genesis-tutorial.netlify.app",
+      "lighthouseReport": "Lighthouse Report",
+      "auditResults": "Quality Audit Results",
+      "auditSubtitle": "Ultimate proof of technical mastery",
+      "perfectScore": "🏆 Perfect Score!",
+      "perfectDesc": "Application meets the highest quality standards in every category",
+      "keyMetrics": "🚀 Key Metrics",
+      "missionComplete": "🎯 Mission Complete",
+      "finalDescription": "The AI Genesis project demonstrates the full potential of human-AI collaboration in creating modern web applications. From initial idea to production deployment - this is the future of development.",
+      "contactCta": "💬 Contact Us",
+      "restartCta": "🔄 Start Over"
+    }
+  },
+  "workshop": {
+    "title": "Live Debugging Workshop",
+    "galleryDemo": "Photo Gallery - Demo",
+    "componentCode": "Component Code",
+    "simulateBug": "🐛 Simulate Bug!",
+    "fixBug": "✅ Fix!",
+    "copyCode": "Copy code",
+    "codeCopied": "Code copied!",
+    "codeDescription": "Code was copied to clipboard.",
+    "error": "Error",
+    "copyError": "Failed to copy code.",
+    "mountainAlt": "Mountain landscape at sunrise",
+    "oceanAlt": "Ocean waves during golden hour"
+  },
+  "translationDemo": {
+    "title": "Live Translation Module",
+    "testKeys": "Test translation keys"
+  },
+  "performance": {
+    "title": "Performance Optimizations",
+    "lazyLoading": "Lazy Loading",
+    "lazyLoadingDesc": "Images and components",
+    "imageOptimization": "Image Optimization",
+    "imageOptDesc": ".avif + .webp formats",
+    "codeSplitting": "Code Splitting",
+    "codeSplittingDesc": "React.lazy + Suspense",
+    "bundleAnalysis": "Bundle Analysis",
+    "bundleAnalysisDesc": "Vite bundle analyzer"
+  },
+  "testing": {
+    "phaseTitle": "Phase 5: Quality Assurance",
+    "phaseSubtitle": "Professional Testing",
+    "unitTestExample": "Unit Test Example",
+    "testResults": "Test Results",
+    "testResultsVitest": "Test Results - Vitest",
+    "testingStack": "Testing Stack",
+    "testRunner": "Test Runner:",
+    "testingLibrary": "Testing Library:",
+    "coverage": "Coverage:",
+    "e2eTests": "E2E Tests:",
+    "e2eTestsValue": "Playwright (coming soon)",
+    "firstContentfulPaint": "First Contentful Paint",
+    "largestContentfulPaint": "Largest Contentful Paint",
+    "cumulativeLayoutShift": "Cumulative Layout Shift",
+    "timeToInteractive": "Time to Interactive"
+  },
+  "translation": {
+    "testKey": "Enter translation key:",
+    "inputPlaceholder": "Enter translation key:",
+    "languages": {
+      "pl": "Polish",
+      "en": "English",
+      "ja": "Japanese"
+    }
+  },
+  "creator": {
+    "sectionTitle": "Project Creator",
+    "sectionSubtitle": "Developer with Passion",
+    "name": "Full Stack Overflow Developer",
+    "description": "A technology enthusiast who combines creativity with technical precision. This AI Genesis project is an example of the symbiosis between human vision and artificial intelligence capabilities in creating modern web applications.",
+    "selfTaughtButton": "Self-taught",
+    "storyTitle": "Story of the Project's Originator",
+    "storyText": "Behind this project stands a 69-year-old retiree who has been independently exploring the secrets of programming languages for 21 years, using books, educational videos, and internet resources. For the past two years, he has been supported by artificial intelligence both in building projects and in code analysis for bug removal. He can dedicate even 8-10 hours daily to his passion.\n\nHis story proves that anyone can learn programming at any age. What matters is not age, but desire, determination, and belief that you can break through your own limitations. The author started by creating a simple portfolio for his daughter - it was the first step that ignited true passion. Since then, he has completed over 120 websites, the vast majority in the last six years.\n\nThis project is not just another website. It's proof that perseverance, curiosity, and openness to new technologies can lead to extraordinary results. It's also inspiration for everyone who dreams of starting their coding journey - regardless of their age and life stage.\n\nBecause in the world of programming, the only limits are set by imagination.",
+    "closeButton": "Close"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Ready for your own AI-assisted development project?",
+    "name": "Full name",
+    "email": "Email",
+    "project": "Project type",
+    "projectTypes": {
+      "website": "Website",
+      "webapp": "Web application",
+      "ecommerce": "E-commerce",
+      "tutorial": "Tutorial/Education",
+      "other": "Other"
+    },
+    "message": "Project description",
+    "submit": "Send inquiry"
+  },
+  "seo": {
+    "title": "AI Genesis: Interactive Meta-Tutorial | Replit Development Masterclass",
+    "description": "Groundbreaking interactive tutorial showing the complete project lifecycle - from idea to deployment using AI and modern technologies."
+  },
+  "legalNav": {
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "backToHome": "Back to Home"
+  },
+  "termsPage": {
+    "seoTitle": "Terms of Service | AI Genesis",
+    "seoDescription": "Terms of Service for the AI Genesis interactive website.",
+    "content": "<h2>Terms of Service</h2>\n\n<h2>1. General Provisions</h2>\n\nThese terms and conditions outline the rules and regulations for the use of the AI Genesis website, located at [Your Website Address]. The website is educational and demonstrational in nature, showcasing the process of creating web applications with the support of artificial intelligence.\n\nBy accessing this website, we assume you accept these terms and conditions. Do not continue to use AI Genesis if you do not agree to all of the terms and conditions stated on this page.\n\n<h2>2. Copyright</h2>\n\nAll content, including texts, graphics, source code, and the interactive concept of the site, are the property of the project creator and are protected by law. Copying, modifying, and distributing the site's content without the author's written permission is prohibited. Code snippets presented for educational purposes may only be used within the bounds of fair personal use.\n\n<h2>3. Liability</h2>\n\nThe content presented on the AI Genesis website is for informational and demonstrational purposes only. The author shall not be held liable for any damages resulting from the use of information or tools presented on the site. You use the service at your own risk. We do not guarantee uninterrupted or error-free operation of the website."
+  },
+  "privacyPage": {
+    "seoTitle": "Privacy Policy | AI Genesis",
+    "seoDescription": "Privacy and cookie policy for the AI Genesis website.",
+    "content": "<h2>Privacy Policy</h2>\n\n<h2>1. Data Administrator</h2>\n\nThe administrator of personal data within the meaning of applicable regulations is the creator of the AI Genesis project. Any questions regarding data processing should be directed through the contact form.\n\n<h2>2. Data Collection and Processing</h2>\n\nAI Genesis respects the privacy of its users. We do not collect personal data automatically. The only place where a user can voluntarily provide their data (name, email address) is the contact form.\n\nThe provided data is used solely for the purpose of responding to the submitted inquiry. This data is not stored in a database, is not shared with third parties, and is not used for marketing purposes.\n\n<h2>3. Cookies</h2>\n\nThe website may use essential cookies to ensure the proper functioning of basic mechanisms, such as theme switching (light/dark) or language preferences. We do not use analytical or marketing cookies to track user activity."
+  }
+}
+
+----------------------------------
+
+{
+  "hero": {
+    "title": "AI Genesis",
+    "subtitle": "Interaktywny Meta-Tutorial Stworzenia Strony w Replit",
+    "description": "Przełomowa, interaktywna strona pokazująca symbiotyczną relację między ludzką kreatywnością a sztuczną inteligencją w procesie tworzenia aplikacji webowych.",
+    "cta": "Rozpocznij podróż"
+  },
+  "nav": {
+    "iskra": "Iskra",
+    "fundamenty": "Fundamenty",
+    "innowacja": "Innowacja UI",
+    "development": "Development",
+    "zasieg": "Zasięg",
+    "deployment": "Deployment",
+    "contact": "Kontakt"
+  },
+  "phases": {
+    "phaseCount": "6 faz rozwoju projektu",
+    "phase0": {
+      "title": "Faza 0: Iskra",
+      "subtitle": "Pomysł i Brief dla AI",
+      "rawIdeaTitle": "Surowy Pomysł Użytkownika",
+      "noteComment": "// Notatka na serwetce",
+      "userNote": "Chcę stronę, która pokazuje jak AI pomaga tworzyć strony... meta! Niech będzie interaktywna, z przykładami kodu, może jakieś animacje? I żeby było widać cały proces - od pomysłu do deployment.",
+      "aiInterpretation": "Interpretacja AI",
+      "aiDescription": "Z tego prostego opisu AI wygenerowało kompletną specyfikację techniczną obejmującą: interaktywną narrację, innowacyjny Control Hub, warsztat debugowania, moduł tłumaczeń i pełną implementację z testami.",
+      "terminalTitle": "AI Processing Terminal",
+      "analyzing": "Analyzing user request...",
+      "generating": "Generating technical specification...",
+      "planning": "Planning component architecture...",
+      "designing": "Designing interaction patterns...",
+      "complete": "✓ Specification complete!"
+    },
+    "phase1": {
+      "title": "Faza 1: Fundamenty",
+      "subtitle": "Setup i Architektura",
+      "projectStructure": "Struktura Projektu",
+      "techStack": "Stack Technologiczny",
+      "typeScriptDesc": "Nowoczesny stack zapewniający type safety, szybki development i optymalne bundling.",
+      "tailwindDesc": "Utility-first CSS z płynnymi animacjami dla nowoczesnego UX.",
+      "netlifyDesc": "Serverless backend z Vitest i React Testing Library dla QA.",
+      "aiJustification": "Uzasadnienie AI",
+      "stackReasoning": "Wybrałem ten stack, ponieważ TypeScript zapewnia bezpieczeństwo typów w dynamicznym środowisku, Vite oferuje najszybszy hot reload, a TailwindCSS pozwala na rapid prototyping bez kompromisów w designie."
+    },
+    "phase2": {
+      "title": "Faza 2: Innowacja UI",
+      "subtitle": "Narodziny Control Hub",
+      "designDecision": "Decyzja Projektowa",
+      "designReasoning": "Tradycyjny navbar jest nieefektywny dla narracyjnych stron. Boczny 'Control Hub' utrzymuje kontekst i narzędzia zawsze pod ręką, nie zasłaniając treści. Inspirowany interfejsami IDE i narzędzi deweloperskich.",
+      "hubFeatures": "Funkcjonalności Control Hub",
+      "navFeature": "Nawigacja z Smooth Scroll",
+      "navDesc": "Płynne przewijanie z tooltipami po najechaniu na ikony.",
+      "langFeature": "Przełącznik Języka (PL/EN/JP)",
+      "langDesc": "Dynamiczna zmiana języka z react-i18next.",
+      "themeFeature": "Dark/Light Mode",
+      "themeDesc": "Płynne przejścia między motywami z localStorage.",
+      "a11yFeature": "Opcje Dostępności",
+      "a11yDesc": "Wysoki kontrast, focus management, ARIA labels.",
+      "demoTitle": "Interaktywna Demonstracja",
+      "mainContent": "Główna zawartość strony",
+      "hubDescription": "Control Hub nie zasłania treści, pozostając zawsze dostępny..."
+    },
+    "phase3": {
+      "title": "Faza 3: Development",
+      "subtitle": "Interaktywne Warsztaty Debugowania",
+      "workshopTitle": "🔧 Warsztat Debugowania na Żywo",
+      "galleryDemo": "Galeria Zdjęć - Demonstracja",
+      "componentCode": "Kod Komponentu",
+      "aiDialogue": "🤖 Przykład Dialogu z AI",
+      "userRequest": "Wygeneruj komponent ImageModal.tsx. Musi przyjmować src i alt jako propsy. Zaimplementuj zamykanie po kliknięciu na tło oraz klawisz Escape. Użyj React Portals do renderowania go w body.",
+      "aiResponse": "Gotowe. Komponent zaimplementowany z użyciem React Portals. Dodałem obsługę zdarzeń i pułapkę fokusu (focus trap) dla poprawy dostępności. Kod jest w",
+      "generatedComment": "// ImageModal.tsx - Generated by AI"
+    },
+    "phase4": {
+      "title": "Faza 4: Globalny Zasięg",
+      "subtitle": "SEO i Wielojęzyczność",
+      "translationModule": "🔄 Moduł Tłumaczeń na Żywo",
+      "testTranslations": "Testuj klucze tłumaczeń",
+      "seoImplementation": "🔍 Implementacja SEO",
+      "metaTags": "Dynamiczne Meta Tagi",
+      "jsonLD": "JSON-LD Schema",
+      "metaComment": "// react-helmet-async implementation",
+      "jsonComment": "// Structured data for search engines"
+    },
+    "phase5": {
+      "title": "Faza 6: Wielki Finał",
+      "subtitle": "Deployment i Dowód Jakości",
+      "qualityAssurance": "🧪 Gwarancja Jakości",
+      "testingDesc": "Projekt wykorzystuje Vitest i React Testing Library dla zapewnienia najwyższej jakości kodu. Każdy komponent jest testowany pod kątem funkcjonalności i dostępności.",
+      "lighthouse": "📊 Wyniki Lighthouse",
+      "lighthouseDesc": "Strona osiąga doskonałe wyniki we wszystkich kategoriach Lighthouse, potwierdzając wysoką jakość techniczną.",
+      "deploymentTitle": "🚀 Deployment na Netlify",
+      "deploymentDesc": "Automatyczny deployment z GitHub, optymalizacja zasobów, CDN i SSL. Pełna integracja CI/CD.",
+      "finalThoughts": "💭 Podsumowanie",
+      "conclusion": "AI Genesis to więcej niż strona internetowa - to żywy dowód na potęgę współpracy między człowiekiem a sztuczną inteligencją. Każda linijka kodu, każdy element designu został przemyślanie stworzony, aby pokazać pełen potencjał nowoczesnego web developmentu.",
+      "deploymentProcess": "Proces Deploymentu",
+      "gitPush": "Kod wypchany do repozytorium",
+      "netlifyBuild": "Vite build + optimizacja",
+      "functionsDeploy": "Serverless backend",
+      "cdnDistribution": "Globalne udostępnienie",
+      "liveAt": "Live at: ai-genesis-tutorial.netlify.app",
+      "lighthouseReport": "Lighthouse Report",
+      "auditResults": "Wyniki Audytu Jakości",
+      "auditSubtitle": "Ostateczny dowód mistrzostwa technicznego",
+      "perfectScore": "🏆 Perfect Score!",
+      "perfectDesc": "Aplikacja spełnia najwyższe standardy jakości w każdej kategorii",
+      "keyMetrics": "🚀 Kluczowe Metryki",
+      "missionComplete": "🎯 Misja Zakończona",
+      "finalDescription": "Projekt AI Genesis demonstruje pełen potencjał współpracy człowiek-AI w tworzeniu nowoczesnych aplikacji webowych. Od pierwszego pomysłu po produkcyjny deployment - to jest przyszłość developmentu.",
+      "contactCta": "💬 Skontaktuj się",
+      "restartCta": "🔄 Rozpocznij ponownie"
+    }
+  },
+  "workshop": {
+    "title": "Warsztat Debugowania na Żywo",
+    "galleryDemo": "Galeria Zdjęć - Demonstracja",
+    "componentCode": "Kod Komponentu",
+    "simulateBug": "🐛 Symuluj Błąd!",
+    "fixBug": "✅ Napraw!",
+    "copyCode": "Skopiuj kod",
+    "codeCopied": "Kod skopiowany!",
+    "codeDescription": "Kod został skopiowany do schowka.",
+    "error": "Błąd",
+    "copyError": "Nie udało się skopiować kodu.",
+    "mountainAlt": "Górski krajobraz o wschodzie słońca",
+    "oceanAlt": "Fale oceaniczne podczas złotej godziny"
+  },
+  "translationDemo": {
+    "title": "Moduł Tłumaczeń na Żywo",
+    "testKeys": "Testuj klucze tłumaczeń"
+  },
+  "performance": {
+    "title": "Optymalizacje Wydajności",
+    "lazyLoading": "Lazy Loading",
+    "lazyLoadingDesc": "Obrazy i komponenty",
+    "imageOptimization": "Image Optimization",
+    "imageOptDesc": ".avif + .webp formaty",
+    "codeSplitting": "Code Splitting",
+    "codeSplittingDesc": "React.lazy + Suspense",
+    "bundleAnalysis": "Bundle Analysis",
+    "bundleAnalysisDesc": "Vite bundle analyzer"
+  },
+  "testing": {
+    "phaseTitle": "Faza 5: Gwarancja Jakości",
+    "phaseSubtitle": "Profesjonalne Testowanie",
+    "unitTestExample": "Przykład Testu Jednostkowego",
+    "testResults": "Wyniki Testów",
+    "testResultsVitest": "Test Results - Vitest",
+    "testingStack": "Stack Testowy",
+    "testRunner": "Test Runner:",
+    "testingLibrary": "Testing Library:",
+    "coverage": "Coverage:",
+    "e2eTests": "E2E Tests:",
+    "e2eTestsValue": "Playwright (coming soon)",
+    "firstContentfulPaint": "First Contentful Paint",
+    "largestContentfulPaint": "Largest Contentful Paint",
+    "cumulativeLayoutShift": "Cumulative Layout Shift",
+    "timeToInteractive": "Time to Interactive"
+  },
+  "translation": {
+    "testKey": "Wprowadź klucz tłumaczenia:",
+    "inputPlaceholder": "Wprowadź klucz tłumaczenia:",
+    "languages": {
+      "pl": "Polski",
+      "en": "English",
+      "ja": "日本語"
+    }
+  },
+  "creator": {
+    "sectionTitle": "Twórca Projektu",
+    "sectionSubtitle": "Developer z Pasją",
+    "name": "Full Stack Overflow Developer",
+    "description": "Pasjonat technologii, który łączy kreatywność z techniczną precyzją. Ten projekt AI Genesis to przykład symbioty między ludzką wizją a możliwościami sztucznej inteligencji w tworzeniu nowoczesnych aplikacji webowych.",
+    "selfTaughtButton": "Samouk",
+    "storyTitle": "Historia Pomysłodawcy Projektu",
+    "storyText": "Za projektem stoi 69-letni emeryt, który od 21 lat samodzielnie zgłębia tajniki języków programowania, korzystając z książek, filmów edukacyjnych oraz zasobów internetu. Od dwóch lat wspiera się sztuczną inteligencją zarówno w budowaniu projektów, jak i w analizie kodu pod kątem usuwania błędów. Każdego dnia swojej pasji potrafi poświęcić nawet 8–10 godzin.\n\nJego historia udowadnia, że programować może nauczyć się każdy, w każdym wieku. Nie liczy się metryka, lecz chęć, determinacja i wiara w to, że można przełamywać własne ograniczenia. Autor zaczynał od stworzenia prostego portfolio dla swojej córki – to był pierwszy krok, który rozpalił prawdziwą pasję. Od tamtego czasu zrealizował już ponad 120 stron internetowych, z czego zdecydowaną większość w ciągu ostatnich sześciu lat.\n\nTen projekt to nie tylko kolejna witryna. To dowód, że wytrwałość, ciekawość i otwartość na nowe technologie mogą prowadzić do niezwykłych rezultatów. To także inspiracja dla wszystkich, którzy marzą, by zacząć swoją przygodę z kodowaniem – niezależnie od tego, ile mają lat i w jakim punkcie życia się znajdują.\n\nBo w świecie programowania granice wyznacza tylko wyobraźnia.",
+    "closeButton": "Zamknij"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Gotowy na własny projekt AI-assisted development?",
+    "name": "Imię i nazwisko",
+    "email": "Email",
+    "project": "Typ projektu",
+    "projectTypes": {
+      "website": "Strona internetowa",
+      "webapp": "Aplikacja webowa",
+      "ecommerce": "E-commerce",
+      "tutorial": "Tutorial/Edukacja",
+      "other": "Inne"
+    },
+    "message": "Opis projektu",
+    "submit": "Wyślij zapytanie"
+  },
+  "seo": {
+    "title": "AI Genesis: Interaktywny Meta-Tutorial | Replit Development Masterclass",
+    "description": "Przełomowy interaktywny tutorial pokazujący pełny cykl życia projektu - od pomysłu do wdrożenia z wykorzystaniem AI i nowoczesnych technologii."
+  },
+  "legalNav": {
+    "terms": "Regulamin",
+    "privacy": "Polityka Prywatności",
+    "backToHome": "Wróć do strony głównej"
+  },
+  "termsPage": {
+    "seoTitle": "Regulamin | AI Genesis",
+    "seoDescription": "Regulamin korzystania z interaktywnego serwisu AI Genesis.",
+    "content": "<h2>Regulamin</h2>\n\n<h2>1. Postanowienia ogólne</h2>\n\nNiniejszy regulamin określa zasady korzystania z serwisu internetowego AI Genesis, dostępnego pod adresem [Twój Adres Strony]. Serwis ma charakter edukacyjny i demonstracyjny, prezentując proces tworzenia aplikacji internetowych przy wsparciu sztucznej inteligencji.\n\nKorzystanie z serwisu jest równoznaczne z akceptacją wszystkich postanowień niniejszego regulaminu. Użytkownik zobowiązuje się do korzystania z serwisu w sposób zgodny z obowiązującym prawem oraz zasadami współżycia społecznego.\n\n<h2>2. Prawa autorskie</h2>\n\nWszystkie treści, w tym teksty, grafiki, kod źródłowy oraz koncepcja interaktywna serwisu, są własnością twórcy projektu i podlegają ochronie prawnej. Kopiowanie, modyfikowanie oraz rozpowszechnianie zawartości serwisu bez pisemnej zgody autora jest zabronione. Fragmenty kodu prezentowane w celach edukacyjnych mogą być wykorzystywane wyłącznie w ramach dozwolonego użytku osobistego.\n\n<h2>3. Odpowiedzialność</h2>\n\nTreści prezentowane w serwisie AI Genesis mają charakter wyłącznie informacyjny i demonstracyjny. Autor nie ponosi odpowiedzialności za jakiekolwiek szkody wynikłe z wykorzystania informacji lub narzędzi prezentowanych na stronie. Użytkownik korzysta z serwisu na własne ryzyko. Nie gwarantujemy nieprzerwanego i bezbłędnego działania serwisu."
+  },
+  "privacyPage": {
+    "seoTitle": "Polityka Prywatności | AI Genesis",
+    "seoDescription": "Polityka prywatności i plików cookies serwisu AI Genesis.",
+    "content": "<h2>Polityka Prywatności</h2>\n\n<h2>1. Administrator danych</h2>\n\nAdministratorem danych osobowych w rozumieniu obowiązujących przepisów jest twórca projektu AI Genesis. Wszelkie pytania dotyczące przetwarzania danych prosimy kierować za pośrednictwem formularza kontaktowego.\n\n<h2>2. Zbieranie i przetwarzanie danych</h2>\n\nSerwis AI Genesis szanuje prywatność swoich użytkowników. Nie zbieramy danych osobowych w sposób zautomatyzowany. Jedynym miejscem, w którym użytkownik może dobrowolnie podać swoje dane (imię, adres e-mail), jest formularz kontaktowy.\n\nPodane dane są wykorzystywane wyłącznie w celu udzielenia odpowiedzi na przesłane zapytanie. Dane te nie są przechowywane w bazie danych, nie są udostępniane podmiotom trzecim ani nie są wykorzystywane w celach marketingowych.\n\n<h2>3. Pliki Cookies</h2>\n\nSerwis może wykorzystywać niezbędne pliki cookies w celu zapewnienia prawidłowego funkcjonowania podstawowych mechanizmów, takich jak przełączanie motywu (jasny/ciemny) czy preferencje językowe. Nie używamy analitycznych ani marketingowych plików cookies do śledzenia aktywności użytkowników."
+  }
+}
