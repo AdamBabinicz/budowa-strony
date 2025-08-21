@@ -103,7 +103,7 @@
       "netlifyBuild": "Budowanie projektu (Vite) i optymalizacja",
       "functionsDeploy": "Wdrożenie funkcji serwerowych",
       "cdnDistribution": "Dystrybucja w globalnej sieci CDN",
-      "liveAt": "Dostępne pod adresem: ai-genesis-tutorial.netlify.app",
+      "liveAt": "Dostępne pod adresem: https://zbuduj-strone.netlify.app",
       "lighthouseReport": "Raport Lighthouse",
       "auditResults": "Wyniki Audytu Jakości",
       "auditSubtitle": "Ostateczny dowód mistrzostwa technicznego",
