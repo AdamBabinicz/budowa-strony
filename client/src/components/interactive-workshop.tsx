@@ -68,10 +68,8 @@ export function InteractiveWorkshop() {
       setIsBugActive(true);
       setCurrentCode(buggyCode);
 
-      // Zaktualizowana logika Apply visual bug
-      // Usuwamy klasę responsywną, aby błąd (jedna kolumna) był widoczny na wszystkich ekranach
       grid.classList.remove("sm:grid-cols-2");
-      grid.classList.add("grid-cols-1"); // Upewniamy się, że jest jedna kolumna
+      grid.classList.add("grid-cols-1");
 
       gallery.querySelectorAll("img").forEach((img) => {
         img.classList.add("w-12", "h-12", "object-none");
@@ -81,8 +79,6 @@ export function InteractiveWorkshop() {
       setIsBugActive(false);
       setCurrentCode(workingCode);
 
-      // Zaktualizowana logika Fix visual bug
-      // Przywracamy responsywną klasę
       grid.classList.add("sm:grid-cols-2");
 
       gallery.querySelectorAll("img").forEach((img) => {
@@ -110,14 +106,11 @@ export function InteractiveWorkshop() {
 
   return (
     <div className="mb-16 animate-slide-in">
-      {/* ZMIANA: Responsywny rozmiar czcionki */}
       <h3 className="font-playfair text-xl sm:text-2xl font-semibold mb-8 text-center">
         🔧 {t("workshop.title")}
       </h3>
 
-      {/* ZMIANA: Responsywne odstępy (gap) */}
       <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-        {/* Live Component Demo */}
         <div>
           <h4 className="font-semibold mb-4">{t("workshop.galleryDemo")}</h4>
           <div
@@ -125,7 +118,6 @@ export function InteractiveWorkshop() {
             className="bg-card rounded-lg p-6 border border-border"
             data-testid="gallery-demo"
           >
-            {/* ZMIANA: Responsywna siatka dla galerii (1 kolumna na mobilnych) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
               <img
                 src={mountainImg}
@@ -145,8 +137,11 @@ export function InteractiveWorkshop() {
               <Button
                 data-testid="bug-button"
                 onClick={simulateBug}
-                variant={isBugActive ? "default" : "destructive"}
-                className={isBugActive ? "bg-green-500 hover:bg-green-600" : ""}
+                className={
+                  isBugActive
+                    ? "bg-green-500 text-white hover:bg-green-600"
+                    : "bg-red-700 text-white hover:bg-red-800"
+                }
               >
                 {isBugActive ? t("workshop.fixBug") : t("workshop.simulateBug")}
               </Button>
@@ -154,7 +149,6 @@ export function InteractiveWorkshop() {
           </div>
         </div>
 
-        {/* Code Display */}
         <div>
           <h4 className="font-semibold mb-4">{t("workshop.componentCode")}</h4>
           <div className="code-block rounded-lg p-6 text-white font-mono text-sm overflow-x-auto">
