@@ -85,7 +85,7 @@ export function ContactForm() {
             type="text"
             id="name"
             placeholder="Jan Kowalski"
-            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accent/50 focus:border-accent text-white placeholder-white/60"
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accent/50 focus:border-accent text-white placeholder-white/80"
           />
           {form.formState.errors.name && (
             <p className="text-red-400 text-sm mt-1">
@@ -107,7 +107,7 @@ export function ContactForm() {
             type="email"
             id="email"
             placeholder="jan@example.com"
-            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accent/50 focus:border-accent text-white placeholder-white/60"
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accent/50 focus:border-accent text-white placeholder-white/80"
           />
           {form.formState.errors.email && (
             <p className="text-red-400 text-sm mt-1">
@@ -130,7 +130,7 @@ export function ContactForm() {
             data-testid="select-project"
             className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accent/50 focus:border-accent text-white"
           >
-            <SelectValue placeholder="Wybierz typ projektu..." />
+            <SelectValue placeholder={t("contact.project")} />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="website">
@@ -170,7 +170,7 @@ export function ContactForm() {
           id="message"
           rows={5}
           placeholder="Opisz swój pomysł na projekt..."
-          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accent/50 focus:border-accent text-white placeholder-white/60"
+          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accent/50 focus:border-accent text-white placeholder-white/80"
         />
         {form.formState.errors.message && (
           <p className="text-red-400 text-sm mt-1">
