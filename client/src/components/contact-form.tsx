@@ -128,7 +128,7 @@ export function ContactForm() {
           <SelectTrigger
             id="project-select"
             data-testid="select-project"
-            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accent/50 focus:border-accent text-white"
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accent/50 focus:border-accent text-white data-[placeholder]:text-white/80"
           >
             <SelectValue placeholder={t("contact.project")} />
           </SelectTrigger>
