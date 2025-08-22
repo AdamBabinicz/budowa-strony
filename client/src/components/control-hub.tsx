@@ -266,23 +266,29 @@ export function ControlHub() {
             )}
           >
             <a
-              href="#"
+              href="https://github.com/AdamBabinicz"
               className="text-muted-foreground hover:text-accent transition-colors"
               title="GitHub"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <div className="w-5 h-5 text-lg">📂</div>
             </a>
             <a
-              href="#"
+              href="https://x.com/AdamBabinicz"
               className="text-muted-foreground hover:text-accent transition-colors"
               title="Twitter"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <div className="w-5 h-5 text-lg">🐦</div>
             </a>
             <a
-              href="#"
+              href="https://www.facebook.com/adam.gierczak.334"
               className="text-muted-foreground hover:text-accent transition-colors"
-              title="LinkedIn"
+              title="Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <div className="w-5 h-5 text-lg">💼</div>
             </a>

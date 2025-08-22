@@ -10,8 +10,8 @@ import React, { useState } from 'react';
 
 const ImageGallery: React.FC = () => {
   const [images] = useState([
-    { id: 1, src: '/mountain.jpg', alt: 'Mountain' },
-    { id: 2, src: '/ocean.jpg', alt: 'Ocean' }
+    { id: 1, src: '/1.avif', alt: 'Girl' },
+    { id: 2, src: '/2.avif', alt: 'Woman' }
   ]);
 
   // Zmieniono na responsywną siatkę: 1 kolumna na mobilnych, 2 na większych ekranach
@@ -34,8 +34,8 @@ import React, { useState } from 'react';
 
 const ImageGallery: React.FC = () => {
   const [images] = useState([
-    { id: 1, src: '/mountain.jpg', alt: 'Mountain' },
-    { id: 2, src: '/ocean.jpg', alt: 'Ocean' }
+    { id: 1, src: '/1.avif', alt: 'Girl' },
+    { id: 2, src: '/2.avif', alt: 'Woman' }
   ]);
 
   return (
