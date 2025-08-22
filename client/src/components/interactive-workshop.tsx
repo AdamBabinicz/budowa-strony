@@ -86,8 +86,12 @@ export default function InteractiveWorkshop() {
                 setIsBugged(!isBugged);
                 setShowBuggyCode(!isBugged);
               }}
-              variant={isBugged ? "default" : "destructive"}
-              className="w-full"
+              className={cn(
+                "w-full",
+                isBugged
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-red-700 text-white hover:bg-red-800"
+              )}
               data-testid="bug-button"
             >
               {isBugged
