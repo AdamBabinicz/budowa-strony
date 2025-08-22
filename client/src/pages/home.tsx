@@ -173,7 +173,7 @@ export default function Home() {
                       {t("phases.phase0.terminalTitle")}
                     </span>
                   </div>
-                  <div className="font-mono text-green-400 text-sm space-y-2">
+                  <div className="font-mono text-green-300 text-sm space-y-2">
                     <div className="animate-pulse">
                       &gt; {t("phases.phase0.analyzing")}
                     </div>
@@ -279,7 +279,7 @@ export default function Home() {
                 <div className="space-y-4 sm:space-y-6">
                   <div className="bg-card rounded-lg p-4 sm:p-6 border border-border">
                     <div className="flex items-center mb-3 sm:mb-4">
-                      <div className="w-8 h-8 bg-blue-500 rounded flex items-center justify-center text-white text-sm font-bold mr-3">
+                      <div className="w-8 h-8 bg-blue-700 rounded flex items-center justify-center text-white text-sm font-bold mr-3">
                         TS
                       </div>
                       <h4 className="font-semibold text-sm sm:text-base">
@@ -293,7 +293,7 @@ export default function Home() {
 
                   <div className="bg-card rounded-lg p-4 sm:p-6 border border-border">
                     <div className="flex items-center mb-3 sm:mb-4">
-                      <div className="w-8 h-8 bg-cyan-500 rounded flex items-center justify-center text-white text-sm font-bold mr-3">
+                      <div className="w-8 h-8 bg-cyan-700 rounded flex items-center justify-center text-white text-sm font-bold mr-3">
                         TW
                       </div>
                       <h4 className="font-semibold text-sm sm:text-base">
@@ -791,7 +791,7 @@ describe('ControlHub', () => {
                     </div>
                     <div className="flex justify-between">
                       <span>{t("testing.coverage")}</span>
-                      <span className="text-green-600 font-mono">96.8%</span>
+                      <span className="text-green-700 font-mono">96.8%</span>
                     </div>
                     <div className="flex justify-between">
                       <span>{t("testing.e2eTests")}</span>
@@ -806,130 +806,6 @@ describe('ControlHub', () => {
           </div>
         </section>
 
-        {/* <section
-          id="phase-5"
-          className="py-12 sm:py-20 px-4 sm:px-8 bg-secondary/5"
-        >
-          <div className="max-w-6xl mx-auto mobile-padding">
-            <div className="text-center mb-16 animate-fade-in min-w-0">
-              <div className="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
-                🧪
-              </div>
-              <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6 mobile-heading-size">
-                {t("testing.phaseTitle")}
-              </h2>
-              <p className="text-xl text-foreground/70 mb-12">
-                {t("testing.phaseSubtitle")}
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-12">
-              <div className="animate-slide-in min-w-0">
-                <h3 className="font-playfair text-2xl font-semibold mb-6">
-                  🔬 {t("testing.unitTestExample")}
-                </h3>
-
-                <div className="code-block rounded-lg p-6 text-white font-mono text-sm">
-                  <pre className="overflow-x-auto">
-                    <code className="whitespace-pre-wrap break-words">{`// ControlHub.test.tsx
-import { render, screen, fireEvent } from '@testing-library/react';
-import { ControlHub } from '../ControlHub';
-
-describe('ControlHub', () => {
-  it('should expand on hover', async () => {
-    render(<ControlHub />);
-
-    const hub = screen.getByTestId('control-hub');
-    expect(hub).toHaveClass('control-hub-collapsed');
-
-    fireEvent.mouseEnter(hub);
-
-    await waitFor(() => {
-      expect(hub).toHaveClass('control-hub-expanded');
-    });
-  });
-
-  it('should navigate to correct section', () => {
-    render(<ControlHub />);
-
-    const iskraLink = screen.getByText('Iskra');
-    fireEvent.click(iskraLink);
-
-    expect(window.location.hash).toBe('#phase-0');
-  });
-});`}</code>
-                  </pre>
-                </div>
-              </div>
-
-              <div className="animate-fade-in min-w-0">
-                <h3 className="font-playfair text-2xl font-semibold mb-6">
-                  ✅ {t("testing.testResults")}
-                </h3>
-
-                <div className="bg-primary text-primary-foreground rounded-lg p-6 border border-border">
-                  <div className="flex items-center mb-4">
-                    <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
-                    <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
-                    <span className="text-sm ml-4">
-                      {t("testing.testResultsVitest")}
-                    </span>
-                  </div>
-                  <div className="font-mono text-green-400 text-sm space-y-1 overflow-x-auto">
-                    <div>✓ ControlHub.test.tsx (2)</div>
-                    <div className="ml-4">✓ should expand on hover</div>
-                    <div className="ml-4">
-                      ✓ should navigate to correct section
-                    </div>
-                    <div>✓ TranslationModule.test.tsx (3)</div>
-                    <div className="ml-4">
-                      ✓ should switch languages correctly
-                    </div>
-                    <div className="ml-4">✓ should fallback to English</div>
-                    <div className="ml-4">
-                      ✓ should update translations dynamically
-                    </div>
-                    <div>✓ InteractiveWorkshop.test.tsx (2)</div>
-                    <div className="ml-4">✓ should simulate bug correctly</div>
-                    <div className="ml-4">✓ should fix bug on demand</div>
-                    <div className="text-accent mt-4">
-                      <strong>Tests: 7 passed, 7 total</strong>
-                      <br />
-                      <strong>Time: 2.14s</strong>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-6 bg-card rounded-lg p-6 border border-border">
-                  <h4 className="font-semibold mb-4">
-                    🛠️ {t("testing.testingStack")}
-                  </h4>
-                  <div className="space-y-3 text-sm">
-                    <div className="flex justify-between">
-                      <span>{t("testing.testRunner")}</span>
-                      <span className="font-mono">Vitest</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>{t("testing.testingLibrary")}</span>
-                      <span className="font-mono">@testing-library/react</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>{t("testing.coverage")}</span>
-                      <span className="text-green-600 font-mono">96.8%</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>{t("testing.e2eTests")}</span>
-                      <span className="font-mono">
-                        {t("testing.e2eTestsValue")}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section> */}
         <section
           id="phase-5"
           className="min-h-screen py-12 sm:py-20 px-4 sm:px-8 w-full max-w-full overflow-x-hidden"
@@ -1044,7 +920,7 @@ describe('ControlHub', () => {
                       <div key={metric.name} className="text-center">
                         <div className="relative w-20 h-20 mx-auto mb-2">
                           <div className="absolute inset-0 bg-green-100 dark:bg-green-900/20 rounded-full"></div>
-                          <div className="absolute inset-2 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">
+                          <div className="absolute inset-2 bg-green-700 rounded-full flex items-center justify-center text-white font-bold">
                             {metric.score}
                           </div>
                         </div>
@@ -1074,25 +950,25 @@ describe('ControlHub', () => {
                       <div className="font-medium">
                         {t("testing.firstContentfulPaint")}
                       </div>
-                      <div className="text-green-600 font-mono">1.2s</div>
+                      <div className="text-green-700 font-mono">1.2s</div>
                     </div>
                     <div>
                       <div className="font-medium">
                         {t("testing.largestContentfulPaint")}
                       </div>
-                      <div className="text-green-600 font-mono">2.1s</div>
+                      <div className="text-green-700 font-mono">2.1s</div>
                     </div>
                     <div>
                       <div className="font-medium">
                         {t("testing.cumulativeLayoutShift")}
                       </div>
-                      <div className="text-green-600 font-mono">0.01</div>
+                      <div className="text-green-700 font-mono">0.01</div>
                     </div>
                     <div>
                       <div className="font-medium">
                         {t("testing.timeToInteractive")}
                       </div>
-                      <div className="text-green-600 font-mono">2.8s</div>
+                      <div className="text-green-700 font-mono">2.8s</div>
                     </div>
                   </div>
                 </div>
