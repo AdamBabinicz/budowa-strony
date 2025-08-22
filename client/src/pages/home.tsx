@@ -174,33 +174,11 @@ export default function Home() {
                     </span>
                   </div>
                   <div className="font-mono text-lime-400 text-sm space-y-2">
-                    <div className="animate-pulse">
-                      &gt; {t("phases.phase0.analyzing")}
-                    </div>
-                    <div
-                      className="animate-pulse"
-                      style={{ animationDelay: "0.5s" }}
-                    >
-                      &gt; {t("phases.phase0.generating")}
-                    </div>
-                    <div
-                      className="animate-pulse"
-                      style={{ animationDelay: "1s" }}
-                    >
-                      &gt; {t("phases.phase0.planning")}
-                    </div>
-                    <div
-                      className="animate-pulse"
-                      style={{ animationDelay: "1.5s" }}
-                    >
-                      &gt; {t("phases.phase0.designing")}
-                    </div>
-                    <div
-                      className="animate-pulse"
-                      style={{ animationDelay: "2s" }}
-                    >
-                      &gt; {t("phases.phase0.complete")}
-                    </div>
+                    <div>&gt; {t("phases.phase0.analyzing")}</div>
+                    <div>&gt; {t("phases.phase0.generating")}</div>
+                    <div>&gt; {t("phases.phase0.planning")}</div>
+                    <div>&gt; {t("phases.phase0.designing")}</div>
+                    <div>&gt; {t("phases.phase0.complete")}</div>
                   </div>
                 </div>
               </div>
