@@ -174,11 +174,46 @@ export default function Home() {
                     </span>
                   </div>
                   <div className="font-mono text-lime-400 text-sm space-y-2">
-                    <div>&gt; {t("phases.phase0.analyzing")}</div>
-                    <div>&gt; {t("phases.phase0.generating")}</div>
-                    <div>&gt; {t("phases.phase0.planning")}</div>
-                    <div>&gt; {t("phases.phase0.designing")}</div>
-                    <div>&gt; {t("phases.phase0.complete")}</div>
+                    <div>
+                      <span className="animate-pulse">&gt; </span>
+                      {t("phases.phase0.analyzing")}
+                    </div>
+                    <div>
+                      <span
+                        className="animate-pulse"
+                        style={{ animationDelay: "0.5s" }}
+                      >
+                        &gt;{" "}
+                      </span>
+                      {t("phases.phase0.generating")}
+                    </div>
+                    <div>
+                      <span
+                        className="animate-pulse"
+                        style={{ animationDelay: "1s" }}
+                      >
+                        &gt;{" "}
+                      </span>
+                      {t("phases.phase0.planning")}
+                    </div>
+                    <div>
+                      <span
+                        className="animate-pulse"
+                        style={{ animationDelay: "1.5s" }}
+                      >
+                        &gt;{" "}
+                      </span>
+                      {t("phases.phase0.designing")}
+                    </div>
+                    <div>
+                      <span
+                        className="animate-pulse"
+                        style={{ animationDelay: "2s" }}
+                      >
+                        &gt;{" "}
+                      </span>
+                      {t("phases.phase0.complete")}
+                    </div>
                   </div>
                 </div>
               </div>
