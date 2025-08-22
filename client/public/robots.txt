@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zbuduj-strone.netlify.app/sitemap.xml

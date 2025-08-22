@@ -138,8 +138,14 @@ export function ControlHub() {
                   onClick={() => scrollToSection(phase.id)}
                   className={cn(
                     "nav-item flex items-center space-x-3 p-2 lg:p-3 rounded-lg hover:bg-accent/10 transition-colors duration-200 group/item relative w-full text-left",
+                    "focus-visible:outline-none focus-visible:ring-0",
                     activePhase === phase.id
-                      ? "bg-accent text-accent-foreground"
+                      ? cn(
+                          "bg-accent",
+                          isAccessibilityOn
+                            ? "text-black"
+                            : "text-accent-foreground"
+                        )
                       : ""
                   )}
                   title={phase.label}
@@ -259,23 +265,29 @@ export function ControlHub() {
             )}
           >
             <a
-              href="#"
+              href="https://github.com/AdamBabinicz"
               className="text-muted-foreground hover:text-accent transition-colors"
               title="GitHub"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <div className="w-5 h-5 text-lg">📂</div>
             </a>
             <a
-              href="#"
+              href="https://x.com/AdamBabinicz"
               className="text-muted-foreground hover:text-accent transition-colors"
               title="Twitter"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <div className="w-5 h-5 text-lg">🐦</div>
             </a>
             <a
-              href="#"
+              href="https://www.facebook.com/adam.gierczak.334"
               className="text-muted-foreground hover:text-accent transition-colors"
-              title="LinkedIn"
+              title="Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <div className="w-5 h-5 text-lg">💼</div>
             </a>
@@ -321,8 +333,14 @@ export function ControlHub() {
                         onClick={() => scrollToSection(phase.id)}
                         className={cn(
                           "nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-accent/10 transition-colors duration-200 w-full text-left",
+                          "focus-visible:outline-none focus-visible:ring-0",
                           activePhase === phase.id
-                            ? "bg-accent text-accent-foreground"
+                            ? cn(
+                                "bg-accent",
+                                isAccessibilityOn
+                                  ? "text-black"
+                                  : "text-accent-foreground"
+                              )
                             : ""
                         )}
                         title={phase.label}
@@ -396,6 +414,31 @@ export function ControlHub() {
                         <span className="nav-text">{link.label}</span>
                       </Link>
                     ))}
+                  </div>
+                </div>
+                <div className="border-t border-border p-4">
+                  <div className="flex space-x-4 justify-center">
+                    <a
+                      href="#"
+                      className="text-muted-foreground hover:text-accent transition-colors"
+                      title="GitHub"
+                    >
+                      <div className="w-6 h-6 text-2xl">📂</div>
+                    </a>
+                    <a
+                      href="#"
+                      className="text-muted-foreground hover:text-accent transition-colors"
+                      title="Twitter"
+                    >
+                      <div className="w-6 h-6 text-2xl">🐦</div>
+                    </a>
+                    <a
+                      href="#"
+                      className="text-muted-foreground hover:text-accent transition-colors"
+                      title="LinkedIn"
+                    >
+                      <div className="w-6 h-6 text-2xl">💼</div>
+                    </a>
                   </div>
                 </div>
               </div>

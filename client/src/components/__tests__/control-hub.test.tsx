@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import i18n from "@/lib/i18n";
 import { Link } from "wouter";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { RemoveScroll } from "react-remove-scroll";
 
 export function ControlHub() {
   const { t } = useTranslation();
@@ -13,7 +13,16 @@ export function ControlHub() {
   const [activePhase, setActivePhase] = useState("phase-0");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
-  const hubRef = useRef<HTMLDivElement>(null);
+  const [isAccessibilityOn, setIsAccessibilityOn] = useState(false);
+
+  useEffect(() => {
+    const rootElement = document.documentElement;
+    if (isAccessibilityOn) {
+      rootElement.classList.add("accessibility-mode");
+    } else {
+      rootElement.classList.remove("accessibility-mode");
+    }
+  }, [isAccessibilityOn]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,30 +91,17 @@ export function ControlHub() {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
+  const toggleAccessibility = () => {
+    setIsAccessibilityOn(!isAccessibilityOn);
+  };
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  useEffect(() => {
-    const hubElement = hubRef.current;
-    if (hubElement) {
-      if (isExpanded) {
-        disableBodyScroll(hubElement);
-      } else {
-        enableBodyScroll(hubElement);
-      }
-    }
-    return () => {
-      if (hubElement) {
-        enableBodyScroll(hubElement);
-      }
-    };
-  }, [isExpanded]);
-
   return (
     <>
       <div
-        ref={hubRef}
         className={`hidden lg:grid grid-rows-[auto_1fr_auto] fixed left-4 top-1/2 transform -translate-y-1/2 z-50 transition-all duration-300 ${
           isExpanded ? "control-hub-expanded" : "control-hub-collapsed"
         } bg-card border border-border rounded-lg shadow-lg hover:shadow-xl max-h-[90vh]`}
@@ -129,7 +125,10 @@ export function ControlHub() {
           </div>
         </div>
 
-        <div className="overflow-y-auto no-scrollbar">
+        <RemoveScroll
+          enabled={isExpanded}
+          className="overflow-y-auto no-scrollbar"
+        >
           <nav className="py-3 lg:py-4">
             <div className="space-y-1 lg:space-y-2 px-1 lg:px-2">
               {phases.map((phase) => (
@@ -139,8 +138,14 @@ export function ControlHub() {
                   onClick={() => scrollToSection(phase.id)}
                   className={cn(
                     "nav-item flex items-center space-x-3 p-2 lg:p-3 rounded-lg hover:bg-accent/10 transition-colors duration-200 group/item relative w-full text-left",
+                    "focus-visible:outline-none focus-visible:ring-0",
                     activePhase === phase.id
-                      ? "bg-accent text-accent-foreground"
+                      ? cn(
+                          "bg-accent",
+                          isAccessibilityOn
+                            ? "text-black"
+                            : "text-accent-foreground"
+                        )
                       : ""
                   )}
                   title={phase.label}
@@ -198,7 +203,7 @@ export function ControlHub() {
                   isExpanded ? "opacity-100" : "opacity-0"
                 )}
               >
-                {theme === "dark" ? "Light Mode" : "Dark Mode"}
+                {theme === "dark" ? t("theme.lightMode") : t("theme.darkMode")}
               </button>
             </div>
 
@@ -207,13 +212,16 @@ export function ControlHub() {
                 ♿
               </div>
               <button
+                onClick={toggleAccessibility}
                 data-testid="accessibility-toggle"
                 className={cn(
                   "text-sm transition-opacity duration-300 whitespace-nowrap",
                   isExpanded ? "opacity-100" : "opacity-0"
                 )}
               >
-                Accessibility
+                {isAccessibilityOn
+                  ? t("accessibility.toggleOn")
+                  : t("accessibility.toggleOff")}
               </button>
             </div>
           </div>
@@ -247,7 +255,7 @@ export function ControlHub() {
               ))}
             </div>
           </div>
-        </div>
+        </RemoveScroll>
 
         <div className="border-t border-border p-4">
           <div
@@ -281,7 +289,6 @@ export function ControlHub() {
         </div>
       </div>
 
-      {/* Mobile Menu - code remains unchanged */}
       <button
         data-testid="mobile-menu-toggle"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -291,114 +298,122 @@ export function ControlHub() {
       </button>
 
       {isMobileMenuOpen && (
-        <div
-          className="lg:hidden fixed inset-0 z-40 bg-black/20 backdrop-blur-sm"
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
+        <RemoveScroll>
           <div
-            className="fixed left-0 top-0 h-full w-72 bg-background/95 backdrop-blur-md border-r border-border shadow-2xl p-4 grid grid-rows-[auto_1fr] animate-slide-in"
-            onClick={(e) => e.stopPropagation()}
+            className="lg:hidden fixed inset-0 z-40 bg-black/20 backdrop-blur-sm"
+            onClick={() => setIsMobileMenuOpen(false)}
           >
-            <div className="p-3 border-b border-border">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 gradient-gold rounded-lg flex items-center justify-center text-white font-bold text-sm">
-                  AI
+            <div
+              className="fixed left-0 top-0 h-full w-72 bg-background/95 backdrop-blur-md border-r border-border shadow-2xl p-4 grid grid-rows-[auto_1fr] animate-slide-in"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="p-3 border-b border-border">
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 gradient-gold rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                    AI
+                  </div>
+                  <span className="font-playfair font-semibold text-lg">
+                    Genesis
+                  </span>
                 </div>
-                <span className="font-playfair font-semibold text-lg">
-                  Genesis
-                </span>
               </div>
-            </div>
-
-            <div className="overflow-y-auto no-scrollbar overscroll-contain">
-              <nav className="py-4">
-                <div className="space-y-2 px-2">
-                  {phases.map((phase) => (
+              <div className="overflow-y-auto no-scrollbar">
+                <nav className="py-4">
+                  <div className="space-y-2 px-2">
+                    {phases.map((phase) => (
+                      <button
+                        key={phase.id}
+                        data-testid={`mobile-nav-${phase.id}`}
+                        onClick={() => scrollToSection(phase.id)}
+                        className={cn(
+                          "nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-accent/10 transition-colors duration-200 w-full text-left",
+                          "focus-visible:outline-none focus-visible:ring-0",
+                          activePhase === phase.id
+                            ? cn(
+                                "bg-accent",
+                                isAccessibilityOn
+                                  ? "text-black"
+                                  : "text-accent-foreground"
+                              )
+                            : ""
+                        )}
+                        title={phase.label}
+                      >
+                        <div className="w-6 h-6 flex items-center justify-center text-xl">
+                          {phase.icon}
+                        </div>
+                        <span className="nav-text">{phase.label}</span>
+                      </button>
+                    ))}
+                  </div>
+                </nav>
+                <div className="border-t border-border p-4 space-y-3">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-6 h-6 flex items-center justify-center text-xl">
+                      🌐
+                    </div>
+                    <select
+                      data-testid="mobile-language-selector"
+                      value={i18n.language}
+                      onChange={(e) => changeLanguage(e.target.value)}
+                      className="bg-background border border-border rounded px-2 py-1 text-sm text-foreground w-full"
+                    >
+                      <option value="pl">Polski</option>
+                      <option value="en">English</option>
+                      <option value="ja">日本語</option>
+                    </select>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-6 h-6 flex items-center justify-center text-xl">
+                      {theme === "dark" ? "🌙" : "☀️"}
+                    </div>
                     <button
-                      key={phase.id}
-                      data-testid={`mobile-nav-${phase.id}`}
-                      onClick={() => scrollToSection(phase.id)}
-                      className={cn(
-                        "nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-accent/10 transition-colors duration-200 w-full text-left",
-                        activePhase === phase.id
-                          ? "bg-accent text-accent-foreground"
-                          : ""
-                      )}
-                      title={phase.label}
+                      data-testid="mobile-theme-toggle"
+                      onClick={toggleTheme}
+                      className="text-sm w-full text-left"
                     >
-                      <div className="w-6 h-6 flex items-center justify-center text-xl">
-                        {phase.icon}
-                      </div>
-                      <span className="nav-text">{phase.label}</span>
+                      {theme === "dark"
+                        ? t("theme.lightMode")
+                        : t("theme.darkMode")}
                     </button>
-                  ))}
-                </div>
-              </nav>
-
-              <div className="border-t border-border p-4 space-y-3">
-                <div className="flex items-center space-x-3">
-                  <div className="w-6 h-6 flex items-center justify-center text-xl">
-                    🌐
                   </div>
-                  <select
-                    data-testid="mobile-language-selector"
-                    value={i18n.language}
-                    onChange={(e) => changeLanguage(e.target.value)}
-                    className="bg-background border border-border rounded px-2 py-1 text-sm text-foreground w-full"
-                  >
-                    <option value="pl">Polski</option>
-                    <option value="en">English</option>
-                    <option value="ja">日本語</option>
-                  </select>
-                </div>
-
-                <div className="flex items-center space-x-3">
-                  <div className="w-6 h-6 flex items-center justify-center text-xl">
-                    {theme === "dark" ? "🌙" : "☀️"}
-                  </div>
-                  <button
-                    data-testid="mobile-theme-toggle"
-                    onClick={toggleTheme}
-                    className="text-sm w-full text-left"
-                  >
-                    {theme === "dark" ? "Light Mode" : "Dark Mode"}
-                  </button>
-                </div>
-
-                <div className="flex items-center space-x-3">
-                  <div className="w-6 h-6 flex items-center justify-center text-xl">
-                    ♿
-                  </div>
-                  <button
-                    data-testid="mobile-accessibility-toggle"
-                    className="text-sm w-full text-left"
-                  >
-                    Accessibility
-                  </button>
-                </div>
-              </div>
-
-              <div className="border-t border-border py-4">
-                <div className="space-y-2 px-2">
-                  {legalLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-accent/10 transition-colors duration-200 w-full text-left"
-                      title={link.label}
+                  <div className="flex items-center space-x-3">
+                    <div className="w-6 h-6 flex items-center justify-center text-xl">
+                      ♿
+                    </div>
+                    <button
+                      onClick={toggleAccessibility}
+                      data-testid="mobile-accessibility-toggle"
+                      className="text-sm w-full text-left"
                     >
-                      <div className="w-6 h-6 flex items-center justify-center text-xl">
-                        {link.icon}
-                      </div>
-                      <span className="nav-text">{link.label}</span>
-                    </Link>
-                  ))}
+                      {isAccessibilityOn
+                        ? t("accessibility.toggleOn")
+                        : t("accessibility.toggleOff")}
+                    </button>
+                  </div>
+                </div>
+                <div className="border-t border-border py-4">
+                  <div className="space-y-2 px-2">
+                    {legalLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="nav-item flex items-center space-x-3 p-3 rounded-lg hover:bg-accent/10 transition-colors duration-200 w-full text-left"
+                        title={link.label}
+                      >
+                        <div className="w-6 h-6 flex items-center justify-center text-xl">
+                          {link.icon}
+                        </div>
+                        <span className="nav-text">{link.label}</span>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </RemoveScroll>
       )}
 
       {showScrollToTop && (
