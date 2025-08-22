@@ -12,7 +12,8 @@
     "development": "Development",
     "zasieg": "Global Reach",
     "deployment": "Deployment",
-    "contact": "Contact"
+    "contact": "Contact",
+    "languageSelectorLabel": "Select language"
   },
   "legalNav": {
     "terms": "Terms of Service",

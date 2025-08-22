@@ -180,6 +180,7 @@ export function ControlHub() {
                 data-testid="language-selector"
                 value={i18n.language}
                 onChange={(e) => changeLanguage(e.target.value)}
+                aria-label={t("nav.languageSelectorLabel")}
                 className={cn(
                   "bg-background border border-border rounded px-2 py-1 text-sm transition-opacity duration-300 text-foreground",
                   isExpanded ? "opacity-100" : "opacity-0"
@@ -265,29 +266,23 @@ export function ControlHub() {
             )}
           >
             <a
-              href="https://github.com/AdamBabinicz"
+              href="#"
               className="text-muted-foreground hover:text-accent transition-colors"
               title="GitHub"
-              target="_blank"
-              rel="noopener noreferrer"
             >
               <div className="w-5 h-5 text-lg">📂</div>
             </a>
             <a
-              href="https://x.com/AdamBabinicz"
+              href="#"
               className="text-muted-foreground hover:text-accent transition-colors"
               title="Twitter"
-              target="_blank"
-              rel="noopener noreferrer"
             >
               <div className="w-5 h-5 text-lg">🐦</div>
             </a>
             <a
-              href="https://www.facebook.com/adam.gierczak.334"
+              href="#"
               className="text-muted-foreground hover:text-accent transition-colors"
-              title="Facebook"
-              target="_blank"
-              rel="noopener noreferrer"
+              title="LinkedIn"
             >
               <div className="w-5 h-5 text-lg">💼</div>
             </a>
@@ -362,6 +357,7 @@ export function ControlHub() {
                       data-testid="mobile-language-selector"
                       value={i18n.language}
                       onChange={(e) => changeLanguage(e.target.value)}
+                      aria-label={t("nav.languageSelectorLabel")}
                       className="bg-background border border-border rounded px-2 py-1 text-sm text-foreground w-full"
                     >
                       <option value="pl">Polski</option>

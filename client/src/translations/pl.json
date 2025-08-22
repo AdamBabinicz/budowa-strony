@@ -12,7 +12,8 @@
     "development": "Development",
     "zasieg": "Zasięg",
     "deployment": "Deployment",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "languageSelectorLabel": "Wybierz język"
   },
   "legalNav": {
     "terms": "Regulamin",

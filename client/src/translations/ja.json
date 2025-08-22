@@ -12,7 +12,8 @@
     "development": "開発",
     "zasieg": "グローバル展開",
     "deployment": "デプロイメント",
-    "contact": "コンタクト"
+    "contact": "コンタクト",
+    "languageSelectorLabel": "言語を選択"
   },
   "legalNav": {
     "terms": "利用規約",

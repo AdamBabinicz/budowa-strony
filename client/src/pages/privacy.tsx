@@ -13,9 +13,9 @@ export default function Privacy() {
         <meta name="description" content={t("privacyPage.seoDescription")} />
       </Helmet>
       <main className="max-w-4xl mx-auto py-16 sm:py-24 px-6 lg:px-8">
-        <h1 className="font-playfair text-4xl sm:text-5xl mb-12 text-center">
+        <h2 className="font-playfair text-4xl sm:text-5xl mb-12 text-center">
           {t("privacyPage.title")}
-        </h1>
+        </h2>
         <div className="prose prose-lg max-w-none dark:prose-invert">
           {t("privacyPage.content")
             .split("\n\n")
