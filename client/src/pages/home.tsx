@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
-import InteractiveWorkshop from "@/components/interactive-workshop";
+import { InteractiveWorkshop } from "@/components/interactive-workshop";
 import { TranslationDemo } from "@/components/translation-demo";
 import { ContactForm } from "@/components/contact-form";
 import { CreatorStoryModal } from "@/components/creator-story-modal";
