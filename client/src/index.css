@@ -18,6 +18,58 @@
     --secondary-foreground: hsl(0 0% 10.2%);
     --muted: hsl(0 0% 95.1%);
     --muted-foreground: hsl(0 0% 45.1%);
+    --accent: hsl(
+      38 60% 50%
+    ); /* ZMIANA: Ciemniejszy, bardziej nasycony złoty */
+    --accent-light: hsl(38 65% 60%); /* ZMIANA: Dopasowany jaśniejszy odcień */
+    --accent-foreground: hsl(0 0% 100%);
+    --destructive: hsl(0 84.2% 60.2%);
+    --destructive-foreground: hsl(0 0% 100%);
+    --border: hsl(0 0% 89.8%);
+    --input: hsl(0 0% 89.8%);
+    --ring: hsl(38 60% 50%); /* ZMIANA: Dopasowany kolor ring */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: hsl(0 0% 10.2%);
+    --foreground: hsl(0 0% 98%);
+    --card: hsl(0 0% 10.2%);
+    --card-foreground: hsl(0 0% 98%);
+    --popover: hsl(0 0% 10.2%);
+    --popover-foreground: hsl(0 0% 98%);
+    --primary: hsl(0 0% 98%);
+    --primary-foreground: hsl(0 0% 10.2%);
+    --secondary: hsl(0 0% 16.5%);
+    --secondary-foreground: hsl(0 0% 98%);
+    --muted: hsl(0 0% 16.5%);
+    --muted-foreground: hsl(0 0% 62.9%);
+    --accent: hsl(
+      38 60% 50%
+    ); /* ZMIANA: Ciemniejszy, bardziej nasycony złoty */
+    --accent-light: hsl(38 65% 60%); /* ZMIANA: Dopasowany jaśniejszy odcień */
+    --accent-foreground: hsl(0 0% 10.2%);
+    --destructive: hsl(0 62.8% 30.6%);
+    --destructive-foreground: hsl(0 0% 98%);
+    --border: hsl(0 0% 20.5%);
+    --input: hsl(0 0% 20.5%);
+    --ring: hsl(38 60% 50%); /* ZMIANA: Dopasowany kolor ring */
+  }
+}
+/* @layer base {
+  :root {
+    --background: hsl(0 0% 100%);
+    --foreground: hsl(0 0% 10.2%);
+    --card: hsl(0 0% 100%);
+    --card-foreground: hsl(0 0% 10.2%);
+    --popover: hsl(0 0% 100%);
+    --popover-foreground: hsl(0 0% 10.2%);
+    --primary: hsl(0 0% 10.2%);
+    --primary-foreground: hsl(0 0% 100%);
+    --secondary: hsl(0 0% 95.1%);
+    --secondary-foreground: hsl(0 0% 10.2%);
+    --muted: hsl(0 0% 95.1%);
+    --muted-foreground: hsl(0 0% 45.1%);
     --accent: hsl(38 48% 56%);
     --accent-light: hsl(38 55% 65%);
     --accent-foreground: hsl(0 0% 100%);
@@ -51,7 +103,7 @@
     --input: hsl(0 0% 20.5%);
     --ring: hsl(38 48% 56%);
   }
-}
+} */
 
 @layer base {
   * {
