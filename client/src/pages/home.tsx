@@ -173,7 +173,7 @@ export default function Home() {
                       {t("phases.phase0.terminalTitle")}
                     </span>
                   </div>
-                  <div className="font-mono text-lime-300 text-sm space-y-2">
+                  <div className="font-mono text-lime-400 text-sm space-y-2">
                     <div className="animate-pulse">
                       &gt; {t("phases.phase0.analyzing")}
                     </div>
