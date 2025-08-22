@@ -90,6 +90,7 @@ export function GeminiShowcase() {
                     className="demo-buggy-button"
                     onMouseEnter={() => setHoveredButton("before")}
                     onMouseLeave={() => setHoveredButton(null)}
+                    aria-label={t("geminiPhase.showcase.closeButtonLabel")}
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -102,6 +103,7 @@ export function GeminiShowcase() {
                     className="demo-fixed-button"
                     onMouseEnter={() => setHoveredButton("after")}
                     onMouseLeave={() => setHoveredButton(null)}
+                    aria-label={t("geminiPhase.showcase.closeButtonLabel")}
                   >
                     <X className="w-5 h-5" />
                   </button>

@@ -157,6 +157,7 @@
     "showcase": {
       "title": "Interaktywny Warsztat Gemini",
       "intro": "Ten interaktywny moduł powstał w wyniku naszej rozmowy. Zamiast tylko opisywać poprawki, pozwala Ci ich doświadczyć. To najlepszy dowód na to, jak dialog człowiek-AI prowadzi do tworzenia lepszych, bardziej angażujących rozwiązań.",
+      "closeButtonLabel": "Zamknij",
       "demo1": {
         "title": "Demo 1: Tryb Dostępności",
         "previewTitle": "Tekst Podglądu",

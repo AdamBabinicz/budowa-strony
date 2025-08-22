@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
@@ -9,7 +8,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import type { ContactFormData } from "@/types";
@@ -24,7 +29,7 @@ const contactSchema = z.object({
 export function ContactForm() {
   const { t } = useTranslation();
   const { toast } = useToast();
-  
+
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -61,18 +66,21 @@ export function ContactForm() {
   };
 
   return (
-    <form 
-      onSubmit={form.handleSubmit(onSubmit)} 
+    <form
+      onSubmit={form.handleSubmit(onSubmit)}
       className="max-w-2xl mx-auto space-y-6 animate-slide-in"
       data-testid="contact-form"
     >
       <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <Label htmlFor="name" className="block text-sm font-medium mb-2 text-white">
-            {t('contact.name')}
+          <Label
+            htmlFor="name"
+            className="block text-sm font-medium mb-2 text-white"
+          >
+            {t("contact.name")}
           </Label>
           <Input
-            {...form.register('name')}
+            {...form.register("name")}
             data-testid="input-name"
             type="text"
             id="name"
@@ -80,16 +88,21 @@ export function ContactForm() {
             className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accent/50 focus:border-accent text-white placeholder-white/60"
           />
           {form.formState.errors.name && (
-            <p className="text-red-400 text-sm mt-1">{form.formState.errors.name.message}</p>
+            <p className="text-red-400 text-sm mt-1">
+              {form.formState.errors.name.message}
+            </p>
           )}
         </div>
-        
+
         <div>
-          <Label htmlFor="email" className="block text-sm font-medium mb-2 text-white">
-            {t('contact.email')}
+          <Label
+            htmlFor="email"
+            className="block text-sm font-medium mb-2 text-white"
+          >
+            {t("contact.email")}
           </Label>
           <Input
-            {...form.register('email')}
+            {...form.register("email")}
             data-testid="input-email"
             type="email"
             id="email"
@@ -97,41 +110,62 @@ export function ContactForm() {
             className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accent/50 focus:border-accent text-white placeholder-white/60"
           />
           {form.formState.errors.email && (
-            <p className="text-red-400 text-sm mt-1">{form.formState.errors.email.message}</p>
+            <p className="text-red-400 text-sm mt-1">
+              {form.formState.errors.email.message}
+            </p>
           )}
         </div>
       </div>
-      
+
       <div>
-        <Label htmlFor="project" className="block text-sm font-medium mb-2 text-white">
-          {t('contact.project')}
+        <Label
+          htmlFor="project-select"
+          className="block text-sm font-medium mb-2 text-white"
+        >
+          {t("contact.project")}
         </Label>
-        <Select onValueChange={(value) => form.setValue('project', value)}>
-          <SelectTrigger 
+        <Select onValueChange={(value) => form.setValue("project", value)}>
+          <SelectTrigger
+            id="project-select"
             data-testid="select-project"
             className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accent/50 focus:border-accent text-white"
           >
             <SelectValue placeholder="Wybierz typ projektu..." />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="website">{t('contact.projectTypes.website')}</SelectItem>
-            <SelectItem value="webapp">{t('contact.projectTypes.webapp')}</SelectItem>
-            <SelectItem value="ecommerce">{t('contact.projectTypes.ecommerce')}</SelectItem>
-            <SelectItem value="tutorial">{t('contact.projectTypes.tutorial')}</SelectItem>
-            <SelectItem value="other">{t('contact.projectTypes.other')}</SelectItem>
+            <SelectItem value="website">
+              {t("contact.projectTypes.website")}
+            </SelectItem>
+            <SelectItem value="webapp">
+              {t("contact.projectTypes.webapp")}
+            </SelectItem>
+            <SelectItem value="ecommerce">
+              {t("contact.projectTypes.ecommerce")}
+            </SelectItem>
+            <SelectItem value="tutorial">
+              {t("contact.projectTypes.tutorial")}
+            </SelectItem>
+            <SelectItem value="other">
+              {t("contact.projectTypes.other")}
+            </SelectItem>
           </SelectContent>
         </Select>
         {form.formState.errors.project && (
-          <p className="text-red-400 text-sm mt-1">{form.formState.errors.project.message}</p>
+          <p className="text-red-400 text-sm mt-1">
+            {form.formState.errors.project.message}
+          </p>
         )}
       </div>
-      
+
       <div>
-        <Label htmlFor="message" className="block text-sm font-medium mb-2 text-white">
-          {t('contact.message')}
+        <Label
+          htmlFor="message"
+          className="block text-sm font-medium mb-2 text-white"
+        >
+          {t("contact.message")}
         </Label>
         <Textarea
-          {...form.register('message')}
+          {...form.register("message")}
           data-testid="textarea-message"
           id="message"
           rows={5}
@@ -139,10 +173,12 @@ export function ContactForm() {
           className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-accent/50 focus:border-accent text-white placeholder-white/60"
         />
         {form.formState.errors.message && (
-          <p className="text-red-400 text-sm mt-1">{form.formState.errors.message.message}</p>
+          <p className="text-red-400 text-sm mt-1">
+            {form.formState.errors.message.message}
+          </p>
         )}
       </div>
-      
+
       <div className="text-center">
         <Button
           data-testid="button-submit"
@@ -150,7 +186,9 @@ export function ContactForm() {
           disabled={submitFormMutation.isPending}
           className="bg-accent hover:bg-accent-light text-accent-foreground px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
         >
-          {submitFormMutation.isPending ? "Wysyłanie..." : `🚀 ${t('contact.submit')}`}
+          {submitFormMutation.isPending
+            ? "Wysyłanie..."
+            : `🚀 ${t("contact.submit")}`}
         </Button>
       </div>
     </form>

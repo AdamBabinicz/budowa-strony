@@ -157,6 +157,7 @@
     "showcase": {
       "title": "Gemini's Interactive Workshop",
       "intro": "This interactive module was born from our conversation. Instead of just describing the fixes, it lets you experience them. It's the best proof of how human-AI dialogue leads to better, more engaging solutions.",
+      "closeButtonLabel": "Close",
       "demo1": {
         "title": "Demo 1: Accessibility Mode",
         "previewTitle": "Preview Text",
