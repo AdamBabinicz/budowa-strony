@@ -1,173 +1,120 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import devPhotoUrl from "@/assets/1.avif";
-import devPhotoUrl1 from "@/assets/2.avif";
+import { cn } from "@/lib/utils";
+import mountainImg from "@/assets/1.avif";
+import oceanImg from "@/assets/2.avif";
 
-const workingCode = `// ImageGallery.tsx
-import React, { useState } from 'react';
+const images = [
+  { src: mountainImg, alt: "Mountain landscape at sunrise" },
+  { src: oceanImg, alt: "Ocean waves during golden hour" },
+];
 
-const ImageGallery: React.FC = () => {
-  const [images] = useState([
-    { id: 1, src: '/mountain.jpg', alt: 'Mountain' },
-    { id: 2, src: '/ocean.jpg', alt: 'Ocean' }
-  ]);
+const codeBefore = `
+<div className="grid grid-cols-2 gap-4">
+  {images.map((img) => (
+    <img
+      key={img.src}
+      src={img.src}
+      alt={img.alt}
+      className="rounded-lg"
+    />
+  ))}
+</div>
+`;
 
-  return (
-    <div className="grid grid-cols-2 gap-4">
-      {images.map(img => (
-        <img
-          key={img.id}
-          src={img.src}
-          alt={img.alt}
-          className="rounded-lg hover:scale-105 transition-transform"
-        />
-      ))}
-    </div>
-  );
-};`;
-
-const buggyCode = `// ImageGallery.tsx - WITH BUG! 🐛
-import React, { useState } from 'react';
-
-const ImageGallery: React.FC = () => {
-  const [images] = useState([
-    { id: 1, src: '/mountain.jpg', alt: 'Mountain' },
-    { id: 2, src: '/ocean.jpg', alt: 'Ocean' }
-  ]);
-
-  return (
-    <div className="grid grid-cols-1 gap-4"> {/* BUG: Wrong grid-cols! */}
-      {images.map(img => (
-        <img
-          key={img.id}
-          src={img.src}
-          alt={img.alt}
-          className="rounded-lg w-12 h-12" {/* BUG: Wrong dimensions! */}
-        />
-      ))}
-    </div>
-  );
-};`;
+const codeAfter = `
+<div className="grid grid-cols-2 gap-4">
+  {images.map((img) => (
+    <img
+      key={img.src}
+      src={img.src}
+      alt={t(img.alt)} // Corrected line
+      className="rounded-lg object-cover h-48 w-full"
+    />
+  ))}
+</div>
+`;
 
 export default function InteractiveWorkshop() {
-  const [isBugActive, setIsBugActive] = useState(false);
-  const [currentCode, setCurrentCode] = useState(workingCode);
   const { t } = useTranslation();
+  const [isBugged, setIsBugged] = useState(false);
+  const [showBuggyCode, setShowBuggyCode] = useState(false);
   const { toast } = useToast();
 
-  useEffect(() => {
-    const gallery = document.getElementById("gallery-demo");
-    if (!gallery) return;
-
-    const grid = gallery.querySelector<HTMLDivElement>(".grid");
-    const images = gallery.querySelectorAll<HTMLImageElement>("img");
-
-    if (isBugActive) {
-      grid?.classList.remove("grid-cols-2");
-      grid?.classList.add("grid-cols-1");
-      images.forEach((img) => {
-        img.style.width = "3rem";
-        img.style.height = "3rem";
-        img.style.objectFit = "none";
-        img.classList.remove("hover:scale-105");
-      });
-    } else {
-      grid?.classList.remove("grid-cols-1");
-      grid?.classList.add("grid-cols-2");
-      images.forEach((img) => {
-        img.style.width = "";
-        img.style.height = "";
-        img.style.objectFit = "";
-        img.classList.add("hover:scale-105");
-      });
-    }
-  }, [isBugActive]);
-
-  const toggleBug = () => {
-    setIsBugActive((prev) => !prev);
-    setCurrentCode((prevCode) =>
-      prevCode === workingCode ? buggyCode : workingCode
-    );
-  };
-
-  const copyCode = async () => {
-    try {
-      await navigator.clipboard.writeText(currentCode);
-      toast({
-        title: t("workshop.codeCopied"),
-        description: t("workshop.codeDescription"),
-      });
-    } catch (err) {
-      toast({
-        title: t("workshop.error"),
-        description: t("workshop.copyError"),
-        variant: "destructive",
-      });
-    }
+  const handleCopyCode = () => {
+    const codeToCopy = showBuggyCode ? codeBefore : codeAfter;
+    navigator.clipboard.writeText(codeToCopy.trim());
+    toast({
+      title: t("workshop.codeCopied"),
+      description: t("workshop.codeDescription"),
+    });
   };
 
   return (
-    <div className="mb-16 animate-slide-in">
+    <div className="mb-16">
       <h3 className="font-playfair text-2xl font-semibold mb-8 text-center">
-        🔧 {t("workshop.title")}
+        {t("workshop.title")}
       </h3>
-
-      <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12">
-        <div>
+      <div className="grid lg:grid-cols-2 gap-8">
+        <div className="animate-slide-in">
           <h4 className="font-semibold mb-4">{t("workshop.galleryDemo")}</h4>
           <div
-            id="gallery-demo"
-            className="bg-card rounded-lg p-6 border border-border"
-            data-testid="gallery-demo"
+            className={cn(
+              "p-4 border rounded-lg",
+              isBugged ? "border-destructive" : "border-border"
+            )}
           >
-            <div className="grid grid-cols-2 gap-4 mb-4">
-              <img
-                src={devPhotoUrl}
-                alt={t("workshop.mountainAlt")}
-                className="rounded-lg shadow-md hover:scale-105 transition-all duration-200 cursor-pointer"
-                loading="lazy"
-              />
-              <img
-                src={devPhotoUrl1}
-                alt={t("workshop.oceanAlt")}
-                className="rounded-lg shadow-md hover:scale-105 transition-all duration-200 cursor-pointer"
-                loading="lazy"
-              />
-            </div>
-
-            <div className="flex space-x-4">
-              <Button
-                data-testid="bug-button"
-                onClick={toggleBug}
-                variant={isBugActive ? "default" : "destructive"}
-                className={isBugActive ? "bg-green-500 hover:bg-green-600" : ""}
-              >
-                {isBugActive ? t("workshop.fixBug") : t("workshop.simulateBug")}
-              </Button>
+            <div className="grid grid-cols-2 gap-4">
+              {images.map((img) => (
+                <img
+                  key={img.src}
+                  src={img.src}
+                  alt={isBugged ? img.alt : t(img.alt, { ns: "workshop" })}
+                  className={cn(
+                    "rounded-lg",
+                    !isBugged && "object-cover h-48 w-full"
+                  )}
+                />
+              ))}
             </div>
           </div>
+          <div className="mt-4 flex space-x-2">
+            <Button
+              onClick={() => {
+                setIsBugged(!isBugged);
+                setShowBuggyCode(!isBugged);
+              }}
+              variant={isBugged ? "default" : "destructive"}
+              className="w-full"
+              data-testid="bug-button"
+            >
+              {isBugged
+                ? `✅ ${t("workshop.fixBug")}`
+                : `🐛 ${t("workshop.simulateBug")}`}
+            </Button>
+          </div>
         </div>
-
-        <div>
+        <div className="animate-fade-in">
           <h4 className="font-semibold mb-4">{t("workshop.componentCode")}</h4>
-          <div className="code-block rounded-lg p-6 text-white font-mono text-sm overflow-x-auto">
-            <pre data-testid="code-display">
-              <code className="whitespace-pre-wrap break-words">
-                {currentCode}
+          <div className="code-block rounded-lg p-4 text-white font-mono text-xs">
+            <pre>
+              <code>
+                {showBuggyCode ? codeBefore.trim() : codeAfter.trim()}
               </code>
             </pre>
           </div>
-
-          <Button
-            data-testid="copy-code-button"
-            onClick={copyCode}
-            variant="outline"
-            className="mt-4 bg-accent hover:bg-accent-light text-accent-foreground"
-          >
-            📋 {t("workshop.copyCode")}
-          </Button>
+          <div className="mt-4">
+            <Button
+              onClick={handleCopyCode}
+              variant="secondary"
+              className="w-full"
+              data-testid="copy-code-button"
+            >
+              📋 {t("workshop.copyCode")}
+            </Button>
+          </div>
         </div>
       </div>
     </div>

@@ -173,7 +173,7 @@ export default function Home() {
                       {t("phases.phase0.terminalTitle")}
                     </span>
                   </div>
-                  <div className="font-mono text-green-300 text-sm space-y-2">
+                  <div className="font-mono text-lime-300 text-sm space-y-2">
                     <div className="animate-pulse">
                       &gt; {t("phases.phase0.analyzing")}
                     </div>
@@ -307,7 +307,7 @@ export default function Home() {
 
                   <div className="bg-card rounded-lg p-4 sm:p-6 border border-border">
                     <div className="flex items-center mb-3 sm:mb-4">
-                      <div className="w-8 h-8 bg-green-500 rounded flex items-center justify-center text-white text-sm font-bold mr-3">
+                      <div className="w-8 h-8 bg-green-600 rounded flex items-center justify-center text-white text-sm font-bold mr-3">
                         ⚡
                       </div>
                       <h4 className="font-semibold text-sm sm:text-base">
@@ -1093,7 +1093,7 @@ describe('ControlHub', () => {
               <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">
                 {t("contact.title")}
               </h2>
-              <p className="text-xl text-primary-foreground/70">
+              <p className="text-xl text-primary-foreground/90">
                 {t("contact.subtitle")}
               </p>
             </div>
