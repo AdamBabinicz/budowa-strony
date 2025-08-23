@@ -21,9 +21,9 @@ interface SEOProps {
 // ZMIANA: Zaktualizowano wszystkie stałe, aby pasowały do projektu "AI Genesis".
 const siteUrl = "https://zbuduj-strone.netlify.app";
 const siteName = "AI Genesis: Interaktywny Meta-Tutorial";
-const defaultImage = `${siteUrl}/og-image.png`; // Pamiętaj, aby utworzyć ten plik!
-const authorName = "Imię i Nazwisko Autora"; // Uzupełnij swoje dane
-const authorProfileUrl = "https://github.com/twoj-profil"; // Opcjonalnie: link do Twojego profilu
+const defaultImage = `${siteUrl}/1.png`; // Pamiętaj, aby utworzyć ten plik!
+const authorName = "Adam Gierczak"; // Uzupełnij swoje dane
+const authorProfileUrl = "https://github.com/AdamBabinicz"; // Opcjonalnie: link do Twojego profilu
 
 export default function SEO({
   title,
