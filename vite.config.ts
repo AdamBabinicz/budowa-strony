@@ -1,38 +1,25 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { fileURLToPath } from "url";
-import { dirname, resolve } from "path";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import path from "path";
 
 export default defineConfig({
   plugins: [react()],
 
+  root: "client",
+
   resolve: {
     alias: {
-      "@": resolve(__dirname, "client", "src"),
-      "@shared": resolve(__dirname, "shared"),
+      "@": path.resolve(__dirname, "client/src"),
     },
   },
-
-  root: resolve(__dirname, "client"),
 
   build: {
-    outDir: resolve(__dirname, "dist/public"),
-    emptyOutDir: true,
-  },
-
-  server: {
-    fs: {
-      strict: true,
-      deny: ["**/.*"],
-    },
+    outDir: "dist",
   },
 
   test: {
     globals: true,
     environment: "jsdom",
-
-    setupFiles: "./client/src/setupTests.ts",
+    setupFiles: "./src/setupTests.ts",
   },
 });
