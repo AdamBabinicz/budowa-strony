@@ -264,7 +264,8 @@
     "submit": "Send inquiry"
   },
   "seo": {
-    "title": "AI Genesis: Interactive Meta-Tutorial | Replit Development Masterclass",
+    "defaultTitle": "AI Genesis: Interactive Meta-Tutorial | Replit Development Masterclass",
+    "homeTitle": "AI Genesis: Home Page of the Meta-Tutorial",
     "description": "Groundbreaking interactive tutorial showing the complete project lifecycle - from idea to deployment using AI and modern technologies."
   },
   "termsPage": {

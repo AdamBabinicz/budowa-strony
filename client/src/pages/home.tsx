@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { InteractiveWorkshop } from "@/components/interactive-workshop";
 import { TranslationDemo } from "@/components/translation-demo";
@@ -49,30 +49,15 @@ export default function Home() {
 
   return (
     <>
-      <Helmet>
-        <title>{t("seo.title")}</title>
-        <meta name="description" content={t("seo.description")} />
-        <meta property="og:title" content={t("seo.title")} />
-        <meta property="og:description" content={t("seo.description")} />
-        <meta property="og:type" content="website" />
-        <link rel="canonical" href={window.location.href} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            headline: t("seo.title"),
-            description: t("seo.description"),
-            author: {
-              "@type": "Person",
-              name: "AI Genesis",
-            },
-            publisher: {
-              "@type": "Organization",
-              name: "AI Genesis",
-            },
-          })}
-        </script>
-      </Helmet>
+      <SEO
+        title={t("seo.homeTitle")}
+        description={t("seo.description")}
+        path="/"
+        isHomePage={true}
+        schema={{
+          type: "website",
+        }}
+      />
 
       <main className="w-full overflow-x-hidden">
         <section className="min-h-screen bg-gradient-to-br from-background via-secondary/5 to-accent/5 flex items-center justify-center relative overflow-hidden px-4 lg:px-8 w-full">
