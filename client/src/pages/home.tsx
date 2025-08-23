@@ -73,9 +73,9 @@ export default function Home() {
                 {t("hero.title")}
               </span>
             </h1>
-            <h2 className="font-playfair text-lg sm:text-2xl lg:text-3xl mb-8 text-foreground/80">
+            <p className="font-playfair text-lg sm:text-2xl lg:text-3xl mb-8 text-foreground/80">
               {t("hero.subtitle")}
-            </h2>
+            </p>
             <p className="text-base sm:text-lg lg:text-xl mb-12 max-w-2xl mx-auto leading-relaxed text-foreground/70 px-4">
               {t("hero.description")}
             </p>
