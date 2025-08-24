@@ -16,7 +16,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
+// Usunięto import apiRequest, ponieważ nie będzie już używany
+// import { apiRequest } from "@/lib/queryClient";
 import type { ContactFormData } from "@/types";
 
 const contactSchema = z.object({
@@ -30,6 +31,8 @@ export function ContactForm() {
   const { t } = useTranslation();
   const { toast } = useToast();
 
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/mrbazknv";
+
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -41,8 +44,24 @@ export function ContactForm() {
   });
 
   const submitFormMutation = useMutation({
+    // Zaktualizowana funkcja mutacji do wysyłania danych do Formspree
     mutationFn: async (data: ContactFormData) => {
-      return await apiRequest("POST", "/api/contact", data);
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        // Formspree zwraca błędy w treści odpowiedzi
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Nie udało się wysłać formularza.");
+      }
+
+      return response.json();
     },
     onSuccess: () => {
       toast({
@@ -54,10 +73,11 @@ export function ContactForm() {
     onError: (error) => {
       toast({
         title: "Błąd",
-        description: "Nie udało się wysłać wiadomości. Spróbuj ponownie.",
+        description:
+          "Nie udało się wysłać wiadomości. Spróbuj ponownie później.",
         variant: "destructive",
       });
-      console.error("Contact form error:", error);
+      console.error("Contact form submission error:", error);
     },
   });
 
@@ -71,6 +91,7 @@ export function ContactForm() {
       className="max-w-2xl mx-auto space-y-6 animate-slide-in"
       data-testid="contact-form"
     >
+      {/* Reszta kodu JSX formularza pozostaje bez zmian */}
       <div className="grid md:grid-cols-2 gap-6">
         <div>
           <Label
