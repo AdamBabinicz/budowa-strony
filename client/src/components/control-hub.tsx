@@ -14,6 +14,9 @@ export function ControlHub() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
   const [isAccessibilityOn, setIsAccessibilityOn] = useState(false);
+  const [effectiveTheme, setEffectiveTheme] = useState<"light" | "dark">(
+    "light"
+  );
 
   useEffect(() => {
     const rootElement = document.documentElement;
@@ -23,6 +26,21 @@ export function ControlHub() {
       rootElement.classList.remove("accessibility-mode");
     }
   }, [isAccessibilityOn]);
+
+  useEffect(() => {
+    const rootElement = document.documentElement;
+    const apply = () => {
+      const isDark = rootElement.classList.contains("dark");
+      setEffectiveTheme(isDark ? "dark" : "light");
+    };
+    apply();
+    const observer = new MutationObserver(() => apply());
+    observer.observe(rootElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,7 +106,10 @@ export function ControlHub() {
   };
 
   const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
+    const rootElement = document.documentElement;
+    const isCurrentlyDark = rootElement.classList.contains("dark");
+    const nextTheme: "light" | "dark" = isCurrentlyDark ? "light" : "dark";
+    setTheme(nextTheme);
   };
 
   const toggleAccessibility = () => {
@@ -194,7 +215,7 @@ export function ControlHub() {
 
             <div className="flex items-center space-x-3">
               <div className="w-6 h-6 flex items-center justify-center text-xl">
-                {theme === "dark" ? "🌙" : "☀️"}
+                {effectiveTheme === "dark" ? "🌙" : "☀️"}
               </div>
               <button
                 data-testid="theme-toggle"
@@ -204,7 +225,9 @@ export function ControlHub() {
                   isExpanded ? "opacity-100" : "opacity-0"
                 )}
               >
-                {theme === "dark" ? t("theme.lightMode") : t("theme.darkMode")}
+                {effectiveTheme === "dark"
+                  ? t("theme.lightMode")
+                  : t("theme.darkMode")}
               </button>
             </div>
 
@@ -373,14 +396,14 @@ export function ControlHub() {
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-6 h-6 flex items-center justify-center text-xl">
-                      {theme === "dark" ? "🌙" : "☀️"}
+                      {effectiveTheme === "dark" ? "🌙" : "☀️"}
                     </div>
                     <button
                       data-testid="mobile-theme-toggle"
                       onClick={toggleTheme}
                       className="text-sm w-full text-left"
                     >
-                      {theme === "dark"
+                      {effectiveTheme === "dark"
                         ? t("theme.lightMode")
                         : t("theme.darkMode")}
                     </button>
